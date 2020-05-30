@@ -37,11 +37,17 @@ const exampleCode = [
       80vw\`,
   ]}
 />`,
+  `<Picture key={0} src={log(require('./images/alien.png?sizes=480,800'))} loading='lazy' />`,
 ]
 const examples = [
-  <Picture key={0} src={log(require('./images/jelly.jpg'))} />,
-  <Picture key={1} src={require('./images/jelly.jpg?sizes=200,800')} />,
-  <Picture key={2} src={require('./images/jelly.jpg?sizes=200,800,1200')} sizes='(max-width: 768px) 100vw, 50vw' />,
+  <Picture key={0} src={log(require('./images/jelly.jpg'))} loading='lazy' />,
+  <Picture key={1} src={require('./images/jelly.jpg?sizes=200,800')} loading='lazy' />,
+  <Picture
+    key={2}
+    src={require('./images/jelly.jpg?sizes=200,800,1200')}
+    sizes='(max-width: 768px) 100vw, 50vw'
+    loading='lazy'
+  />,
   <Picture
     key={3}
     src={[
@@ -58,7 +64,9 @@ const examples = [
       (max-width: 1600px) 1200px,
       80vw`,
     ]}
+    loading='lazy'
   />,
+  <Picture key={0} src={log(require('./images/alien.png?sizes=480,800'))} loading='lazy' />,
 ]
 
 export default () => (
@@ -270,6 +278,26 @@ export default () => (
         {toString(examples[3])}
       </Code>
       {examples[3]}
+    </div>
+
+    <div className='row'>
+      <h2>PNG image</h2>
+      <Code language='javascript' style={docco}>
+        {exampleCode[4]}
+      </Code>
+      <h5>Behaviour</h5>
+      <ul>
+        <li>The image is resized to 1x, 2x and 3x density for each specified size</li>
+        <li>This results in 200px, 400px, 600px, 800px, 1600px, 2400px, 1200px and 3600px sizes</li>
+        <li>Each of those sizes is also converted to webp</li>
+        <li>All images are optimized</li>
+        <li>Since there are more images than breakpoint divisions (2 by default) - sizes prop is required</li>
+      </ul>
+      <h5>Resulting HTML</h5>
+      <Code language='html' style={docco}>
+        {toString(examples[4])}
+      </Code>
+      {examples[4]}
     </div>
 
     <style jsx>{`
