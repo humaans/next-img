@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/react-components/index.js",
+  "bin": {
+    "next-img": "bin/next-img"
+  },
   "scripts": {
     "test": "healthier",
     "build": "babel lib --out-dir dist",
@@ -12,11 +15,14 @@
   "license": "ISC",
   "dependencies": {
     "debug": "^4.1.1",
+    "deepmerge": "^4.2.2",
     "imagemin": "^7.0.1",
     "imagemin-advpng": "^5.1.0",
     "loader-utils": "^2.0.0",
     "mkdirp": "^1.0.4",
+    "ora": "^4.0.4",
     "p-queue": "^6.4.0",
+    "rimraf": "^3.0.2",
     "sharp": "^0.25.2"
   },
   "devDependencies": {
