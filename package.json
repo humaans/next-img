@@ -17,20 +17,19 @@
     "debug": "^4.1.1",
     "deepmerge": "^4.2.2",
     "del": "^5.1.0",
-    "imagemin": "^7.0.1",
-    "imagemin-advpng": "^5.1.0",
     "loader-utils": "^2.0.0",
     "mkdirp": "^1.0.4",
     "ora": "^4.0.4",
     "p-queue": "^6.4.0",
-    "sharp": "^0.25.2"
+    "qs": "^6.9.4",
+    "sharp": "^0.25.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-transform-react-jsx": "^7.9.4",
-    "@babel/preset-env": "^7.9.6",
-    "ava": "^3.8.1",
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-transform-react-jsx": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "ava": "^3.8.2",
     "healthier": "^3.3.0",
     "prettier": "^2.0.5"
   },

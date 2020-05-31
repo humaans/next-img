@@ -1,44 +1,43 @@
-# next-img
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/324440/83357465-65e84780-a364-11ea-8f0d-23fb0282cad5.png" alt="next-img" title="next-img">
+</p>
 
-A plugin for Next.js for optimizing and embedding images.
+<h4 align="center">Next.js plugin for embedding optimized images.</h4>
+<br />
 
 This plugin will help you:
 
-- **resize** to screen sizes and pixel densities required for your project
-- **modernize** all images to the webp image format
-- **optimize** the file size of the jpg/png/webp files using `sharp` and `advpng`
+- **resize** images for all screen sizes and pixel densities required for your project
+- **modernize** images to the webp image format
+- **optimize** the file sizes of the jpg/png/webp files using `sharp`
 - **embed** the images with ease using the built in `<Picture />` React component
-
-The plugin consists of:
-
-- **cli command** to rebuild the persistent cache of the optimized images
-- **next plugin** that you install in your `next.config.js`
-- **wepack loader** that is installed in the webpack pipeline used by Next.js
-- **react-component** that makes embedding images easy using modern markup trivial
 
 Features:
 
-- Import jpg and png images
-- Resize to multiple output sizes and pixel densities (using `sharp`)
-- Output original and webp image formats for wider browser support
-- Optimize jpg, png and webp images to specified quality (using `sharp` and `advpng`)
+- Handles jpg and png source images
+- Resizes to multiple output sizes and pixel densities
+- Outputs an optimized webp image format for modern browsers
+- Outputs an optimized original image format for wider browser support
 - Built in `<Picture>` component for embedding images with ease
-- Persistent and temporary caching for fast incremental builds and fast CI builds
-- Support for art direction style `<picture>` elements with media queries
-- No dependencies on existing webpack loaders, making usage and configuration streamlined
+- Persistent caching for fast incremental builds and fast deploys
+- Support for art direction with multiple source images
+- No dependencies on any existing webpack loaders streamlining the usage
 
-By default next-img is configured with:
+By default **next-img** is configured with:
 
 - 1 breakpoint at 768px
 - 2 pixel densities of 1x, 2x
 - to output both the original format and webp
-- TODO mention default quality
+- to use quality of 80 for jpeg, 100 for png and 80 for webp
+- to use near lossless flag when converting png to webp
 
-However all of those settings can be changed globally and per image.
+All of these settings can be changed in your `next.config.js` or in the individual image imports.
 
 ## Motivation
 
-By default, when using Next.js.. bla bla.
+By default Next.js or Webpack doesn't help you optimize the images. This means custom scripting, processing images by hand, using an image CDN or not optimising images at all. **next-img** provides and alternative streamlined approach for adding images to your Next.js websites. It combines a Next.js plugin, a custom webpack loader and a React component to make serving images in an optimal fashion in a way that is as close to typing `<img src='foo.png' />` as possible.
+
+The principles
 
 - using webp format when supported
 - resizing images to avoid serving oversized files

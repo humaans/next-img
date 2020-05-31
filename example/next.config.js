@@ -1,8 +1,8 @@
 const path = require('path')
 const withPlugins = require('next-compose-plugins')
-const img = require('../plugin')
+const nextImg = require('../plugin')
 
-module.exports = withPlugins([img], {
+module.exports = withPlugins([nextImg], {
   webpack: (config, options) => {
     config.resolve.alias.react = path.join(__dirname, 'node_modules', 'react')
     config.resolve.alias['react-dom'] = path.join(__dirname, 'node_modules', 'react-dom')
