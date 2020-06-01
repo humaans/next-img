@@ -3,55 +3,23 @@ import ReactDOMServer from 'react-dom/server'
 import { html as pretty } from 'js-beautify'
 import Code from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
-import { Picture } from '../..'
 
-function log(imp) {
-  if (typeof window !== 'undefined') {
-    // console.log(imp)
-  }
-  return imp
-}
-
-const exampleCode = `<Picture
-  src={[
-    require('./images/jelly-s.jpg?sizes=100,375'),
-    require('./images/jelly-m.jpg?sizes=600'),
-    require('./images/jelly-l.jpg?sizes=800,1200,1600')
-  ]}
-  breakpoints={[480, 768]}
-  sizes={[
-    // used for the first image
-    \`(max-width: 300px) 100px,
-      100vw\`,
-
-    // used for the second image
-    \`70vw\`,
-
-    // used for the third image
-    \`(max-width: 1200px) 800px,
-      (max-width: 1600px) 1200px,
-      80vw\`,
-  ]}
-/>`
+const exampleCode = `
+  <>
+    <img src={require('./images/jelly.jpg?sizes=600&jpeg[quality]=10&webp[quality]=10').src} />
+    <img src={require('./images/jelly.jpg?sizes=600&jpeg[quality]=10&webp[quality]=10').webpSrcSet.split(',')[0].split(' ')[0]} />
+  </>
+`
 
 const example = (
-  <Picture
-    src={[
-      require('./images/jelly-s.jpg?sizes=100,375'),
-      require('./images/jelly-m.jpg?sizes=600'),
-      require('./images/jelly-l.jpg?sizes=800,1200,1600'),
-    ]}
-    breakpoints={[480, 768]}
-    sizes={[
-      `(max-width: 300px) 100px,
-      100vw`,
-      `70vw`,
-      `(max-width: 1200px) 800px,
-      (max-width: 1600px) 1200px,
-      80vw`,
-    ]}
-    loading='lazy'
-  />
+  <>
+    <img src={require('./images/jelly.jpg?sizes=600&jpeg[quality]=10&webp[quality]=10').src} />
+    <img
+      src={
+        require('./images/jelly.jpg?sizes=600&jpeg[quality]=10&webp[quality]=10').webpSrcSet.split(',')[0].split(' ')[0]
+      }
+    />
+  </>
 )
 
 export default () => (
