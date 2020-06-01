@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/324440/83357465-65e84780-a364-11ea-8f0d-23fb0282cad5.png" alt="next-img" title="next-img">
+  <img src="https://user-images.githubusercontent.com/324440/83415725-77d6f280-a417-11ea-839d-28237d8125a2.png" alt="next-img" title="next-img">
 </p>
 
 <h4 align="center">Next.js plugin for embedding optimized images.</h4>
