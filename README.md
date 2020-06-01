@@ -82,7 +82,7 @@ Install the package
 npm install next-img
 ```
 
-Install the Next.js plugin into your `next.config.js`:
+Add the plugin to your `next.config.js`:
 
 ```js
 const withPlugins = require('next-compose-plugins')
@@ -92,14 +92,12 @@ module.exports = withPlugins([
   nextImg,
   {
     // specify the default breakpoints
-    // you'd like to use, you can always
-    // override this per image
     breakpoints: [768],
   },
 ])
 ```
 
-In your application, import the images and use the `<Picture />` component:
+In your application, import the images and embed using the `<Picture />` component:
 
 ```js
 import { Picture } from 'next-img'
@@ -123,19 +121,19 @@ This particular example will generate the following images:
 - 800px wide image to show on large screens with low pixel density of 1x
 - 1600px wide image to show on large screens with high pixel density of 2x
 
-The images will be saved in `resources` directory in the root of your project during the development. This means, that if you tweak the settings of each image, you might generate superflous images that are not actually needed by your project. In that case execute `next-img` command to build any missing images and remove any unnecessary ones:
+The resized and optimized images will be saved to the `resources` directory in the root of your project during the development. This means, that if you tweak the image import parameters or plugin configuration, you might generate extra images that are no longer used by your project. In that case execute `next-img` command to remove any unnecessary images and build any missing ones:
 
 ```
 npx next-img
 ```
 
-Finally, check the `resources` directory into your source control to be reused later for development and production builds. You can turn this feature off by setting `persistentCache: false` in the plugin configuration.
+Now check in the `resources` directory to your source control to be reused later for development and production builds. You can turn this feature off by setting `persistentCache: false` in the plugin configuration, in which case the images will be only stored in a temporary cache inside `.next` directory.
 
 See the [demo]() website for a comprehensive list of examples.
 
 ## Configuration
 
-Here are the default configuration options:
+Default plugin configuration options:
 
 ```js
 {
@@ -151,9 +149,9 @@ Here are the default configuration options:
   // advanced - customise the image output path
   imagesOutputPath: null,
 
-  // persistent cache allows for faster deploys
-  // by avoiding reprocessing images that were
-  // already previously processed
+  // persistent cache allows for fast deploy and
+  // development workflow by avoiding reprocessing
+  // images that were previously processed
   persistentCache: true,
   persistentCacheDir: 'resources',
 
@@ -180,9 +178,9 @@ Here are the default configuration options:
 
 When importing an image, you can use query parameters to customise the optimisation:
 
-- **sizes** - a list of comma separated sizes you need the image produced at.
-- **densities** - a list of comma separated densities you need each image size to be produced at.
-- **jpeg / png / webp** - quality configuration options for the output image
+- **sizes** - a list of comma separated sizes you will be showing images at. Note that you do not need to take into account the pixel densities here. That is, if you're showing an image at `320px` wide on your website, simply specify `320` here, the plugin will produce any necessary larger versions based on the `densities` configuration.
+- **densities** - a list of comma separated densities you need each image size to be produced at. By default `1x` and `2x` sizes of images will be produced, specify `1x` if you want to produce only one image per size, or `1x,2x,3x`, etc. if you want more densities.
+- **jpeg / png / webp** - quality configuration options for the output image. Refer to [sharp documentation](https://sharp.pixelplumbing.com/api-output) to find the available options for each output format.
 
 Examples:
 
@@ -200,10 +198,35 @@ import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality
 
 Here are the props this component access:
 
-- **src** the imported image object, or an array of such objects. In case an array of image sources is provided, each image source will be shown at each breakpoint available.
-- **breakpoints** - a list of breakpoints to override the default behaviour
-- **sizes** -
-- **the rest of the props and ref** are forwarded to the `img` tag. This allows the use of attributes such as `alt` or `loading="lazy"` and so on.
+- **src** the imported image, or an array of imported images.
+- **breakpoints** - a list of breakpoints to override the global configuration.
+- **sizes** - a custom [html sizes attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#How_do_you_create_responsive_images), by default the sizes attribute is generated based on the available images and breakpoints.
+- **the rest of the props and ref** are forwarded to the `img` tag. This allows the use of attributes such as `alt`, `loading="lazy"`, etc..
+
+#### A note how sizes/media attributes are generated
+
+When a single image is provided via the `src` prop, then each size will be configured to show up per each breakpoint available using the html [`sizes attribute`](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#How_do_you_create_responsive_images) attribute.
+
+For example, with breakpoints `[375, 768]` and `?sizes=100,400,800` the `<Picture>` component will apply the following `sizes` attribute:
+
+```
+(max-width: 375px) 100px,
+(max-width: 768px) 400px,
+                   800px
+```
+
+When an array of images is provided via the `src` prop, then each image will be configured to show up per each breakpoint available using the html [`media attribute`](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Art_direction).
+
+For example, with breakpoints `[375, 768]` and `src=[img1, img2, img3]` the `<Picture>` component will apply the following `media` attribute:
+
+```html
+<picture>
+  <source media="(max-width: 480px)" sizes="{{img1 width}}" />
+  <source media="(max-width: 768px)" sizes="{{img2 width}}" />
+  <source sizes="{{img3 width}}" />
+  <img ... />
+</picture>
+```
 
 See the [demo]() website for a comprehensive list of examples.
 
@@ -237,3 +260,29 @@ To execute the `next-img` command in the example dir:
 ```
 node ../bin/next-img
 ```
+
+## Future
+
+Short term roadmap:
+
+#### V1:
+
+- [ ] Allow turning `webp/jpg/png` output off
+- [ ] Allow different config for `jpg->webp` and `png->webp` conversions
+- [ ] Add `?raw` query support that doesn’t process the image in any way
+- [ ] Remove the need for `next-img` command by plugging directly into `next build` via webpack plugin
+
+#### V2:
+
+- [ ] Add support for css images, in addition to the html images
+- [ ] Inline small images
+
+And some ideas for where this project could be taken in the future:
+
+- Allow adding `imagemin` optimisation plugins into the pipeline via config. This way users can control how to optimise their images more granuarly.
+- Translate relative sizes `?sizes=100vw,50vw,900px` to pixels based on the breakpoint configuration, this would allow dynamic kind of imports that depend on your design system and relative sizing of images, e.g. if css says "50vw", you will not need to do that calculation manually.
+- Debug mode that prints image sizes into images themselves, so you can see what's shown when right in the browser inside images (or overlaying them using js at runtime).
+- Babel parser that analyses code for images to avoid the need to `require()`.
+- Optimize file read/write/hash operations to the maximum for improved performance.
+- A puppeteer script to render the website in all predefined breakpoints and automatically analyses all image sizes required.
+- Add support for gif and webp as source images.
