@@ -5,23 +5,15 @@
 <h4 align="center">Next.js plugin for embedding optimized images.</h4>
 <br />
 
-This plugin will help you:
+Features
 
-- **resize** images for all screen sizes and pixel densities required for your project
-- **modernize** images to the webp image format
-- **optimize** the file sizes of the jpg/png/webp files using `sharp`
-- **embed** the images with ease using the built in `<Picture />` React component
-
-Features:
-
-- Handles jpg and png source images
-- Resizes to multiple output sizes and pixel densities
-- Outputs an optimized webp image format for modern browsers
-- Outputs an optimized original image format for wider browser support
-- Built in `<Picture>` component for embedding images with ease
-- Persistent caching for fast incremental builds and fast deploys
-- Support for art direction with multiple source images
-- No dependencies on any existing webpack loaders streamlining the usage
+- **import** png/jpg image formats
+- **resize** to screen sizes and pixel densities required for your project
+- **modernize** images by converting to webp format for modern browsers
+- **optimize** file sizes using `sharp`
+- **streamlined usage** with the built in `<Picture />` React component
+- **art direction** with different images for different breakpoints
+- **fast** deployment and development workflow using persistent cache
 
 By default **next-img** is configured with:
 
