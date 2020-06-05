@@ -1,15 +1,24 @@
 {
   "name": "next-img",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "dist/react-components/index.js",
   "bin": {
     "next-img": "bin/next-img"
   },
+  "files": [
+    "bin/**/*",
+    "dist/**/*",
+    "lib/**/*",
+    "plugin.js",
+    "loader.js"
+  ],
   "scripts": {
     "test": "healthier",
-    "build": "babel lib --out-dir dist",
-    "watch": "babel lib --out-dir dist --watch"
+    "release": "np",
+    "version": "npm run build",
+    "build": "babel lib/react-components --out-dir dist/react-components",
+    "watch": "babel lib/react-components --out-dir dist/react-components --watch"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +40,7 @@
     "@babel/preset-env": "^7.10.2",
     "ava": "^3.8.2",
     "healthier": "^3.3.0",
+    "np": "^6.2.3",
     "prettier": "^2.0.5"
   },
   "ava": {
