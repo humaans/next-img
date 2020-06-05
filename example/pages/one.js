@@ -5,13 +5,6 @@ import Code from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import { Picture } from '../..'
 
-function log(imp) {
-  if (typeof window !== 'undefined') {
-    // console.log(imp)
-  }
-  return imp
-}
-
 const exampleCode = `<Picture
   src={[
     require('./images/jelly-s.jpg?sizes=100,375'),

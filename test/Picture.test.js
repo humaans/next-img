@@ -1,4 +1,4 @@
-const { makeMedia: media, makeSizes: sizes } = require('..')
+const { makeMedia: media } = require('..')
 const test = require('ava')
 
 test('media queries', t => {
