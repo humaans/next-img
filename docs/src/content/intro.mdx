@@ -1,0 +1,96 @@
+<h1 align='center' style={{ marginTop: 0, marginBottom: '180px' }}>
+  Next.js plugin for embedding optimized images
+</h1>
+
+## Features
+
+- **import** png/jpg images
+- **resize** to multiple screen sizes and densities
+- **modernize** by converting to webp format
+- **optimize** file sizes using `sharp`
+- **streamlined usage** with the built in `<Picture />` component
+- **art direction** with different images for different breakpoints
+- **fast** deployment and development workflow using persistent cache
+
+By default **next-img** is configured to use:
+
+- 1 breakpoint at `768px`
+- 2 pixel densities of 1x, 2x
+- to output the original and webp formats
+
+All of these settings and more can be changed in your `next.config.js` or in the individual image imports.
+
+Developed and used by [Humaans](https://humaans.io/).
+
+## Motivation
+
+By default Next.js or Webpack doesn't help you much with optimizing images. This means custom configuration or scripting, processing images by hand, using an image CDN or not optimising images at all. **next-img** provides and alternative streamlined approach for adding images to your Next.js projects. It combines a Next.js plugin, a custom webpack loader and a React component to make serving images in an optimal fashion in a way that is almost as easy as typing `<img src='foo.png' />`.
+
+In short, it takes the following:
+
+```js
+<Picture src={require('./images/jelly.jpg?sizes=375,800')} />
+```
+
+Imports, resizes, optimizes, caches (persistently in the git repo) and outputs the following HTML:
+
+```html
+<picture>
+  <source
+    type="image/webp"
+    srcset="
+      /_next/static/images/jelly-375@1x-5e609945b16eba99bf2aaa3007d3ba92.webp  375w,
+      /_next/static/images/jelly-375@2x-850e7fd87fceda1e7cefcb628a07f5c4.webp  750w,
+      /_next/static/images/jelly-800@1x-1481a104c8ce38822aeafdbe97a17e69.webp  800w,
+      /_next/static/images/jelly-800@2x-fc18765bd3b819714ca2da58e10907c9.webp 1600w
+    "
+    sizes="(max-width: 768px) 375px, 800px"
+  />
+  <source
+    type="image/jpeg"
+    srcset="
+      /_next/static/images/jelly-375@1x-259e4b1f32b3bdd4349806c4a5763a54.jpg  375w,
+      /_next/static/images/jelly-375@2x-295d4cc8111d4e911dbc9ad4dd1d8322.jpg  750w,
+      /_next/static/images/jelly-800@1x-090d866969aba9b237e71ee52512a7c4.jpg  800w,
+      /_next/static/images/jelly-800@2x-33f1639cadf8c4c5f19eb5c19e20a67d.jpg 1600w
+    "
+    sizes="(max-width: 768px) 375px, 800px"
+  />
+
+  <img
+    src="/_next/static/images/jelly-375@1x-259e4b1f32b3bdd4349806c4a5763a54.jpg"
+    srcset="
+      /_next/static/images/jelly-375@1x-259e4b1f32b3bdd4349806c4a5763a54.jpg  375w,
+      /_next/static/images/jelly-375@2x-295d4cc8111d4e911dbc9ad4dd1d8322.jpg  750w,
+      /_next/static/images/jelly-800@1x-090d866969aba9b237e71ee52512a7c4.jpg  800w,
+      /_next/static/images/jelly-800@2x-33f1639cadf8c4c5f19eb5c19e20a67d.jpg 1600w
+    "
+  />
+</picture>
+```
+
+## Future
+
+Short term roadmap:
+
+### V1:
+
+- [x] Allow different config for `jpg->webp` and `png->webp` conversions
+- [ ] Allow turning `webp/jpg/png` output off
+- [ ] Add `?raw` query support that doesn’t process the image in any way
+- [ ] Remove the need for `next-img` command by plugging directly into `next build` via webpack plugin
+
+### V2:
+
+- [ ] Add support for css images, in addition to the html images
+- [ ] Inline small images
+
+And some ideas for where this project could be taken in the future:
+
+- Allow adding `imagemin` optimisation plugins into the pipeline via config. This way users can control how to optimise their images more granuarly.
+- Translate relative sizes `?sizes=100vw,50vw,900px` to pixels based on the breakpoint configuration, this would allow dynamic kind of imports that depend on your design system and relative sizing of images, e.g. if css says "50vw", you will not need to do that calculation manually.
+- Debug mode that prints image sizes into images themselves, so you can see what's shown when right in the browser inside images (or overlaying them using js at runtime).
+- Babel parser that analyses code for images to avoid the need to `require()`.
+- Optimize file read/write/hash operations to the maximum for improved performance.
+- A puppeteer script to render the website in all predefined breakpoints and automatically analyses all image sizes required.
+- Add support for gif and webp as source images.

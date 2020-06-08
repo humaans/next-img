@@ -3,9 +3,12 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "release:docs": "next build && next export && gh-pages -d out"
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.6.5",
+    "@next/mdx": "^9.4.4",
     "js-beautify": "^1.11.0",
     "next": "^9.3.5",
     "next-compose-plugins": "^2.2.0",
@@ -13,5 +16,7 @@
     "react-dom": "^16.13.1",
     "react-syntax-highlighter": "^12.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gh-pages": "^3.0.0"
+  }
 }
