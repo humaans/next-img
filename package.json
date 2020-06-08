@@ -15,10 +15,10 @@
   ],
   "scripts": {
     "test": "healthier",
-    "release": "np",
     "version": "npm run build",
     "build": "babel lib/react-components --out-dir dist/react-components",
-    "watch": "babel lib/react-components --out-dir dist/react-components --watch"
+    "watch": "babel lib/react-components --out-dir dist/react-components --watch",
+    "release": "np"
   },
   "author": "",
   "license": "ISC",

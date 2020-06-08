@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/324440/83415725-77d6f280-a417-11ea-839d-28237d8125a2.png" alt="next-img" title="next-img">
+  <img src="https://user-images.githubusercontent.com/324440/84087760-bbff5f80-a9e2-11ea-8aeb-db605876d9cf.png" alt="next-img" title="next-img">
 </p>
 
 <h4 align="center">Next.js plugin for embedding optimized images.</h4>
@@ -7,37 +7,35 @@
 
 Features
 
-- **import** png/jpg image formats
-- **resize** to screen sizes and pixel densities required for your project
-- **modernize** images by converting to webp format for modern browsers
+- **import** png/jpg images
+- **resize** to multiple screen sizes and densities
+- **modernize** by converting to webp format
 - **optimize** file sizes using `sharp`
-- **streamlined usage** with the built in `<Picture />` React component
+- **streamlined usage** with the built in `<Picture />` component
 - **art direction** with different images for different breakpoints
 - **fast** deployment and development workflow using persistent cache
 
-By default **next-img** is configured with:
+By default **next-img** is configured to use:
 
-- 1 breakpoint at 768px
+- 1 breakpoint at `768px`
 - 2 pixel densities of 1x, 2x
-- to output both the original format and webp
-- to use quality of 80 for jpeg, 100 for png and 80 for webp
-- to use near lossless flag when converting png to webp
+- to output the original and webp formats
 
-All of these settings can be changed in your `next.config.js` or in the individual image imports.
+All of these settings and more can be changed in your `next.config.js` or in the individual image imports.
 
 Developed and used by [Humaans](https://humaans.io/).
 
 ## Motivation
 
-By default Next.js or Webpack doesn't help you with optimizing the images. This means custom scripting or configuration, processing images by hand, using an image CDN or not optimising images at all. **next-img** provides and alternative streamlined approach for adding images to your Next.js websites. It combines a Next.js plugin, a custom webpack loader and a React component to make serving images in an optimal fashion in a way that is as close to typing `<img src='foo.png' />` as possible.
+By default Next.js or Webpack doesn't help you much with optimizing images. This means custom configuration or scripting, processing images by hand, using an image CDN or not optimising images at all. **next-img** provides and alternative streamlined approach for adding images to your Next.js projects. It combines a Next.js plugin, a custom webpack loader and a React component to make serving images in an optimal fashion in a way that is almost as easy as typing `<img src='foo.png' />`.
 
-In short, it takes the following React component:
+In short, it takes the following:
 
 ```js
 <Picture src={require('./images/jelly.jpg?sizes=375,800')} />
 ```
 
-Imports the image, resizes, optimizes, caches it in your git repository and outputs the following markup:
+Imports, resizes, optimizes, caches (persistently in the git repo) and outputs the following HTML:
 
 ```html
 <picture>
@@ -117,9 +115,9 @@ export default () => <Picture src={require('./images/jelly.jpg?sizes=375,800')} 
 This particular example will generate the following images:
 
 - 375px wide image to show on small screens with low pixel density of 1x
-- 750px wide image to show on small screens with high pixel density of 2x
+- 750px wide image to show on small screens with high pixel density of 2x or more
 - 800px wide image to show on large screens with low pixel density of 1x
-- 1600px wide image to show on large screens with high pixel density of 2x
+- 1600px wide image to show on large screens with high pixel density of 2x or more
 
 The resized and optimized images will be saved to the `resources` directory in the root of your project during the development. This means, that if you tweak the image import parameters or plugin configuration, you might generate extra images that are no longer used by your project. In that case execute `next-img` command to remove any unnecessary images and build any missing ones:
 
@@ -129,7 +127,7 @@ npx next-img
 
 Now check in the `resources` directory to your source control to be reused later for development and production builds. You can turn this feature off by setting `persistentCache: false` in the plugin configuration, in which case the images will be only stored in a temporary cache inside `.next` directory.
 
-See the [demo]() website for a comprehensive list of examples.
+See the [documentation](https://humaans.github.io/next-img/) website for a comprehensive list of examples.
 
 ## Configuration
 
@@ -161,15 +159,19 @@ Default plugin configuration options:
   // image quality configuration
   jpeg: {
     quality: 80,
+    webp: {
+      quality: 80,
+      reductionEffort: 6,
+    },
   },
 
   png: {
     quality: 100,
-  },
-
-  webp: {
-    quality: 80,
-    reductionEffort: 6,
+    webp: {
+      quality: 80,
+      reductionEffort: 6,
+      lossles: true,
+    },
   },
 }
 ```
@@ -203,7 +205,7 @@ Here are the props this component access:
 - **sizes** - a custom [html sizes attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#How_do_you_create_responsive_images), by default the sizes attribute is generated based on the available images and breakpoints.
 - **the rest of the props and ref** are forwarded to the `img` tag. This allows the use of attributes such as `alt`, `loading="lazy"`, etc..
 
-#### A note how sizes/media attributes are generated
+#### A note on how sizes/media attributes are generated
 
 When a single image is provided via the `src` prop, then each size will be configured to show up per each breakpoint available using the html [`sizes attribute`](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#How_do_you_create_responsive_images) attribute.
 
@@ -267,8 +269,8 @@ Short term roadmap:
 
 #### V1:
 
+- [x] Allow different config for `jpg->webp` and `png->webp` conversions
 - [ ] Allow turning `webp/jpg/png` output off
-- [ ] Allow different config for `jpg->webp` and `png->webp` conversions
 - [ ] Add `?raw` query support that doesn’t process the image in any way
 - [ ] Remove the need for `next-img` command by plugging directly into `next build` via webpack plugin
 
