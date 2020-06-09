@@ -186,7 +186,7 @@ When importing an image, you can use query parameters to customise the optimisat
 - **sizes** - a list of comma separated sizes you will be showing images at. Note that you do not need to take into account the pixel densities here. That is, if you're showing an image at `320px` wide on your website, simply specify `320` here, the plugin will produce any necessary larger versions based on the `densities` configuration.
 - **densities** - a list of comma separated densities you need each image size to be produced at. By default `1x` and `2x` sizes of images will be produced, specify `1x` if you want to produce only one image per size, or `1x,2x,3x`, etc. if you want more densities.
 - **jpeg** - quality configuration options for `jpeg` images. Note, the `jpeg->webp` settings need to be nested under this param, e.g. `?jpeg[webp][quality]=95`
-- **png** - quality configuration options for `png` images. Note, the `png->webp` settings need to be nested under this param, e.g. `?png[webp][nearLossless]=1`
+- **png** - quality configuration options for `png` images. Note, the `png->webp` settings need to be nested under this param, e.g. `?png[webp][lossless]=false&png[webp][nearLossless]=true`
 
 Examples:
 
