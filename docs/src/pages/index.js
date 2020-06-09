@@ -329,13 +329,19 @@ export default () => (
       }
 
       .example-inner {
-        max-width: 980px;
+        max-width: 1080px;
         margin: auto;
       }
 
       .photo {
         background: rgb(35, 35, 35);
-        padding: 40px;
+        padding: 20px;
+      }
+
+      @media (min-width: 768px) {
+        .photo {
+          padding: 80px 20px;
+        }
       }
 
       .photo-inner {

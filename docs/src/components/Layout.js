@@ -28,7 +28,7 @@ export function Layout({ children }) {
         }
 
         .header-inner {
-          max-width: 980px;
+          max-width: 1080px;
           margin: auto;
           padding: 20px 20px;
           display: flex;
