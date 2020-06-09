@@ -62699,8 +62699,7 @@ function Layout(_ref) {
       columnNumber: 17
     }
   }, "View on Github \u2192")))))), __jsx("div", {
-    "class": "content",
-    className: "jsx-3262030742",
+    className: "jsx-3262030742" + " " + 'content',
     __self: this,
     __source: {
       fileName: _jsxFileName,
@@ -62710,7 +62709,7 @@ function Layout(_ref) {
   }, children), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
     id: "3262030742",
     __self: this
-  }, ".header.jsx-3262030742{border-bottom:1px solid #dec79b40;}.header-inner.jsx-3262030742{max-width:980px;margin:auto;padding:20px 20px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}@media (min-width:768px){.header-inner.jsx-3262030742{padding:20px 40px;}}.logo.jsx-3262030742{color:#dec79b;font-size:28px;font-weight:800;-webkit-text-decoration:none;text-decoration:none;}.nav.jsx-3262030742{list-style:none;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding:0;}.nav.jsx-3262030742 a.jsx-3262030742{display:block;padding:8px 20px;-webkit-text-decoration:none;text-decoration:none;border-radius:4px;-webkit-transition:all 200ms;transition:all 200ms;color:white;}.nav.jsx-3262030742 a.jsx-3262030742:hover{background:rgba(255,255,255,0.1);}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9rYXJvbGlzL3Byb2plY3RzL25leHQtaW1nL2RvY3Mvc3JjL2NvbXBvbmVudHMvTGF5b3V0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXdCa0IsQUFHNkMsQUFJbEIsQUFXSSxBQUtOLEFBT0UsQUFRRixBQVNzQixjQXZCckIsQUFlRSxFQS9CTCxBQXVCQyxFQVpiLFVBVmtCLENBZ0JGLEVBZUssRUFRdkIsQ0E1Q0EsV0FzQnVCLENBaEJSLG1DQStCSyxTQVRDLEtBTHJCLElBZXVCLHFCQS9CRiw2QkFnQ1AsVUFWYSxFQVczQiw0QkFoQ3FCLG1FQXNCVCxVQUNaLGdCQXRCZ0MsbUhBQ2hDIiwiZmlsZSI6Ii9Vc2Vycy9rYXJvbGlzL3Byb2plY3RzL25leHQtaW1nL2RvY3Mvc3JjL2NvbXBvbmVudHMvTGF5b3V0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IExpbmsgZnJvbSAnbmV4dC9saW5rJ1xuXG5leHBvcnQgZnVuY3Rpb24gTGF5b3V0KHsgY2hpbGRyZW4gfSkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT0naGVhZGVyJz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9J2hlYWRlci1pbm5lcic+XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxMaW5rIGhyZWY9Jy8nPlxuICAgICAgICAgICAgICA8YSBjbGFzc05hbWU9J2xvZ28nPm5leHQtaW1nPC9hPlxuICAgICAgICAgICAgPC9MaW5rPlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgPHVsIGNsYXNzTmFtZT0nbmF2Jz5cbiAgICAgICAgICAgIDxsaT5cbiAgICAgICAgICAgICAgPExpbmsgaHJlZj0naHR0cHM6Ly9naXRodWIuY29tL2h1bWFhbnMvbmV4dC1pbWcvJz5cbiAgICAgICAgICAgICAgICA8YT5WaWV3IG9uIEdpdGh1YiDihpI8L2E+XG4gICAgICAgICAgICAgIDwvTGluaz5cbiAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgPC91bD5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxkaXYgY2xhc3M9J2NvbnRlbnQnPntjaGlsZHJlbn08L2Rpdj5cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgLmhlYWRlciB7XG4gICAgICAgICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNkZWM3OWI0MDtcbiAgICAgICAgfVxuXG4gICAgICAgIC5oZWFkZXItaW5uZXIge1xuICAgICAgICAgIG1heC13aWR0aDogOTgwcHg7XG4gICAgICAgICAgbWFyZ2luOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDIwcHggMjBweDtcbiAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgICAgIH1cblxuICAgICAgICBAbWVkaWEgKG1pbi13aWR0aDogNzY4cHgpIHtcbiAgICAgICAgICAuaGVhZGVyLWlubmVyIHtcbiAgICAgICAgICAgIHBhZGRpbmc6IDIwcHggNDBweDtcbiAgICAgICAgICB9XG4gICAgICAgIH1cblxuICAgICAgICAubG9nbyB7XG4gICAgICAgICAgY29sb3I6ICNkZWM3OWI7XG4gICAgICAgICAgZm9udC1zaXplOiAyOHB4O1xuICAgICAgICAgIGZvbnQtd2VpZ2h0OiA4MDA7XG4gICAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgICAgICB9XG5cbiAgICAgICAgLm5hdiB7XG4gICAgICAgICAgbGlzdC1zdHlsZTogbm9uZTtcbiAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gICAgICAgICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgICAgICAgICBwYWRkaW5nOiAwO1xuICAgICAgICB9XG5cbiAgICAgICAgLm5hdiBhIHtcbiAgICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgICBwYWRkaW5nOiA4cHggMjBweDtcbiAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgICAgICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgICAgICAgIHRyYW5zaXRpb246IGFsbCAyMDBtcztcbiAgICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIH1cblxuICAgICAgICAubmF2IGE6aG92ZXIge1xuICAgICAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKTtcbiAgICAgICAgfVxuICAgICAgYH08L3N0eWxlPlxuICAgIDwvZGl2PlxuICApXG59XG4iXX0= */\n/*@ sourceURL=/Users/karolis/projects/next-img/docs/src/components/Layout.js */"));
+  }, ".header.jsx-3262030742{border-bottom:1px solid #dec79b40;}.header-inner.jsx-3262030742{max-width:980px;margin:auto;padding:20px 20px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}@media (min-width:768px){.header-inner.jsx-3262030742{padding:20px 40px;}}.logo.jsx-3262030742{color:#dec79b;font-size:28px;font-weight:800;-webkit-text-decoration:none;text-decoration:none;}.nav.jsx-3262030742{list-style:none;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;padding:0;}.nav.jsx-3262030742 a.jsx-3262030742{display:block;padding:8px 20px;-webkit-text-decoration:none;text-decoration:none;border-radius:4px;-webkit-transition:all 200ms;transition:all 200ms;color:white;}.nav.jsx-3262030742 a.jsx-3262030742:hover{background:rgba(255,255,255,0.1);}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9rYXJvbGlzL3Byb2plY3RzL25leHQtaW1nL2RvY3Mvc3JjL2NvbXBvbmVudHMvTGF5b3V0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXdCa0IsQUFHNkMsQUFJbEIsQUFXSSxBQUtOLEFBT0UsQUFRRixBQVNzQixjQXZCckIsQUFlRSxFQS9CTCxBQXVCQyxFQVpiLFVBVmtCLENBZ0JGLEVBZUssRUFRdkIsQ0E1Q0EsV0FzQnVCLENBaEJSLG1DQStCSyxTQVRDLEtBTHJCLElBZXVCLHFCQS9CRiw2QkFnQ1AsVUFWYSxFQVczQiw0QkFoQ3FCLG1FQXNCVCxVQUNaLGdCQXRCZ0MsbUhBQ2hDIiwiZmlsZSI6Ii9Vc2Vycy9rYXJvbGlzL3Byb2plY3RzL25leHQtaW1nL2RvY3Mvc3JjL2NvbXBvbmVudHMvTGF5b3V0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IExpbmsgZnJvbSAnbmV4dC9saW5rJ1xuXG5leHBvcnQgZnVuY3Rpb24gTGF5b3V0KHsgY2hpbGRyZW4gfSkge1xuICByZXR1cm4gKFxuICAgIDxkaXY+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT0naGVhZGVyJz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9J2hlYWRlci1pbm5lcic+XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxMaW5rIGhyZWY9Jy8nPlxuICAgICAgICAgICAgICA8YSBjbGFzc05hbWU9J2xvZ28nPm5leHQtaW1nPC9hPlxuICAgICAgICAgICAgPC9MaW5rPlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgPHVsIGNsYXNzTmFtZT0nbmF2Jz5cbiAgICAgICAgICAgIDxsaT5cbiAgICAgICAgICAgICAgPExpbmsgaHJlZj0naHR0cHM6Ly9naXRodWIuY29tL2h1bWFhbnMvbmV4dC1pbWcvJz5cbiAgICAgICAgICAgICAgICA8YT5WaWV3IG9uIEdpdGh1YiDihpI8L2E+XG4gICAgICAgICAgICAgIDwvTGluaz5cbiAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgPC91bD5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPSdjb250ZW50Jz57Y2hpbGRyZW59PC9kaXY+XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAgIC5oZWFkZXIge1xuICAgICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZGVjNzliNDA7XG4gICAgICAgIH1cblxuICAgICAgICAuaGVhZGVyLWlubmVyIHtcbiAgICAgICAgICBtYXgtd2lkdGg6IDk4MHB4O1xuICAgICAgICAgIG1hcmdpbjogYXV0bztcbiAgICAgICAgICBwYWRkaW5nOiAyMHB4IDIwcHg7XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgICAgICB9XG5cbiAgICAgICAgQG1lZGlhIChtaW4td2lkdGg6IDc2OHB4KSB7XG4gICAgICAgICAgLmhlYWRlci1pbm5lciB7XG4gICAgICAgICAgICBwYWRkaW5nOiAyMHB4IDQwcHg7XG4gICAgICAgICAgfVxuICAgICAgICB9XG5cbiAgICAgICAgLmxvZ28ge1xuICAgICAgICAgIGNvbG9yOiAjZGVjNzliO1xuICAgICAgICAgIGZvbnQtc2l6ZTogMjhweDtcbiAgICAgICAgICBmb250LXdlaWdodDogODAwO1xuICAgICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAgICAgfVxuXG4gICAgICAgIC5uYXYge1xuICAgICAgICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICAgICAgICAgIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgfVxuXG4gICAgICAgIC5uYXYgYSB7XG4gICAgICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgICAgICAgcGFkZGluZzogOHB4IDIwcHg7XG4gICAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgICB0cmFuc2l0aW9uOiBhbGwgMjAwbXM7XG4gICAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICB9XG5cbiAgICAgICAgLm5hdiBhOmhvdmVyIHtcbiAgICAgICAgICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSk7XG4gICAgICAgIH1cbiAgICAgIGB9PC9zdHlsZT5cbiAgICA8L2Rpdj5cbiAgKVxufVxuIl19 */\n/*@ sourceURL=/Users/karolis/projects/next-img/docs/src/components/Layout.js */"));
 }
 
 /***/ }),
@@ -62749,6 +62748,105 @@ function toString(element) {
 /***/ (function(module, exports) {
 
 module.exports = {"src":"/_next/static/images/coffee1-375@1x-e2b9b524b9126743aa9764cfd425fa4e.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee1-375@1x-e2b9b524b9126743aa9764cfd425fa4e.jpg 375w, /_next/static/images/coffee1-375@2x-0a1620261148881f98ebdc78ed4ec085.jpg 750w, /_next/static/images/coffee1-860@1x-da2a8aa62cc17fe9e7ca51461981387c.jpg 860w, /_next/static/images/coffee1-860@2x-11753d1994d0b6d94afa566e9b3cd4ea.jpg 1720w","webpSrcSet":"/_next/static/images/coffee1-375@1x-d04d19c08afad1ce95e7f102961c1a7e.webp 375w, /_next/static/images/coffee1-375@2x-9d17025a66d743b5ba03e9046e9f4365.webp 750w, /_next/static/images/coffee1-860@1x-b811b4e74128a685ea8029bcde250d74.webp 860w, /_next/static/images/coffee1-860@2x-71e3c8575537ad7bdcacee55fa91268c.webp 1720w","images":[{"path":"/_next/static/images/coffee1-375@1x-e2b9b524b9126743aa9764cfd425fa4e.jpg","size":375,"density":1,"width":375,"height":250,"format":"jpeg"},{"path":"/_next/static/images/coffee1-375@1x-d04d19c08afad1ce95e7f102961c1a7e.webp","size":375,"density":1,"width":375,"height":250,"format":"webp"},{"path":"/_next/static/images/coffee1-375@2x-0a1620261148881f98ebdc78ed4ec085.jpg","size":375,"density":2,"width":750,"height":500,"format":"jpeg"},{"path":"/_next/static/images/coffee1-375@2x-9d17025a66d743b5ba03e9046e9f4365.webp","size":375,"density":2,"width":750,"height":500,"format":"webp"},{"path":"/_next/static/images/coffee1-860@1x-da2a8aa62cc17fe9e7ca51461981387c.jpg","size":860,"density":1,"width":860,"height":573,"format":"jpeg"},{"path":"/_next/static/images/coffee1-860@1x-b811b4e74128a685ea8029bcde250d74.webp","size":860,"density":1,"width":860,"height":573,"format":"webp"},{"path":"/_next/static/images/coffee1-860@2x-11753d1994d0b6d94afa566e9b3cd4ea.jpg","size":860,"density":2,"width":1720,"height":1147,"format":"jpeg"},{"path":"/_next/static/images/coffee1-860@2x-71e3c8575537ad7bdcacee55fa91268c.webp","size":860,"density":2,"width":1720,"height":1147,"format":"webp"}],"name":"coffee1.jpg","sizes":[375,860],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/coffee2.jpg?sizes=375,600,860":
+/*!**************************************************!*\
+  !*** ./src/images/coffee2.jpg?sizes=375,600,860 ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/coffee2-375@1x-f6cdee4a62f70e9889fb5c6c1714d519.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee2-375@1x-f6cdee4a62f70e9889fb5c6c1714d519.jpg 375w, /_next/static/images/coffee2-375@2x-fadc29ea905d091d1c21a0e13abcb893.jpg 750w, /_next/static/images/coffee2-600@1x-ee5c988968fb9cd51dc8c18b6084ddd0.jpg 600w, /_next/static/images/coffee2-600@2x-d7dabd13f7aa1542eb38b55a498c7c91.jpg 1200w, /_next/static/images/coffee2-860@1x-d70fba00682d65ad65768f3f23c1864c.jpg 860w, /_next/static/images/coffee2-860@2x-8c1fa333dd8126c64967bb24951baa33.jpg 1720w","webpSrcSet":"/_next/static/images/coffee2-375@1x-4c059b4302106647e5331c618c63cf99.webp 375w, /_next/static/images/coffee2-375@2x-f840c285d2718698beef432aa0c37615.webp 750w, /_next/static/images/coffee2-600@1x-467d225e3195fa8c6227931e89481d06.webp 600w, /_next/static/images/coffee2-600@2x-6a7c588f4cfdb2704a0c24139f86392f.webp 1200w, /_next/static/images/coffee2-860@1x-e21d5ed84e592dc4164a0a30ccf32eb8.webp 860w, /_next/static/images/coffee2-860@2x-2750797d97eb48e0e3df3e6e64d63703.webp 1720w","images":[{"path":"/_next/static/images/coffee2-375@1x-f6cdee4a62f70e9889fb5c6c1714d519.jpg","size":375,"density":1,"width":375,"height":250,"format":"jpeg"},{"path":"/_next/static/images/coffee2-375@1x-4c059b4302106647e5331c618c63cf99.webp","size":375,"density":1,"width":375,"height":250,"format":"webp"},{"path":"/_next/static/images/coffee2-375@2x-fadc29ea905d091d1c21a0e13abcb893.jpg","size":375,"density":2,"width":750,"height":501,"format":"jpeg"},{"path":"/_next/static/images/coffee2-375@2x-f840c285d2718698beef432aa0c37615.webp","size":375,"density":2,"width":750,"height":501,"format":"webp"},{"path":"/_next/static/images/coffee2-600@1x-ee5c988968fb9cd51dc8c18b6084ddd0.jpg","size":600,"density":1,"width":600,"height":401,"format":"jpeg"},{"path":"/_next/static/images/coffee2-600@1x-467d225e3195fa8c6227931e89481d06.webp","size":600,"density":1,"width":600,"height":401,"format":"webp"},{"path":"/_next/static/images/coffee2-600@2x-d7dabd13f7aa1542eb38b55a498c7c91.jpg","size":600,"density":2,"width":1200,"height":801,"format":"jpeg"},{"path":"/_next/static/images/coffee2-600@2x-6a7c588f4cfdb2704a0c24139f86392f.webp","size":600,"density":2,"width":1200,"height":801,"format":"webp"},{"path":"/_next/static/images/coffee2-860@1x-d70fba00682d65ad65768f3f23c1864c.jpg","size":860,"density":1,"width":860,"height":574,"format":"jpeg"},{"path":"/_next/static/images/coffee2-860@1x-e21d5ed84e592dc4164a0a30ccf32eb8.webp","size":860,"density":1,"width":860,"height":574,"format":"webp"},{"path":"/_next/static/images/coffee2-860@2x-8c1fa333dd8126c64967bb24951baa33.jpg","size":860,"density":2,"width":1720,"height":1148,"format":"jpeg"},{"path":"/_next/static/images/coffee2-860@2x-2750797d97eb48e0e3df3e6e64d63703.webp","size":860,"density":2,"width":1720,"height":1148,"format":"webp"}],"name":"coffee2.jpg","sizes":[375,600,860],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/coffee3.jpg?sizes=375,600,860":
+/*!**************************************************!*\
+  !*** ./src/images/coffee3.jpg?sizes=375,600,860 ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/coffee3-375@1x-2e44a6abd89c745f7bd8d4e6cfda2632.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee3-375@1x-2e44a6abd89c745f7bd8d4e6cfda2632.jpg 375w, /_next/static/images/coffee3-375@2x-a05c1598d8324773a577c5fae282392d.jpg 750w, /_next/static/images/coffee3-600@1x-47f13bbf5659b5ddd7e8cf081214f520.jpg 600w, /_next/static/images/coffee3-600@2x-761bda09d8a401c37047dc19910b65e4.jpg 1200w, /_next/static/images/coffee3-860@1x-900f1310516e2248c1df42cd0f8eaac2.jpg 860w, /_next/static/images/coffee3-860@2x-867e9d3ebc2dd2356f0e69f7abf4550b.jpg 1720w","webpSrcSet":"/_next/static/images/coffee3-375@1x-655619c47b74004dd98d20a5a41fed37.webp 375w, /_next/static/images/coffee3-375@2x-805e1fa41a86e45ebcf2c1fec925ee18.webp 750w, /_next/static/images/coffee3-600@1x-3c8cee4bc6e2fb8470df7d9c1bc30fd3.webp 600w, /_next/static/images/coffee3-600@2x-bf903d10efc5a97b91f91abcdb7cb875.webp 1200w, /_next/static/images/coffee3-860@1x-c3e3ac3921d166bb49499fce389689b7.webp 860w, /_next/static/images/coffee3-860@2x-fddd9be273a7d4892e9d8b96a36336e7.webp 1720w","images":[{"path":"/_next/static/images/coffee3-375@1x-2e44a6abd89c745f7bd8d4e6cfda2632.jpg","size":375,"density":1,"width":375,"height":240,"format":"jpeg"},{"path":"/_next/static/images/coffee3-375@1x-655619c47b74004dd98d20a5a41fed37.webp","size":375,"density":1,"width":375,"height":240,"format":"webp"},{"path":"/_next/static/images/coffee3-375@2x-a05c1598d8324773a577c5fae282392d.jpg","size":375,"density":2,"width":750,"height":480,"format":"jpeg"},{"path":"/_next/static/images/coffee3-375@2x-805e1fa41a86e45ebcf2c1fec925ee18.webp","size":375,"density":2,"width":750,"height":480,"format":"webp"},{"path":"/_next/static/images/coffee3-600@1x-47f13bbf5659b5ddd7e8cf081214f520.jpg","size":600,"density":1,"width":600,"height":384,"format":"jpeg"},{"path":"/_next/static/images/coffee3-600@1x-3c8cee4bc6e2fb8470df7d9c1bc30fd3.webp","size":600,"density":1,"width":600,"height":384,"format":"webp"},{"path":"/_next/static/images/coffee3-600@2x-761bda09d8a401c37047dc19910b65e4.jpg","size":600,"density":2,"width":1200,"height":769,"format":"jpeg"},{"path":"/_next/static/images/coffee3-600@2x-bf903d10efc5a97b91f91abcdb7cb875.webp","size":600,"density":2,"width":1200,"height":769,"format":"webp"},{"path":"/_next/static/images/coffee3-860@1x-900f1310516e2248c1df42cd0f8eaac2.jpg","size":860,"density":1,"width":860,"height":551,"format":"jpeg"},{"path":"/_next/static/images/coffee3-860@1x-c3e3ac3921d166bb49499fce389689b7.webp","size":860,"density":1,"width":860,"height":551,"format":"webp"},{"path":"/_next/static/images/coffee3-860@2x-867e9d3ebc2dd2356f0e69f7abf4550b.jpg","size":860,"density":2,"width":1720,"height":1102,"format":"jpeg"},{"path":"/_next/static/images/coffee3-860@2x-fddd9be273a7d4892e9d8b96a36336e7.webp","size":860,"density":2,"width":1720,"height":1102,"format":"webp"}],"name":"coffee3.jpg","sizes":[375,600,860],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/coffee4.jpg":
+/*!********************************!*\
+  !*** ./src/images/coffee4.jpg ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/coffee4-1720@1x-1dbc6887323e3ac40f3e3fc95f375c52.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee4-1720@1x-1dbc6887323e3ac40f3e3fc95f375c52.jpg 1720w, /_next/static/images/coffee4-1720@2x-1dbc6887323e3ac40f3e3fc95f375c52.jpg 1720w","webpSrcSet":"/_next/static/images/coffee4-1720@1x-6905b434cd977bc7995ac76af96b33d6.webp 1720w, /_next/static/images/coffee4-1720@2x-6905b434cd977bc7995ac76af96b33d6.webp 1720w","images":[{"path":"/_next/static/images/coffee4-1720@1x-1dbc6887323e3ac40f3e3fc95f375c52.jpg","size":1720,"density":1,"width":1720,"height":1227,"format":"jpeg"},{"path":"/_next/static/images/coffee4-1720@1x-6905b434cd977bc7995ac76af96b33d6.webp","size":1720,"density":1,"width":1720,"height":1227,"format":"webp"},{"path":"/_next/static/images/coffee4-1720@2x-1dbc6887323e3ac40f3e3fc95f375c52.jpg","size":1720,"density":2,"width":1720,"height":1227,"format":"jpeg"},{"path":"/_next/static/images/coffee4-1720@2x-6905b434cd977bc7995ac76af96b33d6.webp","size":1720,"density":2,"width":1720,"height":1227,"format":"webp"}],"name":"coffee4.jpg","sizes":[1720],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/coffee5-l.jpg?sizes=860":
+/*!********************************************!*\
+  !*** ./src/images/coffee5-l.jpg?sizes=860 ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/coffee5-l-860@1x-8df583fcfe71990bee2e3c6c44c903c1.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee5-l-860@1x-8df583fcfe71990bee2e3c6c44c903c1.jpg 860w, /_next/static/images/coffee5-l-860@2x-47b0f075cb30d5c5186e7c3b8320aa87.jpg 1720w","webpSrcSet":"/_next/static/images/coffee5-l-860@1x-06e8589b9b51ef588f179007c5e22afd.webp 860w, /_next/static/images/coffee5-l-860@2x-9b649ee7c093952c99add9968070cfa9.webp 1720w","images":[{"path":"/_next/static/images/coffee5-l-860@1x-8df583fcfe71990bee2e3c6c44c903c1.jpg","size":860,"density":1,"width":860,"height":552,"format":"jpeg"},{"path":"/_next/static/images/coffee5-l-860@1x-06e8589b9b51ef588f179007c5e22afd.webp","size":860,"density":1,"width":860,"height":552,"format":"webp"},{"path":"/_next/static/images/coffee5-l-860@2x-47b0f075cb30d5c5186e7c3b8320aa87.jpg","size":860,"density":2,"width":1720,"height":1105,"format":"jpeg"},{"path":"/_next/static/images/coffee5-l-860@2x-9b649ee7c093952c99add9968070cfa9.webp","size":860,"density":2,"width":1720,"height":1105,"format":"webp"}],"name":"coffee5-l.jpg","sizes":[860],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/coffee5-m.jpg?sizes=600":
+/*!********************************************!*\
+  !*** ./src/images/coffee5-m.jpg?sizes=600 ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/coffee5-m-600@1x-0f6970e35bd739b4dab97e5625f0da9b.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee5-m-600@1x-0f6970e35bd739b4dab97e5625f0da9b.jpg 600w, /_next/static/images/coffee5-m-600@2x-ea36c2dcedcd5c8625f7389a6cdecc2a.jpg 1200w","webpSrcSet":"/_next/static/images/coffee5-m-600@1x-f9b83ac98eab2b62319ee6da25197040.webp 600w, /_next/static/images/coffee5-m-600@2x-c8251cb31416672eb51139dfc7d1c673.webp 1200w","images":[{"path":"/_next/static/images/coffee5-m-600@1x-0f6970e35bd739b4dab97e5625f0da9b.jpg","size":600,"density":1,"width":600,"height":612,"format":"jpeg"},{"path":"/_next/static/images/coffee5-m-600@1x-f9b83ac98eab2b62319ee6da25197040.webp","size":600,"density":1,"width":600,"height":612,"format":"webp"},{"path":"/_next/static/images/coffee5-m-600@2x-ea36c2dcedcd5c8625f7389a6cdecc2a.jpg","size":600,"density":2,"width":1200,"height":1225,"format":"jpeg"},{"path":"/_next/static/images/coffee5-m-600@2x-c8251cb31416672eb51139dfc7d1c673.webp","size":600,"density":2,"width":1200,"height":1225,"format":"webp"}],"name":"coffee5-m.jpg","sizes":[600],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/coffee5-s.jpg?sizes=375":
+/*!********************************************!*\
+  !*** ./src/images/coffee5-s.jpg?sizes=375 ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/coffee5-s-375@1x-2d8a12383d3a9a7893d4630e1f9b36d6.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee5-s-375@1x-2d8a12383d3a9a7893d4630e1f9b36d6.jpg 375w, /_next/static/images/coffee5-s-375@2x-8d38667a32d4e89ff568d1a73ee62cdc.jpg 750w","webpSrcSet":"/_next/static/images/coffee5-s-375@1x-72100aa464bf217fafeca65a88d0d27f.webp 375w, /_next/static/images/coffee5-s-375@2x-45097d2d5d742bda11fdd3ca41c28045.webp 750w","images":[{"path":"/_next/static/images/coffee5-s-375@1x-2d8a12383d3a9a7893d4630e1f9b36d6.jpg","size":375,"density":1,"width":375,"height":562,"format":"jpeg"},{"path":"/_next/static/images/coffee5-s-375@1x-72100aa464bf217fafeca65a88d0d27f.webp","size":375,"density":1,"width":375,"height":562,"format":"webp"},{"path":"/_next/static/images/coffee5-s-375@2x-8d38667a32d4e89ff568d1a73ee62cdc.jpg","size":375,"density":2,"width":750,"height":1125,"format":"jpeg"},{"path":"/_next/static/images/coffee5-s-375@2x-45097d2d5d742bda11fdd3ca41c28045.webp","size":375,"density":2,"width":750,"height":1125,"format":"webp"}],"name":"coffee5-s.jpg","sizes":[375],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x":
+/*!*************************************************************************!*\
+  !*** ./src/images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/coffee6-300@1x-c9ff4048c6ca5b420ff4ca9668d02000.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee6-300@1x-c9ff4048c6ca5b420ff4ca9668d02000.jpg 300w, /_next/static/images/coffee6-600@1x-95046364fee1d8a279be3c5b0a252b51.jpg 600w, /_next/static/images/coffee6-900@1x-e5c7862abcf3cea2bc4db71111083abd.jpg 900w, /_next/static/images/coffee6-1200@1x-bb13a95cf5005a1ff35624b4ad5570d9.jpg 1200w, /_next/static/images/coffee6-1500@1x-8f3a131c82acad9835658391bd8b046a.jpg 1500w","webpSrcSet":"/_next/static/images/coffee6-300@1x-f6be157ecd17ef2a01bf75b53ed84ab1.webp 300w, /_next/static/images/coffee6-600@1x-ddea4e0de4b0a7283fe4f4e10c4673b0.webp 600w, /_next/static/images/coffee6-900@1x-d953d8cf2dc921fc15da5153f5078d8d.webp 900w, /_next/static/images/coffee6-1200@1x-4bf302858dfbd55397614362709f8777.webp 1200w, /_next/static/images/coffee6-1500@1x-0ef4822936e86ff6e37de5ec35b031e4.webp 1500w","images":[{"path":"/_next/static/images/coffee6-300@1x-c9ff4048c6ca5b420ff4ca9668d02000.jpg","size":300,"density":1,"width":300,"height":200,"format":"jpeg"},{"path":"/_next/static/images/coffee6-300@1x-f6be157ecd17ef2a01bf75b53ed84ab1.webp","size":300,"density":1,"width":300,"height":200,"format":"webp"},{"path":"/_next/static/images/coffee6-600@1x-95046364fee1d8a279be3c5b0a252b51.jpg","size":600,"density":1,"width":600,"height":400,"format":"jpeg"},{"path":"/_next/static/images/coffee6-600@1x-ddea4e0de4b0a7283fe4f4e10c4673b0.webp","size":600,"density":1,"width":600,"height":400,"format":"webp"},{"path":"/_next/static/images/coffee6-900@1x-e5c7862abcf3cea2bc4db71111083abd.jpg","size":900,"density":1,"width":900,"height":600,"format":"jpeg"},{"path":"/_next/static/images/coffee6-900@1x-d953d8cf2dc921fc15da5153f5078d8d.webp","size":900,"density":1,"width":900,"height":600,"format":"webp"},{"path":"/_next/static/images/coffee6-1200@1x-bb13a95cf5005a1ff35624b4ad5570d9.jpg","size":1200,"density":1,"width":1200,"height":800,"format":"jpeg"},{"path":"/_next/static/images/coffee6-1200@1x-4bf302858dfbd55397614362709f8777.webp","size":1200,"density":1,"width":1200,"height":800,"format":"webp"},{"path":"/_next/static/images/coffee6-1500@1x-8f3a131c82acad9835658391bd8b046a.jpg","size":1500,"density":1,"width":1500,"height":1000,"format":"jpeg"},{"path":"/_next/static/images/coffee6-1500@1x-0ef4822936e86ff6e37de5ec35b031e4.webp","size":1500,"density":1,"width":1500,"height":1000,"format":"webp"}],"name":"coffee6.jpg","sizes":[300,600,900,1200,1500],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10":
+/*!**************************************************************************************!*\
+  !*** ./src/images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10 ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/coffee7-375@1x-9fc089def94d9b56d5f94b623e939cdf.jpg","type":"image/jpeg","srcSet":"/_next/static/images/coffee7-375@1x-9fc089def94d9b56d5f94b623e939cdf.jpg 375w, /_next/static/images/coffee7-375@2x-ac77c86b4f0db89d4ee2633319c48a31.jpg 750w, /_next/static/images/coffee7-860@1x-b9ad56fd623ccbe6d48e7e374edb2aec.jpg 860w, /_next/static/images/coffee7-860@2x-419f8a4eccf773cb9b37619fb3991991.jpg 1720w","webpSrcSet":"/_next/static/images/coffee7-375@1x-eb2429cd5573fa32355020dbb58a645c.webp 375w, /_next/static/images/coffee7-375@2x-257a342e80eb210c461e9cbb4bf4819e.webp 750w, /_next/static/images/coffee7-860@1x-e8fe40f4cfdb263d81732c099b9bb248.webp 860w, /_next/static/images/coffee7-860@2x-bdb4b7385184a2ab188f543b06632d25.webp 1720w","images":[{"path":"/_next/static/images/coffee7-375@1x-9fc089def94d9b56d5f94b623e939cdf.jpg","size":375,"density":1,"width":375,"height":252,"format":"jpeg"},{"path":"/_next/static/images/coffee7-375@1x-eb2429cd5573fa32355020dbb58a645c.webp","size":375,"density":1,"width":375,"height":252,"format":"webp"},{"path":"/_next/static/images/coffee7-375@2x-ac77c86b4f0db89d4ee2633319c48a31.jpg","size":375,"density":2,"width":750,"height":504,"format":"jpeg"},{"path":"/_next/static/images/coffee7-375@2x-257a342e80eb210c461e9cbb4bf4819e.webp","size":375,"density":2,"width":750,"height":504,"format":"webp"},{"path":"/_next/static/images/coffee7-860@1x-b9ad56fd623ccbe6d48e7e374edb2aec.jpg","size":860,"density":1,"width":860,"height":578,"format":"jpeg"},{"path":"/_next/static/images/coffee7-860@1x-e8fe40f4cfdb263d81732c099b9bb248.webp","size":860,"density":1,"width":860,"height":578,"format":"webp"},{"path":"/_next/static/images/coffee7-860@2x-419f8a4eccf773cb9b37619fb3991991.jpg","size":860,"density":2,"width":1720,"height":1156,"format":"jpeg"},{"path":"/_next/static/images/coffee7-860@2x-bdb4b7385184a2ab188f543b06632d25.webp","size":860,"density":2,"width":1720,"height":1156,"format":"webp"}],"name":"coffee7.jpg","sizes":[375,860],"breakpoints":[768]}
+
+/***/ }),
+
+/***/ "./src/images/illustration.png?sizes=480,860":
+/*!***************************************************!*\
+  !*** ./src/images/illustration.png?sizes=480,860 ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {"src":"/_next/static/images/illustration-480@1x-afd1fbe56f7198e4963e633aa8a058ea.png","type":"image/png","srcSet":"/_next/static/images/illustration-480@1x-afd1fbe56f7198e4963e633aa8a058ea.png 480w, /_next/static/images/illustration-480@2x-b6aefe60fb58949054dc93c37d988b9d.png 960w, /_next/static/images/illustration-860@1x-5985e5baa2785a9a886e54823e45c791.png 860w, /_next/static/images/illustration-860@2x-320a60c865f2b020456743b96b216261.png 1344w","webpSrcSet":"/_next/static/images/illustration-480@1x-459b9ba8bbde7fd2aac58fd3bac8c424.webp 480w, /_next/static/images/illustration-480@2x-7b5fe68003250418fa5b9b92bae11e2e.webp 960w, /_next/static/images/illustration-860@1x-8e3be1913799ea67f42584bf81c485b1.webp 860w, /_next/static/images/illustration-860@2x-8a5e82ba798adbd2c5bc4ed83909c3b1.webp 1344w","images":[{"path":"/_next/static/images/illustration-480@1x-afd1fbe56f7198e4963e633aa8a058ea.png","size":480,"density":1,"width":480,"height":257,"format":"png"},{"path":"/_next/static/images/illustration-480@1x-459b9ba8bbde7fd2aac58fd3bac8c424.webp","size":480,"density":1,"width":480,"height":257,"format":"webp"},{"path":"/_next/static/images/illustration-480@2x-b6aefe60fb58949054dc93c37d988b9d.png","size":480,"density":2,"width":960,"height":514,"format":"png"},{"path":"/_next/static/images/illustration-480@2x-7b5fe68003250418fa5b9b92bae11e2e.webp","size":480,"density":2,"width":960,"height":514,"format":"webp"},{"path":"/_next/static/images/illustration-860@1x-5985e5baa2785a9a886e54823e45c791.png","size":860,"density":1,"width":860,"height":461,"format":"png"},{"path":"/_next/static/images/illustration-860@1x-8e3be1913799ea67f42584bf81c485b1.webp","size":860,"density":1,"width":860,"height":461,"format":"webp"},{"path":"/_next/static/images/illustration-860@2x-320a60c865f2b020456743b96b216261.png","size":860,"density":2,"width":1344,"height":720,"format":"png"},{"path":"/_next/static/images/illustration-860@2x-8a5e82ba798adbd2c5bc4ed83909c3b1.webp","size":860,"density":2,"width":1344,"height":720,"format":"webp"}],"name":"illustration.png","sizes":[480,860],"breakpoints":[768]}
 
 /***/ }),
 
@@ -62792,7 +62890,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
       columnNumber: 3
     }
   }, __jsx("div", {
-    className: "jsx-2716243968" + " " + 'example',
+    className: "jsx-1472956875" + " " + 'example',
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -62800,52 +62898,229 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
       columnNumber: 5
     }
   }, __jsx("div", {
-    className: "jsx-2716243968" + " " + 'example-inner',
+    className: "jsx-1472956875" + " " + 'example-inner',
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11,
       columnNumber: 7
     }
-  }, __jsx("h1", {
-    className: "jsx-2716243968",
+  }, __jsx("ol", {
+    className: "jsx-1472956875" + " " + 'toc',
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12,
       columnNumber: 9
     }
-  }, "Example 1"), __jsx("h2", {
-    className: "jsx-2716243968",
+  }, __jsx("li", {
+    className: "jsx-1472956875",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13,
-      columnNumber: 9
+      columnNumber: 11
     }
-  }, "One size per breakpoint"), __jsx("p", {
-    className: "jsx-2716243968",
+  }, __jsx("a", {
+    href: "#example-1",
+    className: "jsx-1472956875",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14,
+      columnNumber: 13
+    }
+  }, "One size per breakpoint")), __jsx("li", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    href: "#example-2",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17,
+      columnNumber: 13
+    }
+  }, "Override breakpoints")), __jsx("li", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    href: "#example-3",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20,
+      columnNumber: 13
+    }
+  }, "Override sizes attribute")), __jsx("li", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    href: "#example-4",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 13
+    }
+  }, "Single image")), __jsx("li", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    href: "#example-5",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26,
+      columnNumber: 13
+    }
+  }, "Art direction")), __jsx("li", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    href: "#example-6",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29,
+      columnNumber: 13
+    }
+  }, "Exact image sizes")), __jsx("li", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    href: "#example-7",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 13
+    }
+  }, "PNG images")), __jsx("li", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34,
+      columnNumber: 11
+    }
+  }, __jsx("a", {
+    href: "#example-8",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35,
+      columnNumber: 13
+    }
+  }, "Other query params and props"))))), __jsx("div", {
+    id: "example-1",
+    className: "jsx-1472956875" + " " + 'example example-1',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'example-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43,
       columnNumber: 9
     }
-  }, "The most typical usage. Provide one image per each device size you're targeting. For example, if you're targeting small/large at 768px breakpoint, provide 2 images. If you're targeting mobile/tablet/desktop with breakpoints 480px and 768px - provide 3 images, and so on."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, "Example 1"), __jsx("h2", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44,
+      columnNumber: 9
+    }
+  }, "One size per breakpoint"), __jsx("p", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45,
+      columnNumber: 9
+    }
+  }, "The most typical usage. Provide one image per each device size you're targeting. For example, if you're targeting small/large at 768px breakpoint (as configured in your ", __jsx("code", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47,
+      columnNumber: 76
+    }
+  }, "next.config.js"), "), provide 2 sizes. If you're targeting mobile/tablet/desktop with breakpoints 480px and 768px (as configured in your", ' ', __jsx("code", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49,
+      columnNumber: 11
+    }
+  }, "next.config.js"), ") - provide 3 sizes, and so on."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
     language: "html",
     style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 52,
       columnNumber: 9
     }
   }, "<Picture src={require('../images/coffee1.jpg?sizes=375,860')} />"), __jsx("h3", {
-    className: "jsx-2716243968",
+    className: "jsx-1472956875",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 55,
       columnNumber: 9
     }
   }, "Output"), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -62854,7 +63129,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 56,
       columnNumber: 9
     }
   }, Object(_helpers_toString__WEBPACK_IMPORTED_MODULE_4__["toString"])(__jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
@@ -62862,23 +63137,23 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 57,
       columnNumber: 21
     }
   }))), __jsx("div", {
-    className: "jsx-2716243968" + " " + 'photo',
+    className: "jsx-1472956875" + " " + 'photo',
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 59,
       columnNumber: 9
     }
   }, __jsx("div", {
-    className: "jsx-2716243968" + " " + 'photo-inner',
+    className: "jsx-1472956875" + " " + 'photo-inner',
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28,
+      lineNumber: 60,
       columnNumber: 11
     }
   }, __jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
@@ -62886,169 +63161,800 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 61,
+      columnNumber: 13
+    }
+  }))))), __jsx("div", {
+    id: "example-2",
+    className: "jsx-1472956875" + " " + 'example example-2',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'example-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69,
+      columnNumber: 9
+    }
+  }, "Example 2"), __jsx("h2", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70,
+      columnNumber: 9
+    }
+  }, "Override breakpoints"), __jsx("p", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71,
+      columnNumber: 9
+    }
+  }, "You can specify a different set of breakpoints for an individual image. Let's say your preconfigured breakpoints are ", __jsx("code", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73,
+      columnNumber: 27
+    }
+  }, "[768]"), ", but for some image you want to use 3 sizes at breakpoints", ' ', __jsx("code", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74,
+      columnNumber: 11
+    }
+  }, "[768, 1080]"), "."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77,
+      columnNumber: 9
+    }
+  }, "<Picture\n  src={require('../images/coffee2.jpg?sizes=375,600,860')}\n  breakpoints={[768,1080]}\n/>"), __jsx("h3", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 83,
+      columnNumber: 9
+    }
+  }, "Output"), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
+      columnNumber: 9
+    }
+  }, Object(_helpers_toString__WEBPACK_IMPORTED_MODULE_4__["toString"])(__jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee2.jpg?sizes=375,600,860 */ "./src/images/coffee2.jpg?sizes=375,600,860"),
+    breakpoints: [768, 1080],
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85,
+      columnNumber: 21
+    }
+  }))), __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88,
+      columnNumber: 11
+    }
+  }, __jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee2.jpg?sizes=375,600,860 */ "./src/images/coffee2.jpg?sizes=375,600,860"),
+    breakpoints: [768, 1080],
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89,
+      columnNumber: 13
+    }
+  }))))), __jsx("div", {
+    id: "example-3",
+    className: "jsx-1472956875" + " " + 'example example-3',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'example-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97,
+      columnNumber: 9
+    }
+  }, "Example 3"), __jsx("h2", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98,
+      columnNumber: 9
+    }
+  }, "Override sizes attribute"), __jsx("p", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99,
+      columnNumber: 9
+    }
+  }, "Use the", ' ', __jsx("a", {
+    href: "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Resolution_switching_Different_sizes",
+    target: "blank_",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 101,
+      columnNumber: 11
+    }
+  }, "sizes"), ' ', "prop in order to get full control over specifying which image should be used at what breakpoint. This way you can specify any number of image sizes and choose to show them at any breakpoint."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 111,
+      columnNumber: 9
+    }
+  }, "<Picture\n  src={require('../images/coffee3.jpg?sizes=375,600,860')}\n  sizes='(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px'\n/>"), __jsx("h3", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117,
+      columnNumber: 9
+    }
+  }, "Output"), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 118,
+      columnNumber: 9
+    }
+  }, Object(_helpers_toString__WEBPACK_IMPORTED_MODULE_4__["toString"])(__jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee3.jpg?sizes=375,600,860 */ "./src/images/coffee3.jpg?sizes=375,600,860"),
+    sizes: "(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 120,
+      columnNumber: 13
+    }
+  }))), __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 127,
+      columnNumber: 11
+    }
+  }, __jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee3.jpg?sizes=375,600,860 */ "./src/images/coffee3.jpg?sizes=375,600,860"),
+    sizes: "(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 128,
+      columnNumber: 13
+    }
+  }))))), __jsx("div", {
+    id: "example-4",
+    className: "jsx-1472956875" + " " + 'example example-4',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 137,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'example-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 138,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 139,
+      columnNumber: 9
+    }
+  }, "Example 4"), __jsx("h2", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140,
+      columnNumber: 9
+    }
+  }, "Single image"), __jsx("p", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 141,
+      columnNumber: 9
+    }
+  }, "You can leave out the ", __jsx("code", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 142,
+      columnNumber: 33
+    }
+  }, "sizes"), " query param altogether. That will load the original image size across any device width. Note, this still outputs an image per screen density and shows the appropriate one based on the device."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 147,
+      columnNumber: 9
+    }
+  }, "<Picture src={require('../images/coffee4.jpg')} />"), __jsx("h3", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 150,
+      columnNumber: 9
+    }
+  }, "Output"), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 151,
+      columnNumber: 9
+    }
+  }, Object(_helpers_toString__WEBPACK_IMPORTED_MODULE_4__["toString"])(__jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee4.jpg */ "./src/images/coffee4.jpg"),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 152,
+      columnNumber: 21
+    }
+  }))), __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 154,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 155,
+      columnNumber: 11
+    }
+  }, __jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee4.jpg */ "./src/images/coffee4.jpg"),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 156,
+      columnNumber: 13
+    }
+  }))))), __jsx("div", {
+    id: "example-5",
+    className: "jsx-1472956875" + " " + 'example example-5',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 162,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'example-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 163,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 164,
+      columnNumber: 9
+    }
+  }, "Example 5"), __jsx("h2", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 165,
+      columnNumber: 9
+    }
+  }, "Art direction"), __jsx("p", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 166,
+      columnNumber: 9
+    }
+  }, "You can pass an array of images to the src. This way you can show an entirely different image at each breakpoint. This changes the html output to switch between the images using the html", ' ', __jsx("a", {
+    href: "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Art_direction",
+    target: "blank_",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 169,
+      columnNumber: 11
+    }
+  }, "media attribute"), ". Note, you can take this even further by specifying multiple sizes for each image and using the", ' ', __jsx("a", {
+    href: "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Resolution_switching_Different_sizes",
+    target: "blank_",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 176,
+      columnNumber: 11
+    }
+  }, "sizes prop"), "to specify what should be shown when."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 185,
+      columnNumber: 9
+    }
+  }, "<Picture\n  src={[\n    require('../images/coffee5-s.jpg?sizes=375'),\n    require('../images/coffee5-m.jpg?sizes=600'),\n    require('../images/coffee5-l.jpg?sizes=860'),\n  ]}\n  breakpoints={[768, 1180]}\n/>"), __jsx("h3", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 195,
+      columnNumber: 9
+    }
+  }, "Output"), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 196,
+      columnNumber: 9
+    }
+  }, Object(_helpers_toString__WEBPACK_IMPORTED_MODULE_4__["toString"])(__jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: [__webpack_require__(/*! ../images/coffee5-s.jpg?sizes=375 */ "./src/images/coffee5-s.jpg?sizes=375"), __webpack_require__(/*! ../images/coffee5-m.jpg?sizes=600 */ "./src/images/coffee5-m.jpg?sizes=600"), __webpack_require__(/*! ../images/coffee5-l.jpg?sizes=860 */ "./src/images/coffee5-l.jpg?sizes=860")],
+    breakpoints: [768, 1180],
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 198,
+      columnNumber: 13
+    }
+  }))), __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 208,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 209,
+      columnNumber: 11
+    }
+  }, __jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: [__webpack_require__(/*! ../images/coffee5-s.jpg?sizes=375 */ "./src/images/coffee5-s.jpg?sizes=375"), __webpack_require__(/*! ../images/coffee5-m.jpg?sizes=600 */ "./src/images/coffee5-m.jpg?sizes=600"), __webpack_require__(/*! ../images/coffee5-l.jpg?sizes=860 */ "./src/images/coffee5-l.jpg?sizes=860")],
+    breakpoints: [768, 1180],
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 210,
+      columnNumber: 13
+    }
+  }))))), __jsx("div", {
+    id: "example-6",
+    className: "jsx-1472956875" + " " + 'example example-6',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 223,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'example-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 224,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 225,
+      columnNumber: 9
+    }
+  }, "Example 6"), __jsx("h2", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 226,
+      columnNumber: 9
+    }
+  }, "Exact image sizes"), __jsx("p", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 227,
+      columnNumber: 9
+    }
+  }, "By default, every image gets translated to 1x and 2x densities. That is, if you display the image in the browser at 800px width, then specifying ", __jsx("code", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 229,
+      columnNumber: 51
+    }
+  }, "?sizes=800"), " will produce and show 800px wide image for low density devices and 1600px wide image for high density devices. If you'd like, however, you can specify any number of exact sizes by setting densities to 1x."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 234,
+      columnNumber: 9
+    }
+  }, "<Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' />"), __jsx("h3", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 237,
+      columnNumber: 9
+    }
+  }, "Output"), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 238,
+      columnNumber: 9
+    }
+  }, Object(_helpers_toString__WEBPACK_IMPORTED_MODULE_4__["toString"])(__jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x */ "./src/images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x"),
+    sizes: "100vw",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 240,
+      columnNumber: 13
+    }
+  }))), __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 243,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 244,
+      columnNumber: 11
+    }
+  }, __jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x */ "./src/images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x"),
+    sizes: "100vw",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 245,
+      columnNumber: 13
+    }
+  }))))), __jsx("div", {
+    id: "example-7",
+    className: "jsx-1472956875" + " " + 'example example-7',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 251,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'example-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 252,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 253,
+      columnNumber: 9
+    }
+  }, "Example 6"), __jsx("h2", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 254,
+      columnNumber: 9
+    }
+  }, "PNG images"), __jsx("p", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 255,
+      columnNumber: 9
+    }
+  }, "PNG images are supported as well. In this case, a lossless webp is outputted by default."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 257,
+      columnNumber: 9
+    }
+  }, "<Picture src={require('../images/illustration.png?sizes=480,860')} />"), __jsx("h3", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 260,
+      columnNumber: 9
+    }
+  }, "Output"), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 261,
+      columnNumber: 9
+    }
+  }, Object(_helpers_toString__WEBPACK_IMPORTED_MODULE_4__["toString"])(__jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/illustration.png?sizes=480,860 */ "./src/images/illustration.png?sizes=480,860"),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 262,
+      columnNumber: 21
+    }
+  }))), __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 264,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 265,
+      columnNumber: 11
+    }
+  }, __jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/illustration.png?sizes=480,860 */ "./src/images/illustration.png?sizes=480,860"),
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 266,
+      columnNumber: 13
+    }
+  }))))), __jsx("div", {
+    id: "example-8",
+    className: "jsx-1472956875" + " " + 'example example-8',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 272,
+      columnNumber: 5
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'example-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 273,
+      columnNumber: 7
+    }
+  }, __jsx("h1", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 274,
+      columnNumber: 9
+    }
+  }, "Example 7"), __jsx("h2", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 275,
+      columnNumber: 9
+    }
+  }, "Other query params and props"), __jsx("p", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 276,
+      columnNumber: 9
+    }
+  }, "You can control image quality and densities in addition to specifying the sizes when importing an image. See", ' ', __jsx("a", {
+    href: "https://github.com/humaans/next-img/",
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 278,
+      columnNumber: 11
+    }
+  }, "README"), " for full details. You can pass extra props to the", ' ', __jsx("code", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 279,
+      columnNumber: 11
+    }
+  }, "Picture"), " component, these will be forwarded to the underlying image element. This is useful for adding lazy loading, class names, and so on."), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 283,
+      columnNumber: 9
+    }
+  }, "<Picture\n  src={require('../images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10')}\n  className='coffee'\n  data-demo='coffee'\n  loading='lazy'\n/>"), __jsx("h3", {
+    className: "jsx-1472956875",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 291,
+      columnNumber: 9
+    }
+  }, "Output"), __jsx(react_syntax_highlighter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    language: "html",
+    style: react_syntax_highlighter_dist_cjs_styles_hljs_railscasts__WEBPACK_IMPORTED_MODULE_6___default.a,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 292,
+      columnNumber: 9
+    }
+  }, Object(_helpers_toString__WEBPACK_IMPORTED_MODULE_4__["toString"])(__jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10 */ "./src/images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10"),
+    className: "coffee",
+    "data-demo": "coffee",
+    loading: "lazy",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 294,
+      columnNumber: 13
+    }
+  }))), __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 302,
+      columnNumber: 9
+    }
+  }, __jsx("div", {
+    className: "jsx-1472956875" + " " + 'photo-inner',
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 303,
+      columnNumber: 11
+    }
+  }, __jsx(next_img__WEBPACK_IMPORTED_MODULE_2__["Picture"], {
+    src: __webpack_require__(/*! ../images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10 */ "./src/images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10"),
+    className: "coffee",
+    "data-demo": "coffee",
+    loading: "lazy",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 304,
       columnNumber: 13
     }
   }))))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "2716243968",
+    id: "1472956875",
     __self: _this
-  }, ".example.jsx-2716243968{padding:20px;border-bottom:1px solid #dec79b40;}@media (min-width:768px){.example.jsx-2716243968{padding:40px;}}.example-inner.jsx-2716243968{max-width:980px;margin:auto;}.photo.jsx-2716243968{background:rgb(35,35,35);padding:40px;}.photo-inner.jsx-2716243968{max-width:860px;margin:auto;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9rYXJvbGlzL3Byb2plY3RzL25leHQtaW1nL2RvY3Mvc3JjL3BhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtDZ0IsQUFHc0IsQUFNRSxBQUtDLEFBS1csQUFLWCxhQXBCa0IsQUFNbEMsR0FLWSxBQVVBLFNBTEMsR0FKZixBQVVBLFVBTEEsU0FoQkEiLCJmaWxlIjoiL1VzZXJzL2thcm9saXMvcHJvamVjdHMvbmV4dC1pbWcvZG9jcy9zcmMvcGFnZXMvaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXG5pbXBvcnQgeyBQaWN0dXJlIH0gZnJvbSAnbmV4dC1pbWcnXG5pbXBvcnQgeyBMYXlvdXQgfSBmcm9tICcuLi9jb21wb25lbnRzL0xheW91dCdcbmltcG9ydCB7IHRvU3RyaW5nIH0gZnJvbSAnLi4vaGVscGVycy90b1N0cmluZydcbmltcG9ydCBDb2RlIGZyb20gJ3JlYWN0LXN5bnRheC1oaWdobGlnaHRlcidcbmltcG9ydCBzeW50YXggZnJvbSAncmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3QvY2pzL3N0eWxlcy9obGpzL3JhaWxzY2FzdHMnXG5cbmV4cG9ydCBkZWZhdWx0ICgpID0+IChcbiAgPExheW91dD5cbiAgICA8ZGl2IGNsYXNzTmFtZT0nZXhhbXBsZSc+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT0nZXhhbXBsZS1pbm5lcic+XG4gICAgICAgIDxoMT5FeGFtcGxlIDE8L2gxPlxuICAgICAgICA8aDI+T25lIHNpemUgcGVyIGJyZWFrcG9pbnQ8L2gyPlxuICAgICAgICA8cD5cbiAgICAgICAgICBUaGUgbW9zdCB0eXBpY2FsIHVzYWdlLiBQcm92aWRlIG9uZSBpbWFnZSBwZXIgZWFjaCBkZXZpY2Ugc2l6ZSB5b3UncmUgdGFyZ2V0aW5nLiBGb3IgZXhhbXBsZSwgaWYgeW91J3JlXG4gICAgICAgICAgdGFyZ2V0aW5nIHNtYWxsL2xhcmdlIGF0IDc2OHB4IGJyZWFrcG9pbnQsIHByb3ZpZGUgMiBpbWFnZXMuIElmIHlvdSdyZSB0YXJnZXRpbmcgbW9iaWxlL3RhYmxldC9kZXNrdG9wIHdpdGhcbiAgICAgICAgICBicmVha3BvaW50cyA0ODBweCBhbmQgNzY4cHggLSBwcm92aWRlIDMgaW1hZ2VzLCBhbmQgc28gb24uXG4gICAgICAgIDwvcD5cblxuICAgICAgICA8Q29kZSBsYW5ndWFnZT0naHRtbCcgc3R5bGU9e3N5bnRheH0+XG4gICAgICAgICAge2A8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWUxLmpwZz9zaXplcz0zNzUsODYwJyl9IC8+YH1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8aDM+T3V0cHV0PC9oMz5cbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHt0b1N0cmluZyg8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWUxLmpwZz9zaXplcz0zNzUsODYwJyl9IC8+KX1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ncGhvdG8nPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90by1pbm5lcic+XG4gICAgICAgICAgICA8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWUxLmpwZz9zaXplcz0zNzUsODYwJyl9IC8+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG5cbiAgICA8c3R5bGUganN4PntgXG4gICAgICAuZXhhbXBsZSB7XG4gICAgICAgIHBhZGRpbmc6IDIwcHg7XG4gICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZGVjNzliNDA7XG4gICAgICB9XG5cbiAgICAgIEBtZWRpYSAobWluLXdpZHRoOiA3NjhweCkge1xuICAgICAgICAuZXhhbXBsZSB7XG4gICAgICAgICAgcGFkZGluZzogNDBweDtcbiAgICAgICAgfVxuICAgICAgfVxuXG4gICAgICAuZXhhbXBsZS1pbm5lciB7XG4gICAgICAgIG1heC13aWR0aDogOTgwcHg7XG4gICAgICAgIG1hcmdpbjogYXV0bztcbiAgICAgIH1cblxuICAgICAgLnBob3RvIHtcbiAgICAgICAgYmFja2dyb3VuZDogcmdiKDM1LCAzNSwgMzUpO1xuICAgICAgICBwYWRkaW5nOiA0MHB4O1xuICAgICAgfVxuXG4gICAgICAucGhvdG8taW5uZXIge1xuICAgICAgICBtYXgtd2lkdGg6IDg2MHB4O1xuICAgICAgICBtYXJnaW46IGF1dG87XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICA8L0xheW91dD5cbilcblxuLyoqXG5cbiMgRXhhbXBsZSAyICMjIFVzZSBtb3JlIHNpemVzIHRoYW4gdGhlcmUgYXJlXG4gICAgICAgIGJyZWFrcG9pbnRzIEl0J3MgcG9zc2libGUgdG8gcHJvdmlkZSBtb3JlIGltYWdlcyB0aGFuIHRoZXJlIGFyZSBicmVha3BvaW50cy4gSG93ZXZldmVyIGluIHRoaXMgY2FzZSwgeW91J2xsIGhhdmVcbiAgICAgICAgdG8gc3BlY2lmeSB0aGUgYHNpemVgIHByb3Agd2hlbiBlbWJlZGRpbmcgdGhlIGltYWdlIGluIG9yZGVyIGZvciB0aGUgZXh0cmEgc2l6ZXMgdG8gYmUgdXNlZC4gIyMjIENvZGVcbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2phdmFzY3JpcHQnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHtgPFBpY3R1cmUgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvamVsbHkuanBnP3NpemVzPTM3NSwxMTAwLDE0MDAnKX0gc2l6ZXM9JyhtYXgtd2lkdGg6IDc2OHB4KSAxMDB2dywgNTB2dycgLz5gfVxuICAgICAgICA8L0NvZGU+XG4gICAgICAgICMjIyBPdXRwdXRcbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHt0b1N0cmluZyhcbiAgICAgICAgICAgIDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2plbGx5LmpwZz9zaXplcz0zNzUsMTEwMCwxNDAwJyl9IHNpemVzPScobWF4LXdpZHRoOiA3NjhweCkgMTAwdncsIDUwdncnIC8+LFxuICAgICAgICAgICl9XG4gICAgICAgIDwvQ29kZT5cbiAgICAgICAgIyMjIFByZXZpZXdcbiAgICAgICAgPFBpY3R1cmUgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvamVsbHkuanBnP3NpemVzPTM3NSwxMTAwLDE0MDAnKX0gc2l6ZXM9JyhtYXgtd2lkdGg6IDc2OHB4KSAxMDB2dywgNTB2dycgLz5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9J2NvbnRhaW5lcic+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9J3Jvdyc+XG4gICAgICAgICAgICA8aDI+RXhhbXBsZSAxPC9oMj5cbiAgICAgICAgICAgIDxoMz5PbmUgc2l6ZSBwZXIgYnJlYWtwb2ludDwvaDM+XG4gICAgICAgICAgICA8cD5UaGUgbW9zdCB0eXBpY2FsIGV4cGVjdGVkIHVzYWdlIHdoZW4gdXNpbmcgdGhpcyBwbHVnaW4uPC9wPlxuICAgICAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2phdmFzY3JpcHQnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgICAgICB7YDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2plbGx5LmpwZz9zaXplcz0yMDAsODAwJyl9IC8+YH1cbiAgICAgICAgICAgIDwvQ29kZT5cbiAgICAgICAgICAgIDxoNT5CZWhhdmlvdXI8L2g1PlxuICAgICAgICAgICAgPHVsPlxuICAgICAgICAgICAgICA8bGk+VGhlIGltYWdlIGlzIHJlc2l6ZWQgdG8gMXgsIDJ4IGFuZCAzeCBkZW5zaXR5IGZvciBlYWNoIHNwZWNpZmllZCBzaXplPC9saT5cbiAgICAgICAgICAgICAgPGxpPlRoaXMgcmVzdWx0cyBpbiAyMDBweCwgNDAwcHgsIDYwMHB4LCA4MDBweCwgMTYwMHB4IGFuZCAyNDAwcHggc2l6ZXM8L2xpPlxuICAgICAgICAgICAgICA8bGk+RWFjaCBvZiB0aG9zZSBzaXplcyBpcyBhbHNvIGNvbnZlcnRlZCB0byB3ZWJwPC9saT5cbiAgICAgICAgICAgICAgPGxpPkFsbCBpbWFnZXMgYXJlIG9wdGltaXplZDwvbGk+XG4gICAgICAgICAgICAgIDxsaT5cbiAgICAgICAgICAgICAgICBFYWNoIHNpemUgaXMgdXNlZCB3aXRoaW4gdGhlIGJyZWFrcG9pbnRzIChkZWZhdWx0IDxjb2RlPmJyZWFrcG9pbnRzOiBbNzY4XTwvY29kZT4pXG4gICAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgICA8L3VsPlxuICAgICAgICAgICAgPGg1PlJlc3VsdGluZyBIVE1MPC9oNT5cbiAgICAgICAgICAgIDxDb2RlIGxhbmd1YWdlPSdodG1sJyBzdHlsZT17c3ludGF4fT5cbiAgICAgICAgICAgICAge3RvU3RyaW5nKDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2plbGx5LmpwZz9zaXplcz0yMDAsODAwJyl9IGxvYWRpbmc9J2xhenknIC8+KX1cbiAgICAgICAgICAgIDwvQ29kZT5cbiAgICAgICAgICAgIDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2plbGx5LmpwZz9zaXplcz0yMDAsODAwJyl9IGxvYWRpbmc9J2xhenknIC8+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ncm93Jz5cbiAgICAgICAgICAgIDxoMj5CYXNpYyB1c2FnZTwvaDI+XG4gICAgICAgICAgICA8Q29kZSBsYW5ndWFnZT0namF2YXNjcmlwdCcgc3R5bGU9e3N5bnRheH0+XG4gICAgICAgICAgICAgIHtgPFBpY3R1cmUgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvamVsbHkuanBnJyl9IC8+YH1cbiAgICAgICAgICAgIDwvQ29kZT5cbiAgICAgICAgICAgIDxoNT5CZWhhdmlvdXI8L2g1PlxuICAgICAgICAgICAgPHVsPlxuICAgICAgICAgICAgICA8bGk+VGhlIGltYWdlIGlzIHNlcnZlZCBpbiB0aGUgb3JpZ2luYWwgc2l6ZTwvbGk+XG4gICAgICAgICAgICAgIDxsaT5UaGUgaW1hZ2UgaXMgY29tcGlsZWQgdG8gd2VicDwvbGk+XG4gICAgICAgICAgICAgIDxsaT5Cb3RoIHRoZSBvcmlnaW5hbCBhbmQgdGhlIHdlYnAgaW1hZ2VzIGFyZSBvcHRpbWl6ZWQ8L2xpPlxuICAgICAgICAgICAgPC91bD5cbiAgICAgICAgICAgIDxoNT5SZXN1bHRpbmcgSFRNTDwvaDU+XG4gICAgICAgICAgICA8Q29kZSBsYW5ndWFnZT0naHRtbCcgc3R5bGU9e3N5bnRheH0+XG4gICAgICAgICAgICAgIHt0b1N0cmluZyg8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9qZWxseS5qcGcnKX0gbG9hZGluZz0nbGF6eScgLz4pfVxuICAgICAgICAgICAgPC9Db2RlPlxuICAgICAgICAgICAgPFBpY3R1cmUgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvamVsbHkuanBnJyl9IGxvYWRpbmc9J2xhenknIC8+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ncm93Jz5cbiAgICAgICAgICAgIDxoMj5BZHZhbmNlZCB1c2FnZSAtIG11bHRpcGxlIGltYWdlcyBhbmQgbXVsdGlwbGUgc2l6ZXM8L2gyPlxuICAgICAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2phdmFzY3JpcHQnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgICAgICB7YDxQaWN0dXJlXG4gIHNyYz17W1xuICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9qZWxseS1zLmpwZz9zaXplcz0xMDAsMzc1JyksXG4gICAgcmVxdWlyZSgnLi4vaW1hZ2VzL2plbGx5LW0uanBnP3NpemVzPTYwMCcpLFxuICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9qZWxseS1sLmpwZz9zaXplcz04MDAsMTIwMCwxNjAwJylcbiAgXX1cbiAgYnJlYWtwb2ludHM9e1s0ODAsIDc2OF19XG4gIHNpemVzPXtbXG4gICAgLy8gdXNlZCBmb3IgdGhlIGZpcnN0IGltYWdlXG4gICAgXFxgKG1heC13aWR0aDogMzAwcHgpIDEwMHB4LFxuICAgICAgMTAwdndcXGAsXG5cbiAgICAvLyB1c2VkIGZvciB0aGUgc2Vjb25kIGltYWdlXG4gICAgXFxgNzB2d1xcYCxcblxuICAgIC8vIHVzZWQgZm9yIHRoZSB0aGlyZCBpbWFnZVxuICAgIFxcYChtYXgtd2lkdGg6IDEyMDBweCkgODAwcHgsXG4gICAgICAobWF4LXdpZHRoOiAxNjAwcHgpIDEyMDBweCxcbiAgICAgIDgwdndcXGAsXG4gIF19XG4vPmB9XG4gICAgICAgICAgICA8L0NvZGU+XG4gICAgICAgICAgICA8aDU+QmVoYXZpb3VyPC9oNT5cbiAgICAgICAgICAgIDx1bD5cbiAgICAgICAgICAgICAgPGxpPlRoZSBpbWFnZSBpcyByZXNpemVkIHRvIDF4LCAyeCBhbmQgM3ggZGVuc2l0eSBmb3IgZWFjaCBzcGVjaWZpZWQgc2l6ZTwvbGk+XG4gICAgICAgICAgICAgIDxsaT5UaGlzIHJlc3VsdHMgaW4gMjAwcHgsIDQwMHB4LCA2MDBweCwgODAwcHgsIDE2MDBweCwgMjQwMHB4LCAxMjAwcHggYW5kIDM2MDBweCBzaXplczwvbGk+XG4gICAgICAgICAgICAgIDxsaT5FYWNoIG9mIHRob3NlIHNpemVzIGlzIGFsc28gY29udmVydGVkIHRvIHdlYnA8L2xpPlxuICAgICAgICAgICAgICA8bGk+QWxsIGltYWdlcyBhcmUgb3B0aW1pemVkPC9saT5cbiAgICAgICAgICAgICAgPGxpPlNpbmNlIHRoZXJlIGFyZSBtb3JlIGltYWdlcyB0aGFuIGJyZWFrcG9pbnQgZGl2aXNpb25zICgyIGJ5IGRlZmF1bHQpIC0gc2l6ZXMgcHJvcCBpcyByZXF1aXJlZDwvbGk+XG4gICAgICAgICAgICA8L3VsPlxuICAgICAgICAgICAgPGg1PlJlc3VsdGluZyBIVE1MPC9oNT5cbiAgICAgICAgICAgIDxDb2RlIGxhbmd1YWdlPSdodG1sJyBzdHlsZT17c3ludGF4fT5cbiAgICAgICAgICAgICAge3RvU3RyaW5nKFxuICAgICAgICAgICAgICAgIDxQaWN0dXJlXG4gICAgICAgICAgICAgICAgICBzcmM9e1tcbiAgICAgICAgICAgICAgICAgICAgcmVxdWlyZSgnLi4vaW1hZ2VzL2plbGx5LXMuanBnP3NpemVzPTEwMCwzNzUnKSxcbiAgICAgICAgICAgICAgICAgICAgcmVxdWlyZSgnLi4vaW1hZ2VzL2plbGx5LW0uanBnP3NpemVzPTYwMCcpLFxuICAgICAgICAgICAgICAgICAgICByZXF1aXJlKCcuLi9pbWFnZXMvamVsbHktbC5qcGc/c2l6ZXM9ODAwLDEyMDAsMTYwMCcpLFxuICAgICAgICAgICAgICAgICAgXX1cbiAgICAgICAgICAgICAgICAgIGJyZWFrcG9pbnRzPXtbNDgwLCA3NjhdfVxuICAgICAgICAgICAgICAgICAgc2l6ZXM9e1tcbiAgICAgICAgICAgICAgICAgICAgYChtYXgtd2lkdGg6IDMwMHB4KSAxMDBweCxcbiAgICAgIDEwMHZ3YCxcbiAgICAgICAgICAgICAgICAgICAgYDcwdndgLFxuICAgICAgICAgICAgICAgICAgICBgKG1heC13aWR0aDogMTIwMHB4KSA4MDBweCxcbiAgICAgIChtYXgtd2lkdGg6IDE2MDBweCkgMTIwMHB4LFxuICAgICAgODB2d2AsXG4gICAgICAgICAgICAgICAgICBdfVxuICAgICAgICAgICAgICAgICAgbG9hZGluZz0nbGF6eSdcbiAgICAgICAgICAgICAgICAvPixcbiAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgIDwvQ29kZT5cbiAgICAgICAgICAgIDxQaWN0dXJlXG4gICAgICAgICAgICAgIHNyYz17W1xuICAgICAgICAgICAgICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9qZWxseS1zLmpwZz9zaXplcz0xMDAsMzc1JyksXG4gICAgICAgICAgICAgICAgcmVxdWlyZSgnLi4vaW1hZ2VzL2plbGx5LW0uanBnP3NpemVzPTYwMCcpLFxuICAgICAgICAgICAgICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9qZWxseS1sLmpwZz9zaXplcz04MDAsMTIwMCwxNjAwJyksXG4gICAgICAgICAgICAgIF19XG4gICAgICAgICAgICAgIGJyZWFrcG9pbnRzPXtbNDgwLCA3NjhdfVxuICAgICAgICAgICAgICBzaXplcz17W1xuICAgICAgICAgICAgICAgIGAobWF4LXdpZHRoOiAzMDBweCkgMTAwcHgsXG4gICAgICAxMDB2d2AsXG4gICAgICAgICAgICAgICAgYDcwdndgLFxuICAgICAgICAgICAgICAgIGAobWF4LXdpZHRoOiAxMjAwcHgpIDgwMHB4LFxuICAgICAgKG1heC13aWR0aDogMTYwMHB4KSAxMjAwcHgsXG4gICAgICA4MHZ3YCxcbiAgICAgICAgICAgICAgXX1cbiAgICAgICAgICAgICAgbG9hZGluZz0nbGF6eSdcbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ncm93Jz5cbiAgICAgICAgICAgIDxoMj5QTkcgaW1hZ2U8L2gyPlxuICAgICAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2phdmFzY3JpcHQnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgICAgICB7YDxQaWN0dXJlIGtleT17MH0gc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvaWxsdXN0cmF0aW9uLnBuZz9zaXplcz00ODAsODAwJyl9IGxvYWRpbmc9J2xhenknIC8+YH1cbiAgICAgICAgICAgIDwvQ29kZT5cbiAgICAgICAgICAgIDxoNT5CZWhhdmlvdXI8L2g1PlxuICAgICAgICAgICAgPHVsPlxuICAgICAgICAgICAgICA8bGk+VGhlIGltYWdlIGlzIHJlc2l6ZWQgdG8gMXgsIDJ4IGFuZCAzeCBkZW5zaXR5IGZvciBlYWNoIHNwZWNpZmllZCBzaXplPC9saT5cbiAgICAgICAgICAgICAgPGxpPlRoaXMgcmVzdWx0cyBpbiAyMDBweCwgNDAwcHgsIDYwMHB4LCA4MDBweCwgMTYwMHB4LCAyNDAwcHgsIDEyMDBweCBhbmQgMzYwMHB4IHNpemVzPC9saT5cbiAgICAgICAgICAgICAgPGxpPkVhY2ggb2YgdGhvc2Ugc2l6ZXMgaXMgYWxzbyBjb252ZXJ0ZWQgdG8gd2VicDwvbGk+XG4gICAgICAgICAgICAgIDxsaT5BbGwgaW1hZ2VzIGFyZSBvcHRpbWl6ZWQ8L2xpPlxuICAgICAgICAgICAgICA8bGk+U2luY2UgdGhlcmUgYXJlIG1vcmUgaW1hZ2VzIHRoYW4gYnJlYWtwb2ludCBkaXZpc2lvbnMgKDIgYnkgZGVmYXVsdCkgLSBzaXplcyBwcm9wIGlzIHJlcXVpcmVkPC9saT5cbiAgICAgICAgICAgIDwvdWw+XG4gICAgICAgICAgICA8aDU+UmVzdWx0aW5nIEhUTUw8L2g1PlxuICAgICAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgICAgICB7dG9TdHJpbmcoPFBpY3R1cmUgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvaWxsdXN0cmF0aW9uLnBuZz9zaXplcz00ODAsODAwJyl9IGxvYWRpbmc9J2xhenknIC8+KX1cbiAgICAgICAgICAgIDwvQ29kZT5cbiAgICAgICAgICAgIDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2lsbHVzdHJhdGlvbi5wbmc/c2l6ZXM9NDgwLDgwMCcpfSBsb2FkaW5nPSdsYXp5JyAvPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cblxuICovXG4iXX0= */\n/*@ sourceURL=/Users/karolis/projects/next-img/docs/src/pages/index.js */"));
+  }, ".toc.jsx-1472956875{padding:24px;}.example.jsx-1472956875{padding:20px;border-bottom:1px solid #dec79b40;}@media (min-width:768px){.example.jsx-1472956875{padding:40px;}}.example-inner.jsx-1472956875{max-width:980px;margin:auto;}.photo.jsx-1472956875{background:rgb(35,35,35);padding:40px;}.photo-inner.jsx-1472956875{max-width:860px;margin:auto;}.example-1.jsx-1472956875 .photo-inner.jsx-1472956875{max-width:860px;}.example-2.jsx-1472956875 .photo-inner.jsx-1472956875{max-width:600px;}@media (min-width:1180px){.example-2.jsx-1472956875 .photo-inner.jsx-1472956875{max-width:860px;}}.example-3.jsx-1472956875 .photo-inner.jsx-1472956875{max-width:600px;}@media (min-width:1180px){.example-3.jsx-1472956875 .photo-inner.jsx-1472956875{max-width:860px;}}.example-5.jsx-1472956875 .photo-inner.jsx-1472956875{max-width:600px;}@media (min-width:1180px){.example-5.jsx-1472956875 .photo-inner.jsx-1472956875{max-width:860px;}}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9rYXJvbGlzL3Byb2plY3RzL25leHQtaW1nL2RvY3Mvc3JjL3BhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTBUZ0IsQUFHc0IsQUFJQSxBQU1FLEFBS0MsQUFLVyxBQUtYLEFBS0EsQUFJQSxBQUtFLEFBS0YsQUFLRSxBQUtGLEFBS0UsYUExRHBCLEFBSW9DLEFBTWxDLEdBS1ksQUFVQSxBQUtkLEFBSUEsQUFLRSxBQUtGLEFBS0UsQUFLRixBQUtFLFNBdkNhLEdBSmYsQUFVQSxVQUxBLFNBaEJBIiwiZmlsZSI6Ii9Vc2Vycy9rYXJvbGlzL3Byb2plY3RzL25leHQtaW1nL2RvY3Mvc3JjL3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IHsgUGljdHVyZSB9IGZyb20gJ25leHQtaW1nJ1xuaW1wb3J0IHsgTGF5b3V0IH0gZnJvbSAnLi4vY29tcG9uZW50cy9MYXlvdXQnXG5pbXBvcnQgeyB0b1N0cmluZyB9IGZyb20gJy4uL2hlbHBlcnMvdG9TdHJpbmcnXG5pbXBvcnQgQ29kZSBmcm9tICdyZWFjdC1zeW50YXgtaGlnaGxpZ2h0ZXInXG5pbXBvcnQgc3ludGF4IGZyb20gJ3JlYWN0LXN5bnRheC1oaWdobGlnaHRlci9kaXN0L2Nqcy9zdHlsZXMvaGxqcy9yYWlsc2Nhc3RzJ1xuXG5leHBvcnQgZGVmYXVsdCAoKSA9PiAoXG4gIDxMYXlvdXQ+XG4gICAgPGRpdiBjbGFzc05hbWU9J2V4YW1wbGUnPlxuICAgICAgPGRpdiBjbGFzc05hbWU9J2V4YW1wbGUtaW5uZXInPlxuICAgICAgICA8b2wgY2xhc3NOYW1lPSd0b2MnPlxuICAgICAgICAgIDxsaT5cbiAgICAgICAgICAgIDxhIGhyZWY9JyNleGFtcGxlLTEnPk9uZSBzaXplIHBlciBicmVha3BvaW50PC9hPlxuICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgPGxpPlxuICAgICAgICAgICAgPGEgaHJlZj0nI2V4YW1wbGUtMic+T3ZlcnJpZGUgYnJlYWtwb2ludHM8L2E+XG4gICAgICAgICAgPC9saT5cbiAgICAgICAgICA8bGk+XG4gICAgICAgICAgICA8YSBocmVmPScjZXhhbXBsZS0zJz5PdmVycmlkZSBzaXplcyBhdHRyaWJ1dGU8L2E+XG4gICAgICAgICAgPC9saT5cbiAgICAgICAgICA8bGk+XG4gICAgICAgICAgICA8YSBocmVmPScjZXhhbXBsZS00Jz5TaW5nbGUgaW1hZ2U8L2E+XG4gICAgICAgICAgPC9saT5cbiAgICAgICAgICA8bGk+XG4gICAgICAgICAgICA8YSBocmVmPScjZXhhbXBsZS01Jz5BcnQgZGlyZWN0aW9uPC9hPlxuICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgPGxpPlxuICAgICAgICAgICAgPGEgaHJlZj0nI2V4YW1wbGUtNic+RXhhY3QgaW1hZ2Ugc2l6ZXM8L2E+XG4gICAgICAgICAgPC9saT5cbiAgICAgICAgICA8bGk+XG4gICAgICAgICAgICA8YSBocmVmPScjZXhhbXBsZS03Jz5QTkcgaW1hZ2VzPC9hPlxuICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgPGxpPlxuICAgICAgICAgICAgPGEgaHJlZj0nI2V4YW1wbGUtOCc+T3RoZXIgcXVlcnkgcGFyYW1zIGFuZCBwcm9wczwvYT5cbiAgICAgICAgICA8L2xpPlxuICAgICAgICA8L29sPlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG5cbiAgICA8ZGl2IGNsYXNzTmFtZT0nZXhhbXBsZSBleGFtcGxlLTEnIGlkPSdleGFtcGxlLTEnPlxuICAgICAgPGRpdiBjbGFzc05hbWU9J2V4YW1wbGUtaW5uZXInPlxuICAgICAgICA8aDE+RXhhbXBsZSAxPC9oMT5cbiAgICAgICAgPGgyPk9uZSBzaXplIHBlciBicmVha3BvaW50PC9oMj5cbiAgICAgICAgPHA+XG4gICAgICAgICAgVGhlIG1vc3QgdHlwaWNhbCB1c2FnZS4gUHJvdmlkZSBvbmUgaW1hZ2UgcGVyIGVhY2ggZGV2aWNlIHNpemUgeW91J3JlIHRhcmdldGluZy4gRm9yIGV4YW1wbGUsIGlmIHlvdSdyZVxuICAgICAgICAgIHRhcmdldGluZyBzbWFsbC9sYXJnZSBhdCA3NjhweCBicmVha3BvaW50IChhcyBjb25maWd1cmVkIGluIHlvdXIgPGNvZGU+bmV4dC5jb25maWcuanM8L2NvZGU+KSwgcHJvdmlkZSAyXG4gICAgICAgICAgc2l6ZXMuIElmIHlvdSdyZSB0YXJnZXRpbmcgbW9iaWxlL3RhYmxldC9kZXNrdG9wIHdpdGggYnJlYWtwb2ludHMgNDgwcHggYW5kIDc2OHB4IChhcyBjb25maWd1cmVkIGluIHlvdXJ7JyAnfVxuICAgICAgICAgIDxjb2RlPm5leHQuY29uZmlnLmpzPC9jb2RlPikgLSBwcm92aWRlIDMgc2l6ZXMsIGFuZCBzbyBvbi5cbiAgICAgICAgPC9wPlxuXG4gICAgICAgIDxDb2RlIGxhbmd1YWdlPSdodG1sJyBzdHlsZT17c3ludGF4fT5cbiAgICAgICAgICB7YDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTEuanBnP3NpemVzPTM3NSw4NjAnKX0gLz5gfVxuICAgICAgICA8L0NvZGU+XG4gICAgICAgIDxoMz5PdXRwdXQ8L2gzPlxuICAgICAgICA8Q29kZSBsYW5ndWFnZT0naHRtbCcgc3R5bGU9e3N5bnRheH0+XG4gICAgICAgICAge3RvU3RyaW5nKDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTEuanBnP3NpemVzPTM3NSw4NjAnKX0gLz4pfVxuICAgICAgICA8L0NvZGU+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90byc+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9J3Bob3RvLWlubmVyJz5cbiAgICAgICAgICAgIDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTEuanBnP3NpemVzPTM3NSw4NjAnKX0gLz5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cblxuICAgIDxkaXYgY2xhc3NOYW1lPSdleGFtcGxlIGV4YW1wbGUtMicgaWQ9J2V4YW1wbGUtMic+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT0nZXhhbXBsZS1pbm5lcic+XG4gICAgICAgIDxoMT5FeGFtcGxlIDI8L2gxPlxuICAgICAgICA8aDI+T3ZlcnJpZGUgYnJlYWtwb2ludHM8L2gyPlxuICAgICAgICA8cD5cbiAgICAgICAgICBZb3UgY2FuIHNwZWNpZnkgYSBkaWZmZXJlbnQgc2V0IG9mIGJyZWFrcG9pbnRzIGZvciBhbiBpbmRpdmlkdWFsIGltYWdlLiBMZXQncyBzYXkgeW91ciBwcmVjb25maWd1cmVkXG4gICAgICAgICAgYnJlYWtwb2ludHMgYXJlIDxjb2RlPls3NjhdPC9jb2RlPiwgYnV0IGZvciBzb21lIGltYWdlIHlvdSB3YW50IHRvIHVzZSAzIHNpemVzIGF0IGJyZWFrcG9pbnRzeycgJ31cbiAgICAgICAgICA8Y29kZT5bNzY4LCAxMDgwXTwvY29kZT4uXG4gICAgICAgIDwvcD5cblxuICAgICAgICA8Q29kZSBsYW5ndWFnZT0naHRtbCcgc3R5bGU9e3N5bnRheH0+XG4gICAgICAgICAge2A8UGljdHVyZVxuICBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWUyLmpwZz9zaXplcz0zNzUsNjAwLDg2MCcpfVxuICBicmVha3BvaW50cz17Wzc2OCwxMDgwXX1cbi8+YH1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8aDM+T3V0cHV0PC9oMz5cbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHt0b1N0cmluZyg8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWUyLmpwZz9zaXplcz0zNzUsNjAwLDg2MCcpfSBicmVha3BvaW50cz17Wzc2OCwgMTA4MF19IC8+KX1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ncGhvdG8nPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90by1pbm5lcic+XG4gICAgICAgICAgICA8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWUyLmpwZz9zaXplcz0zNzUsNjAwLDg2MCcpfSBicmVha3BvaW50cz17Wzc2OCwgMTA4MF19IC8+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG5cbiAgICA8ZGl2IGNsYXNzTmFtZT0nZXhhbXBsZSBleGFtcGxlLTMnIGlkPSdleGFtcGxlLTMnPlxuICAgICAgPGRpdiBjbGFzc05hbWU9J2V4YW1wbGUtaW5uZXInPlxuICAgICAgICA8aDE+RXhhbXBsZSAzPC9oMT5cbiAgICAgICAgPGgyPk92ZXJyaWRlIHNpemVzIGF0dHJpYnV0ZTwvaDI+XG4gICAgICAgIDxwPlxuICAgICAgICAgIFVzZSB0aGV7JyAnfVxuICAgICAgICAgIDxhXG4gICAgICAgICAgICBocmVmPSdodHRwczovL2RldmVsb3Blci5tb3ppbGxhLm9yZy9lbi1VUy9kb2NzL0xlYXJuL0hUTUwvTXVsdGltZWRpYV9hbmRfZW1iZWRkaW5nL1Jlc3BvbnNpdmVfaW1hZ2VzI1Jlc29sdXRpb25fc3dpdGNoaW5nX0RpZmZlcmVudF9zaXplcydcbiAgICAgICAgICAgIHRhcmdldD0nYmxhbmtfJ1xuICAgICAgICAgID5cbiAgICAgICAgICAgIHNpemVzXG4gICAgICAgICAgPC9hPnsnICd9XG4gICAgICAgICAgcHJvcCBpbiBvcmRlciB0byBnZXQgZnVsbCBjb250cm9sIG92ZXIgc3BlY2lmeWluZyB3aGljaCBpbWFnZSBzaG91bGQgYmUgdXNlZCBhdCB3aGF0IGJyZWFrcG9pbnQuIFRoaXMgd2F5IHlvdVxuICAgICAgICAgIGNhbiBzcGVjaWZ5IGFueSBudW1iZXIgb2YgaW1hZ2Ugc2l6ZXMgYW5kIGNob29zZSB0byBzaG93IHRoZW0gYXQgYW55IGJyZWFrcG9pbnQuXG4gICAgICAgIDwvcD5cblxuICAgICAgICA8Q29kZSBsYW5ndWFnZT0naHRtbCcgc3R5bGU9e3N5bnRheH0+XG4gICAgICAgICAge2A8UGljdHVyZVxuICBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWUzLmpwZz9zaXplcz0zNzUsNjAwLDg2MCcpfVxuICBzaXplcz0nKG1heC13aWR0aDogNzY4cHgpIDEwMHZ3LCAobWF4LXdpZHRoOiAxMTgwcHgpIDYwMHB4LCA4NjBweCdcbi8+YH1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8aDM+T3V0cHV0PC9oMz5cbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHt0b1N0cmluZyhcbiAgICAgICAgICAgIDxQaWN0dXJlXG4gICAgICAgICAgICAgIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTMuanBnP3NpemVzPTM3NSw2MDAsODYwJyl9XG4gICAgICAgICAgICAgIHNpemVzPScobWF4LXdpZHRoOiA3NjhweCkgMTAwdncsIChtYXgtd2lkdGg6IDExODBweCkgNjAwcHgsIDg2MHB4J1xuICAgICAgICAgICAgLz4sXG4gICAgICAgICAgKX1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ncGhvdG8nPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90by1pbm5lcic+XG4gICAgICAgICAgICA8UGljdHVyZVxuICAgICAgICAgICAgICBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWUzLmpwZz9zaXplcz0zNzUsNjAwLDg2MCcpfVxuICAgICAgICAgICAgICBzaXplcz0nKG1heC13aWR0aDogNzY4cHgpIDEwMHZ3LCAobWF4LXdpZHRoOiAxMTgwcHgpIDYwMHB4LCA4NjBweCdcbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG5cbiAgICA8ZGl2IGNsYXNzTmFtZT0nZXhhbXBsZSBleGFtcGxlLTQnIGlkPSdleGFtcGxlLTQnPlxuICAgICAgPGRpdiBjbGFzc05hbWU9J2V4YW1wbGUtaW5uZXInPlxuICAgICAgICA8aDE+RXhhbXBsZSA0PC9oMT5cbiAgICAgICAgPGgyPlNpbmdsZSBpbWFnZTwvaDI+XG4gICAgICAgIDxwPlxuICAgICAgICAgIFlvdSBjYW4gbGVhdmUgb3V0IHRoZSA8Y29kZT5zaXplczwvY29kZT4gcXVlcnkgcGFyYW0gYWx0b2dldGhlci4gVGhhdCB3aWxsIGxvYWQgdGhlIG9yaWdpbmFsIGltYWdlIHNpemUgYWNyb3NzXG4gICAgICAgICAgYW55IGRldmljZSB3aWR0aC4gTm90ZSwgdGhpcyBzdGlsbCBvdXRwdXRzIGFuIGltYWdlIHBlciBzY3JlZW4gZGVuc2l0eSBhbmQgc2hvd3MgdGhlIGFwcHJvcHJpYXRlIG9uZSBiYXNlZCBvblxuICAgICAgICAgIHRoZSBkZXZpY2UuXG4gICAgICAgIDwvcD5cblxuICAgICAgICA8Q29kZSBsYW5ndWFnZT0naHRtbCcgc3R5bGU9e3N5bnRheH0+XG4gICAgICAgICAge2A8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU0LmpwZycpfSAvPmB9XG4gICAgICAgIDwvQ29kZT5cbiAgICAgICAgPGgzPk91dHB1dDwvaDM+XG4gICAgICAgIDxDb2RlIGxhbmd1YWdlPSdodG1sJyBzdHlsZT17c3ludGF4fT5cbiAgICAgICAgICB7dG9TdHJpbmcoPFBpY3R1cmUgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvY29mZmVlNC5qcGcnKX0gLz4pfVxuICAgICAgICA8L0NvZGU+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90byc+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9J3Bob3RvLWlubmVyJz5cbiAgICAgICAgICAgIDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTQuanBnJyl9IC8+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG5cbiAgICA8ZGl2IGNsYXNzTmFtZT0nZXhhbXBsZSBleGFtcGxlLTUnIGlkPSdleGFtcGxlLTUnPlxuICAgICAgPGRpdiBjbGFzc05hbWU9J2V4YW1wbGUtaW5uZXInPlxuICAgICAgICA8aDE+RXhhbXBsZSA1PC9oMT5cbiAgICAgICAgPGgyPkFydCBkaXJlY3Rpb248L2gyPlxuICAgICAgICA8cD5cbiAgICAgICAgICBZb3UgY2FuIHBhc3MgYW4gYXJyYXkgb2YgaW1hZ2VzIHRvIHRoZSBzcmMuIFRoaXMgd2F5IHlvdSBjYW4gc2hvdyBhbiBlbnRpcmVseSBkaWZmZXJlbnQgaW1hZ2UgYXQgZWFjaFxuICAgICAgICAgIGJyZWFrcG9pbnQuIFRoaXMgY2hhbmdlcyB0aGUgaHRtbCBvdXRwdXQgdG8gc3dpdGNoIGJldHdlZW4gdGhlIGltYWdlcyB1c2luZyB0aGUgaHRtbHsnICd9XG4gICAgICAgICAgPGFcbiAgICAgICAgICAgIGhyZWY9J2h0dHBzOi8vZGV2ZWxvcGVyLm1vemlsbGEub3JnL2VuLVVTL2RvY3MvTGVhcm4vSFRNTC9NdWx0aW1lZGlhX2FuZF9lbWJlZGRpbmcvUmVzcG9uc2l2ZV9pbWFnZXMjQXJ0X2RpcmVjdGlvbidcbiAgICAgICAgICAgIHRhcmdldD0nYmxhbmtfJ1xuICAgICAgICAgID5cbiAgICAgICAgICAgIG1lZGlhIGF0dHJpYnV0ZVxuICAgICAgICAgIDwvYT5cbiAgICAgICAgICAuIE5vdGUsIHlvdSBjYW4gdGFrZSB0aGlzIGV2ZW4gZnVydGhlciBieSBzcGVjaWZ5aW5nIG11bHRpcGxlIHNpemVzIGZvciBlYWNoIGltYWdlIGFuZCB1c2luZyB0aGV7JyAnfVxuICAgICAgICAgIDxhXG4gICAgICAgICAgICBocmVmPSdodHRwczovL2RldmVsb3Blci5tb3ppbGxhLm9yZy9lbi1VUy9kb2NzL0xlYXJuL0hUTUwvTXVsdGltZWRpYV9hbmRfZW1iZWRkaW5nL1Jlc3BvbnNpdmVfaW1hZ2VzI1Jlc29sdXRpb25fc3dpdGNoaW5nX0RpZmZlcmVudF9zaXplcydcbiAgICAgICAgICAgIHRhcmdldD0nYmxhbmtfJ1xuICAgICAgICAgID5cbiAgICAgICAgICAgIHNpemVzIHByb3BcbiAgICAgICAgICA8L2E+XG4gICAgICAgICAgdG8gc3BlY2lmeSB3aGF0IHNob3VsZCBiZSBzaG93biB3aGVuLlxuICAgICAgICA8L3A+XG5cbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHtgPFBpY3R1cmVcbiAgc3JjPXtbXG4gICAgcmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTUtcy5qcGc/c2l6ZXM9Mzc1JyksXG4gICAgcmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTUtbS5qcGc/c2l6ZXM9NjAwJyksXG4gICAgcmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTUtbC5qcGc/c2l6ZXM9ODYwJyksXG4gIF19XG4gIGJyZWFrcG9pbnRzPXtbNzY4LCAxMTgwXX1cbi8+YH1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8aDM+T3V0cHV0PC9oMz5cbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHt0b1N0cmluZyhcbiAgICAgICAgICAgIDxQaWN0dXJlXG4gICAgICAgICAgICAgIHNyYz17W1xuICAgICAgICAgICAgICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU1LXMuanBnP3NpemVzPTM3NScpLFxuICAgICAgICAgICAgICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU1LW0uanBnP3NpemVzPTYwMCcpLFxuICAgICAgICAgICAgICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU1LWwuanBnP3NpemVzPTg2MCcpLFxuICAgICAgICAgICAgICBdfVxuICAgICAgICAgICAgICBicmVha3BvaW50cz17Wzc2OCwgMTE4MF19XG4gICAgICAgICAgICAvPixcbiAgICAgICAgICApfVxuICAgICAgICA8L0NvZGU+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90byc+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9J3Bob3RvLWlubmVyJz5cbiAgICAgICAgICAgIDxQaWN0dXJlXG4gICAgICAgICAgICAgIHNyYz17W1xuICAgICAgICAgICAgICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU1LXMuanBnP3NpemVzPTM3NScpLFxuICAgICAgICAgICAgICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU1LW0uanBnP3NpemVzPTYwMCcpLFxuICAgICAgICAgICAgICAgIHJlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU1LWwuanBnP3NpemVzPTg2MCcpLFxuICAgICAgICAgICAgICBdfVxuICAgICAgICAgICAgICBicmVha3BvaW50cz17Wzc2OCwgMTE4MF19XG4gICAgICAgICAgICAvPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuXG4gICAgPGRpdiBjbGFzc05hbWU9J2V4YW1wbGUgZXhhbXBsZS02JyBpZD0nZXhhbXBsZS02Jz5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPSdleGFtcGxlLWlubmVyJz5cbiAgICAgICAgPGgxPkV4YW1wbGUgNjwvaDE+XG4gICAgICAgIDxoMj5FeGFjdCBpbWFnZSBzaXplczwvaDI+XG4gICAgICAgIDxwPlxuICAgICAgICAgIEJ5IGRlZmF1bHQsIGV2ZXJ5IGltYWdlIGdldHMgdHJhbnNsYXRlZCB0byAxeCBhbmQgMnggZGVuc2l0aWVzLiBUaGF0IGlzLCBpZiB5b3UgZGlzcGxheSB0aGUgaW1hZ2UgaW4gdGhlXG4gICAgICAgICAgYnJvd3NlciBhdCA4MDBweCB3aWR0aCwgdGhlbiBzcGVjaWZ5aW5nIDxjb2RlPj9zaXplcz04MDA8L2NvZGU+IHdpbGwgcHJvZHVjZSBhbmQgc2hvdyA4MDBweCB3aWRlIGltYWdlIGZvciBsb3dcbiAgICAgICAgICBkZW5zaXR5IGRldmljZXMgYW5kIDE2MDBweCB3aWRlIGltYWdlIGZvciBoaWdoIGRlbnNpdHkgZGV2aWNlcy4gSWYgeW91J2QgbGlrZSwgaG93ZXZlciwgeW91IGNhbiBzcGVjaWZ5IGFueVxuICAgICAgICAgIG51bWJlciBvZiBleGFjdCBzaXplcyBieSBzZXR0aW5nIGRlbnNpdGllcyB0byAxeC5cbiAgICAgICAgPC9wPlxuXG4gICAgICAgIDxDb2RlIGxhbmd1YWdlPSdodG1sJyBzdHlsZT17c3ludGF4fT5cbiAgICAgICAgICB7YDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2NvZmZlZTYuanBnP3NpemVzPTMwMCw2MDAsOTAwLDEyMDAsMTUwMCZkZW5zaXRpZXM9MXgnKX0gc2l6ZXM9JzEwMHZ3JyAvPmB9XG4gICAgICAgIDwvQ29kZT5cbiAgICAgICAgPGgzPk91dHB1dDwvaDM+XG4gICAgICAgIDxDb2RlIGxhbmd1YWdlPSdodG1sJyBzdHlsZT17c3ludGF4fT5cbiAgICAgICAgICB7dG9TdHJpbmcoXG4gICAgICAgICAgICA8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU2LmpwZz9zaXplcz0zMDAsNjAwLDkwMCwxMjAwLDE1MDAmZGVuc2l0aWVzPTF4Jyl9IHNpemVzPScxMDB2dycgLz4sXG4gICAgICAgICAgKX1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ncGhvdG8nPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90by1pbm5lcic+XG4gICAgICAgICAgICA8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU2LmpwZz9zaXplcz0zMDAsNjAwLDkwMCwxMjAwLDE1MDAmZGVuc2l0aWVzPTF4Jyl9IHNpemVzPScxMDB2dycgLz5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cblxuICAgIDxkaXYgY2xhc3NOYW1lPSdleGFtcGxlIGV4YW1wbGUtNycgaWQ9J2V4YW1wbGUtNyc+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT0nZXhhbXBsZS1pbm5lcic+XG4gICAgICAgIDxoMT5FeGFtcGxlIDY8L2gxPlxuICAgICAgICA8aDI+UE5HIGltYWdlczwvaDI+XG4gICAgICAgIDxwPlBORyBpbWFnZXMgYXJlIHN1cHBvcnRlZCBhcyB3ZWxsLiBJbiB0aGlzIGNhc2UsIGEgbG9zc2xlc3Mgd2VicCBpcyBvdXRwdXR0ZWQgYnkgZGVmYXVsdC48L3A+XG5cbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHtgPFBpY3R1cmUgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvaWxsdXN0cmF0aW9uLnBuZz9zaXplcz00ODAsODYwJyl9IC8+YH1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8aDM+T3V0cHV0PC9oMz5cbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHt0b1N0cmluZyg8UGljdHVyZSBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9pbGx1c3RyYXRpb24ucG5nP3NpemVzPTQ4MCw4NjAnKX0gLz4pfVxuICAgICAgICA8L0NvZGU+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90byc+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9J3Bob3RvLWlubmVyJz5cbiAgICAgICAgICAgIDxQaWN0dXJlIHNyYz17cmVxdWlyZSgnLi4vaW1hZ2VzL2lsbHVzdHJhdGlvbi5wbmc/c2l6ZXM9NDgwLDg2MCcpfSAvPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuXG4gICAgPGRpdiBjbGFzc05hbWU9J2V4YW1wbGUgZXhhbXBsZS04JyBpZD0nZXhhbXBsZS04Jz5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPSdleGFtcGxlLWlubmVyJz5cbiAgICAgICAgPGgxPkV4YW1wbGUgNzwvaDE+XG4gICAgICAgIDxoMj5PdGhlciBxdWVyeSBwYXJhbXMgYW5kIHByb3BzPC9oMj5cbiAgICAgICAgPHA+XG4gICAgICAgICAgWW91IGNhbiBjb250cm9sIGltYWdlIHF1YWxpdHkgYW5kIGRlbnNpdGllcyBpbiBhZGRpdGlvbiB0byBzcGVjaWZ5aW5nIHRoZSBzaXplcyB3aGVuIGltcG9ydGluZyBhbiBpbWFnZS4gU2VleycgJ31cbiAgICAgICAgICA8YSBocmVmPSdodHRwczovL2dpdGh1Yi5jb20vaHVtYWFucy9uZXh0LWltZy8nPlJFQURNRTwvYT4gZm9yIGZ1bGwgZGV0YWlscy4gWW91IGNhbiBwYXNzIGV4dHJhIHByb3BzIHRvIHRoZXsnICd9XG4gICAgICAgICAgPGNvZGU+UGljdHVyZTwvY29kZT4gY29tcG9uZW50LCB0aGVzZSB3aWxsIGJlIGZvcndhcmRlZCB0byB0aGUgdW5kZXJseWluZyBpbWFnZSBlbGVtZW50LiBUaGlzIGlzIHVzZWZ1bCBmb3JcbiAgICAgICAgICBhZGRpbmcgbGF6eSBsb2FkaW5nLCBjbGFzcyBuYW1lcywgYW5kIHNvIG9uLlxuICAgICAgICA8L3A+XG5cbiAgICAgICAgPENvZGUgbGFuZ3VhZ2U9J2h0bWwnIHN0eWxlPXtzeW50YXh9PlxuICAgICAgICAgIHtgPFBpY3R1cmVcbiAgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvY29mZmVlNy5qcGc/c2l6ZXM9Mzc1LDg2MCZqcGVnW3F1YWxpdHldPTEwJmpwZWdbd2VicF1bcXVhbGl0eV09MTAnKX1cbiAgY2xhc3NOYW1lPSdjb2ZmZWUnXG4gIGRhdGEtZGVtbz0nY29mZmVlJ1xuICBsb2FkaW5nPSdsYXp5J1xuLz5gfVxuICAgICAgICA8L0NvZGU+XG4gICAgICAgIDxoMz5PdXRwdXQ8L2gzPlxuICAgICAgICA8Q29kZSBsYW5ndWFnZT0naHRtbCcgc3R5bGU9e3N5bnRheH0+XG4gICAgICAgICAge3RvU3RyaW5nKFxuICAgICAgICAgICAgPFBpY3R1cmVcbiAgICAgICAgICAgICAgc3JjPXtyZXF1aXJlKCcuLi9pbWFnZXMvY29mZmVlNy5qcGc/c2l6ZXM9Mzc1LDg2MCZqcGVnW3F1YWxpdHldPTEwJmpwZWdbd2VicF1bcXVhbGl0eV09MTAnKX1cbiAgICAgICAgICAgICAgY2xhc3NOYW1lPSdjb2ZmZWUnXG4gICAgICAgICAgICAgIGRhdGEtZGVtbz0nY29mZmVlJ1xuICAgICAgICAgICAgICBsb2FkaW5nPSdsYXp5J1xuICAgICAgICAgICAgLz4sXG4gICAgICAgICAgKX1cbiAgICAgICAgPC9Db2RlPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ncGhvdG8nPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSdwaG90by1pbm5lcic+XG4gICAgICAgICAgICA8UGljdHVyZVxuICAgICAgICAgICAgICBzcmM9e3JlcXVpcmUoJy4uL2ltYWdlcy9jb2ZmZWU3LmpwZz9zaXplcz0zNzUsODYwJmpwZWdbcXVhbGl0eV09MTAmanBlZ1t3ZWJwXVtxdWFsaXR5XT0xMCcpfVxuICAgICAgICAgICAgICBjbGFzc05hbWU9J2NvZmZlZSdcbiAgICAgICAgICAgICAgZGF0YS1kZW1vPSdjb2ZmZWUnXG4gICAgICAgICAgICAgIGxvYWRpbmc9J2xhenknXG4gICAgICAgICAgICAvPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuXG4gICAgPHN0eWxlIGpzeD57YFxuICAgICAgLnRvYyB7XG4gICAgICAgIHBhZGRpbmc6IDI0cHg7XG4gICAgICB9XG5cbiAgICAgIC5leGFtcGxlIHtcbiAgICAgICAgcGFkZGluZzogMjBweDtcbiAgICAgICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNkZWM3OWI0MDtcbiAgICAgIH1cblxuICAgICAgQG1lZGlhIChtaW4td2lkdGg6IDc2OHB4KSB7XG4gICAgICAgIC5leGFtcGxlIHtcbiAgICAgICAgICBwYWRkaW5nOiA0MHB4O1xuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC5leGFtcGxlLWlubmVyIHtcbiAgICAgICAgbWF4LXdpZHRoOiA5ODBweDtcbiAgICAgICAgbWFyZ2luOiBhdXRvO1xuICAgICAgfVxuXG4gICAgICAucGhvdG8ge1xuICAgICAgICBiYWNrZ3JvdW5kOiByZ2IoMzUsIDM1LCAzNSk7XG4gICAgICAgIHBhZGRpbmc6IDQwcHg7XG4gICAgICB9XG5cbiAgICAgIC5waG90by1pbm5lciB7XG4gICAgICAgIG1heC13aWR0aDogODYwcHg7XG4gICAgICAgIG1hcmdpbjogYXV0bztcbiAgICAgIH1cblxuICAgICAgLmV4YW1wbGUtMSAucGhvdG8taW5uZXIge1xuICAgICAgICBtYXgtd2lkdGg6IDg2MHB4O1xuICAgICAgfVxuXG4gICAgICAuZXhhbXBsZS0yIC5waG90by1pbm5lciB7XG4gICAgICAgIG1heC13aWR0aDogNjAwcHg7XG4gICAgICB9XG5cbiAgICAgIEBtZWRpYSAobWluLXdpZHRoOiAxMTgwcHgpIHtcbiAgICAgICAgLmV4YW1wbGUtMiAucGhvdG8taW5uZXIge1xuICAgICAgICAgIG1heC13aWR0aDogODYwcHg7XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLmV4YW1wbGUtMyAucGhvdG8taW5uZXIge1xuICAgICAgICBtYXgtd2lkdGg6IDYwMHB4O1xuICAgICAgfVxuXG4gICAgICBAbWVkaWEgKG1pbi13aWR0aDogMTE4MHB4KSB7XG4gICAgICAgIC5leGFtcGxlLTMgLnBob3RvLWlubmVyIHtcbiAgICAgICAgICBtYXgtd2lkdGg6IDg2MHB4O1xuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC5leGFtcGxlLTUgLnBob3RvLWlubmVyIHtcbiAgICAgICAgbWF4LXdpZHRoOiA2MDBweDtcbiAgICAgIH1cblxuICAgICAgQG1lZGlhIChtaW4td2lkdGg6IDExODBweCkge1xuICAgICAgICAuZXhhbXBsZS01IC5waG90by1pbm5lciB7XG4gICAgICAgICAgbWF4LXdpZHRoOiA4NjBweDtcbiAgICAgICAgfVxuICAgICAgfVxuICAgIGB9PC9zdHlsZT5cbiAgPC9MYXlvdXQ+XG4pXG4iXX0= */\n/*@ sourceURL=/Users/karolis/projects/next-img/docs/src/pages/index.js */"));
 });
-/**
-
-# Example 2 ## Use more sizes than there are
-        breakpoints It's possible to provide more images than there are breakpoints. Howevever in this case, you'll have
-        to specify the `size` prop when embedding the image in order for the extra sizes to be used. ### Code
-        <Code language='javascript' style={syntax}>
-          {`<Picture src={require('../images/jelly.jpg?sizes=375,1100,1400')} sizes='(max-width: 768px) 100vw, 50vw' />`}
-        </Code>
-        ### Output
-        <Code language='html' style={syntax}>
-          {toString(
-            <Picture src={require('../images/jelly.jpg?sizes=375,1100,1400')} sizes='(max-width: 768px) 100vw, 50vw' />,
-          )}
-        </Code>
-        ### Preview
-        <Picture src={require('../images/jelly.jpg?sizes=375,1100,1400')} sizes='(max-width: 768px) 100vw, 50vw' />
-        <div className='container'>
-          <div className='row'>
-            <h2>Example 1</h2>
-            <h3>One size per breakpoint</h3>
-            <p>The most typical expected usage when using this plugin.</p>
-            <Code language='javascript' style={syntax}>
-              {`<Picture src={require('../images/jelly.jpg?sizes=200,800')} />`}
-            </Code>
-            <h5>Behaviour</h5>
-            <ul>
-              <li>The image is resized to 1x, 2x and 3x density for each specified size</li>
-              <li>This results in 200px, 400px, 600px, 800px, 1600px and 2400px sizes</li>
-              <li>Each of those sizes is also converted to webp</li>
-              <li>All images are optimized</li>
-              <li>
-                Each size is used within the breakpoints (default <code>breakpoints: [768]</code>)
-              </li>
-            </ul>
-            <h5>Resulting HTML</h5>
-            <Code language='html' style={syntax}>
-              {toString(<Picture src={require('../images/jelly.jpg?sizes=200,800')} loading='lazy' />)}
-            </Code>
-            <Picture src={require('../images/jelly.jpg?sizes=200,800')} loading='lazy' />
-          </div>
-
-          <div className='row'>
-            <h2>Basic usage</h2>
-            <Code language='javascript' style={syntax}>
-              {`<Picture src={require('../images/jelly.jpg')} />`}
-            </Code>
-            <h5>Behaviour</h5>
-            <ul>
-              <li>The image is served in the original size</li>
-              <li>The image is compiled to webp</li>
-              <li>Both the original and the webp images are optimized</li>
-            </ul>
-            <h5>Resulting HTML</h5>
-            <Code language='html' style={syntax}>
-              {toString(<Picture src={require('../images/jelly.jpg')} loading='lazy' />)}
-            </Code>
-            <Picture src={require('../images/jelly.jpg')} loading='lazy' />
-          </div>
-
-          <div className='row'>
-            <h2>Advanced usage - multiple images and multiple sizes</h2>
-            <Code language='javascript' style={syntax}>
-              {`<Picture
-  src={[
-    require('../images/jelly-s.jpg?sizes=100,375'),
-    require('../images/jelly-m.jpg?sizes=600'),
-    require('../images/jelly-l.jpg?sizes=800,1200,1600')
-  ]}
-  breakpoints={[480, 768]}
-  sizes={[
-    // used for the first image
-    \`(max-width: 300px) 100px,
-      100vw\`,
-
-    // used for the second image
-    \`70vw\`,
-
-    // used for the third image
-    \`(max-width: 1200px) 800px,
-      (max-width: 1600px) 1200px,
-      80vw\`,
-  ]}
-/>`}
-            </Code>
-            <h5>Behaviour</h5>
-            <ul>
-              <li>The image is resized to 1x, 2x and 3x density for each specified size</li>
-              <li>This results in 200px, 400px, 600px, 800px, 1600px, 2400px, 1200px and 3600px sizes</li>
-              <li>Each of those sizes is also converted to webp</li>
-              <li>All images are optimized</li>
-              <li>Since there are more images than breakpoint divisions (2 by default) - sizes prop is required</li>
-            </ul>
-            <h5>Resulting HTML</h5>
-            <Code language='html' style={syntax}>
-              {toString(
-                <Picture
-                  src={[
-                    require('../images/jelly-s.jpg?sizes=100,375'),
-                    require('../images/jelly-m.jpg?sizes=600'),
-                    require('../images/jelly-l.jpg?sizes=800,1200,1600'),
-                  ]}
-                  breakpoints={[480, 768]}
-                  sizes={[
-                    `(max-width: 300px) 100px,
-      100vw`,
-                    `70vw`,
-                    `(max-width: 1200px) 800px,
-      (max-width: 1600px) 1200px,
-      80vw`,
-                  ]}
-                  loading='lazy'
-                />,
-              )}
-            </Code>
-            <Picture
-              src={[
-                require('../images/jelly-s.jpg?sizes=100,375'),
-                require('../images/jelly-m.jpg?sizes=600'),
-                require('../images/jelly-l.jpg?sizes=800,1200,1600'),
-              ]}
-              breakpoints={[480, 768]}
-              sizes={[
-                `(max-width: 300px) 100px,
-      100vw`,
-                `70vw`,
-                `(max-width: 1200px) 800px,
-      (max-width: 1600px) 1200px,
-      80vw`,
-              ]}
-              loading='lazy'
-            />
-          </div>
-
-          <div className='row'>
-            <h2>PNG image</h2>
-            <Code language='javascript' style={syntax}>
-              {`<Picture key={0} src={require('../images/illustration.png?sizes=480,800')} loading='lazy' />`}
-            </Code>
-            <h5>Behaviour</h5>
-            <ul>
-              <li>The image is resized to 1x, 2x and 3x density for each specified size</li>
-              <li>This results in 200px, 400px, 600px, 800px, 1600px, 2400px, 1200px and 3600px sizes</li>
-              <li>Each of those sizes is also converted to webp</li>
-              <li>All images are optimized</li>
-              <li>Since there are more images than breakpoint divisions (2 by default) - sizes prop is required</li>
-            </ul>
-            <h5>Resulting HTML</h5>
-            <Code language='html' style={syntax}>
-              {toString(<Picture src={require('../images/illustration.png?sizes=480,800')} loading='lazy' />)}
-            </Code>
-            <Picture src={require('../images/illustration.png?sizes=480,800')} loading='lazy' />
-          </div>
-        </div>
-
- */
 
 /***/ }),
 
