@@ -18,7 +18,7 @@ export default ({ Component, pageProps }) => (
 
       a,
       a:visited {
-        color: #07f;
+        color: white;
       }
 
       pre {
@@ -33,7 +33,7 @@ export default ({ Component, pageProps }) => (
 
       p code,
       li code {
-        background: #382fc520;
+        background: rgb(35, 35, 35);
         font-size: 15px;
         font-family: 'Source Code Pro', monospace;
         font-weight: 500;

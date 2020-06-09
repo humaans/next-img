@@ -21,7 +21,7 @@ export function Layout({ children }) {
           </ul>
         </div>
       </div>
-      <div class='content'>{children}</div>
+      <div className='content'>{children}</div>
       <style jsx>{`
         .header {
           border-bottom: 1px solid #dec79b40;
