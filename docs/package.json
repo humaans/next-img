@@ -4,7 +4,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "release:docs": "next build && next export && gh-pages -d out"
+    "release:docs": "next build && next export && touch out/.nojekyll && gh-pages -d out -t"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.5",
