@@ -1,3 +1,7 @@
 node_modules
 dist
 .DS_Store
+
+docs/.next
+docs/dist
+docs/out
