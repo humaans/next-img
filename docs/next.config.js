@@ -1,12 +1,10 @@
 const path = require('path')
 const withPlugins = require('next-compose-plugins')
-const withMDX = require('@next/mdx')
 const withNextImg = require('../plugin')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-module.exports = withPlugins([withNextImg, withMDX({ extension: /\.mdx?$/ })], {
-  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+module.exports = withPlugins([withNextImg], {
   assetPrefix: isProduction ? '/next-img' : '',
   webpack: (config, options) => {
     config.resolve.alias.react = path.join(__dirname, 'node_modules', 'react')

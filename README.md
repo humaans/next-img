@@ -72,6 +72,8 @@ Imports, resizes, optimizes, caches (persistently in the git repo) and outputs t
 </picture>
 ```
 
+[View examples](https://humaans.github.io/next-img/).
+
 ## Usage
 
 Install the package
@@ -127,7 +129,7 @@ npx next-img
 
 Now check in the `resources` directory to your source control to be reused later for development and production builds. You can turn this feature off by setting `persistentCache: false` in the plugin configuration, in which case the images will be only stored in a temporary cache inside `.next` directory.
 
-See the [documentation](https://humaans.github.io/next-img/) website for a comprehensive list of examples.
+[View more usage examples](https://humaans.github.io/next-img/).
 
 ## Configuration
 
@@ -160,7 +162,7 @@ Default plugin configuration options:
   jpeg: {
     quality: 80,
     webp: {
-      quality: 80,
+      quality: 90,
       reductionEffort: 6,
     },
   },
@@ -168,13 +170,14 @@ Default plugin configuration options:
   png: {
     quality: 100,
     webp: {
-      quality: 80,
       reductionEffort: 6,
-      lossles: true,
+      lossless: true,
     },
   },
 }
 ```
+
+Refer to [sharp documentation](https://sharp.pixelplumbing.com/api-output) for `jpeg/png/webp` compression options.
 
 ## Import Params
 
@@ -182,7 +185,8 @@ When importing an image, you can use query parameters to customise the optimisat
 
 - **sizes** - a list of comma separated sizes you will be showing images at. Note that you do not need to take into account the pixel densities here. That is, if you're showing an image at `320px` wide on your website, simply specify `320` here, the plugin will produce any necessary larger versions based on the `densities` configuration.
 - **densities** - a list of comma separated densities you need each image size to be produced at. By default `1x` and `2x` sizes of images will be produced, specify `1x` if you want to produce only one image per size, or `1x,2x,3x`, etc. if you want more densities.
-- **jpeg / png / webp** - quality configuration options for the output image. Refer to [sharp documentation](https://sharp.pixelplumbing.com/api-output) to find the available options for each output format.
+- **jpeg** - quality configuration options for `jpeg` images. Note, the `jpeg->webp` settings need to be nested under this param, e.g. `?jpeg[webp][quality]=95`
+- **png** - quality configuration options for `png` images. Note, the `png->webp` settings need to be nested under this param, e.g. `?png[webp][nearLossless]=1`
 
 Examples:
 
@@ -191,7 +195,7 @@ import img1 from './images/img.jpg'
 import img2 from './images/img.jpg?sizes=375,900'
 import img3 from './images/img.jpg?sizes=375,900&densities=1x'
 import img4 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x'
-import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality]=70&webp[quality]=70'
+import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality]=70&jpeg[webp][quality]=70'
 ```
 
 ## Picture Props
@@ -230,15 +234,15 @@ For example, with breakpoints `[375, 768]` and `src=[img1, img2, img3]` the `<Pi
 </picture>
 ```
 
-See the [demo]() website for a comprehensive list of examples.
-
 ## FAQ
 
 **Do I have to use the `<Picture />` component?**
-It is indeed optional. You can handle the imported image object however you want.
 
-**Will you support `gif` images?**
-That could potentially be added in the future, let use know if you're interested.
+The Picture component is optional. You can handle the imported image object however you want.
+
+**Couldn't the images be optimized further?**
+
+Yes, you could probably get ~10%-20% or more compression if you pass the `jpg/png` through ImageOptim or other tools. Thing is, since this plugin outputs an already well optimized webp and you'll be serving webp to most modern browsers, that removes the need to squeeze that extra file size for `jpg/png` since they are the _fallback_ images. However, there might be use cases where custom compression algorhithms are needeed and we might add support for arbitrary transformations in this plugin in the future.
 
 ## Development
 

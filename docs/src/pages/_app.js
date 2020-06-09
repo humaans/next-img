@@ -1,19 +1,10 @@
 import React from 'react'
-import { MDXProvider } from '@mdx-js/react'
-import Code from 'react-syntax-highlighter'
-import syntax from 'react-syntax-highlighter/dist/cjs/styles/hljs/railscasts'
-
-const mdComponents = {
-  pre: props => <div {...props} />,
-  code: props => <Code language='html' style={syntax} {...props} />,
-}
 
 export default ({ Component, pageProps }) => (
-  <MDXProvider components={mdComponents}>
+  <>
     <Component {...pageProps} />
 
     <style global jsx>{`
-      @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
@@ -21,6 +12,8 @@ export default ({ Component, pageProps }) => (
       body {
         padding: 0;
         margin: 0;
+        background: #18181e;
+        color: #dec79b;
       }
 
       a,
@@ -30,7 +23,8 @@ export default ({ Component, pageProps }) => (
 
       pre {
         overflow: auto;
-        font-size: 13px;
+        font-size: 15px;
+        line-height: 20px;
         font-family: 'Source Code Pro', monospace;
         font-weight: 500;
         padding: 20px !important;
@@ -48,7 +42,7 @@ export default ({ Component, pageProps }) => (
       }
 
       img {
-        max-width: 100%;
+        width: 100%;
         border-radius: 8px;
       }
 
@@ -141,5 +135,5 @@ export default ({ Component, pageProps }) => (
         margin-top: 0;
       }
     `}</style>
-  </MDXProvider>
+  </>
 )
