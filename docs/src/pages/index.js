@@ -8,33 +8,69 @@ import syntax from 'react-syntax-highlighter/dist/cjs/styles/hljs/railscasts'
 export default () => (
   <Layout>
     <div className='example'>
-      <div className='example-inner'>
-        <ol className='toc'>
-          <li>
-            <a href='#example-1'>One size per breakpoint</a>
-          </li>
-          <li>
-            <a href='#example-2'>Override breakpoints</a>
-          </li>
-          <li>
-            <a href='#example-3'>Override sizes attribute</a>
-          </li>
-          <li>
-            <a href='#example-4'>Single image</a>
-          </li>
-          <li>
-            <a href='#example-5'>Art direction</a>
-          </li>
-          <li>
-            <a href='#example-6'>Exact image sizes</a>
-          </li>
-          <li>
-            <a href='#example-7'>PNG images</a>
-          </li>
-          <li>
-            <a href='#example-8'>Other query params and component props</a>
-          </li>
-        </ol>
+      <div className='example-inner tocs'>
+        <div>
+          <h3 className='toc-heading'>Next.js plugin for embedding optimized images.</h3>
+          <ul className='toc'>
+            <li>
+              <strong>import</strong> png/jpg images
+            </li>
+            <li>
+              <strong>output</strong> to webp format
+            </li>
+            <li>
+              <strong>resize</strong> to multiple screen sizes and densities
+            </li>
+            <li>
+              <strong>optimize</strong> webp and fallback images using sharp
+            </li>
+            <li>
+              <strong>lazy load</strong> in modern browsers with prop forwarding (loading="lazy")
+            </li>
+            <li>
+              <strong>prevent layout shift</strong> with automatic width/height attributes
+            </li>
+            <li>
+              <strong>streamlined usage</strong>
+              {` with the built in <Picture /> component`}
+            </li>
+            <li>
+              <strong>art direction</strong> with different images for different breakpoints
+            </li>
+            <li>
+              <strong>fast</strong> deployment and development workflow using persistent cache
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 className='toc-heading'>Examples</h3>
+          <ol className='toc'>
+            <li>
+              <a href='#example-1'>One size per breakpoint</a>
+            </li>
+            <li>
+              <a href='#example-2'>Override breakpoints</a>
+            </li>
+            <li>
+              <a href='#example-3'>Override sizes attribute</a>
+            </li>
+            <li>
+              <a href='#example-4'>Single image</a>
+            </li>
+            <li>
+              <a href='#example-5'>Art direction</a>
+            </li>
+            <li>
+              <a href='#example-6'>Exact image sizes</a>
+            </li>
+            <li>
+              <a href='#example-7'>PNG images</a>
+            </li>
+            <li>
+              <a href='#example-8'>Other query params and component props</a>
+            </li>
+          </ol>
+        </div>
       </div>
     </div>
 
@@ -327,8 +363,31 @@ export default () => (
         font-size: 2rem;
       }
 
+      .tocs {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (min-width: 768px) {
+        .tocs {
+          flex-direction: row;
+        }
+      }
+
+      .tocs > div:first-child {
+        flex: 1.5;
+      }
+
+      .tocs > div:last-child {
+        flex: 1;
+      }
+
+      .toc-heading {
+      }
+
       .toc {
         padding: 24px;
+        padding-top: 0;
       }
 
       .example {
