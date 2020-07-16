@@ -34,7 +34,7 @@ By default Next.js or Webpack doesn't help you much with optimizing images. This
 In short, it takes the following:
 
 ```js
-<Picture src={require('./images/jelly.jpg?sizes=375,800')} alt='Jelly fish' />
+<Picture src={require('./images/jelly.jpg?sizes=375,800')} alt='Jellyfish' />
 ```
 
 Imports, resizes, optimizes, caches (persistently in the git repo) and outputs the following HTML:
@@ -72,7 +72,7 @@ Imports, resizes, optimizes, caches (persistently in the git repo) and outputs t
     "
     width="375"
     height="250"
-    alt="Jelly fish"
+    alt="Jellyfish"
   />
 </picture>
 ```
