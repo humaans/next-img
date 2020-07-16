@@ -32,7 +32,7 @@ export default () => (
             <a href='#example-7'>PNG images</a>
           </li>
           <li>
-            <a href='#example-8'>Other query params and props</a>
+            <a href='#example-8'>Other query params and component props</a>
           </li>
         </ol>
       </div>
@@ -40,7 +40,7 @@ export default () => (
 
     <div className='example example-1' id='example-1'>
       <div className='example-inner'>
-        <h1>Example 1</h1>
+        <aside>Example 1</aside>
         <h2>One size per breakpoint</h2>
         <p>
           The most typical usage. Provide one image per each device size you're targeting. For example, if you're
@@ -66,7 +66,7 @@ export default () => (
 
     <div className='example example-2' id='example-2'>
       <div className='example-inner'>
-        <h1>Example 2</h1>
+        <aside>Example 2</aside>
         <h2>Override breakpoints</h2>
         <p>
           You can specify a different set of breakpoints for an individual image. Let's say your preconfigured
@@ -94,7 +94,7 @@ export default () => (
 
     <div className='example example-3' id='example-3'>
       <div className='example-inner'>
-        <h1>Example 3</h1>
+        <aside>Example 3</aside>
         <h2>Override sizes attribute</h2>
         <p>
           Use the{' '}
@@ -136,7 +136,7 @@ export default () => (
 
     <div className='example example-4' id='example-4'>
       <div className='example-inner'>
-        <h1>Example 4</h1>
+        <aside>Example 4</aside>
         <h2>Single image</h2>
         <p>
           You can leave out the <code>sizes</code> query param altogether. That will load the original image size across
@@ -161,7 +161,7 @@ export default () => (
 
     <div className='example example-5' id='example-5'>
       <div className='example-inner'>
-        <h1>Example 5</h1>
+        <aside>Example 5</aside>
         <h2>Art direction</h2>
         <p>
           You can pass an array of images to the src. This way you can show an entirely different image at each
@@ -222,7 +222,7 @@ export default () => (
 
     <div className='example example-6' id='example-6'>
       <div className='example-inner'>
-        <h1>Example 6</h1>
+        <aside>Example 6</aside>
         <h2>Exact image sizes</h2>
         <p>
           By default, every image gets translated to 1x and 2x densities. That is, if you display the image in the
@@ -250,7 +250,7 @@ export default () => (
 
     <div className='example example-7' id='example-7'>
       <div className='example-inner'>
-        <h1>Example 6</h1>
+        <aside>Example 7</aside>
         <h2>PNG images</h2>
         <p>PNG images are supported as well. In this case, a lossless webp is outputted by default.</p>
 
@@ -271,8 +271,8 @@ export default () => (
 
     <div className='example example-8' id='example-8'>
       <div className='example-inner'>
-        <h1>Example 7</h1>
-        <h2>Other query params and props</h2>
+        <aside>Example 8</aside>
+        <h2>Other query params and component props</h2>
         <p>
           You can control image quality and densities in addition to specifying the sizes when importing an image. See{' '}
           <a href='https://github.com/humaans/next-img/'>README</a> for full details. You can pass extra props to the{' '}
@@ -285,6 +285,7 @@ export default () => (
   src={require('../images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10')}
   className='coffee'
   data-demo='coffee'
+  alt='Three cups of coffee with different amounts of milk'
   loading='lazy'
 />`}
         </Code>
@@ -295,6 +296,7 @@ export default () => (
               src={require('../images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10')}
               className='coffee'
               data-demo='coffee'
+              alt='Three cups of coffee with different amounts of milk'
               loading='lazy'
             />,
           )}
@@ -305,6 +307,7 @@ export default () => (
               src={require('../images/coffee7.jpg?sizes=375,860&jpeg[quality]=10&jpeg[webp][quality]=10')}
               className='coffee'
               data-demo='coffee'
+              alt='Three cups of coffee with different amounts of milk'
               loading='lazy'
             />
           </div>
@@ -313,6 +316,17 @@ export default () => (
     </div>
 
     <style jsx>{`
+      aside {
+        margin-top: 3rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin-top: 1rem;
+        font-size: 2rem;
+      }
+
       .toc {
         padding: 24px;
       }

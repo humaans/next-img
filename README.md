@@ -8,9 +8,11 @@
 Features
 
 - **import** png/jpg images
+- **output** to webp format
 - **resize** to multiple screen sizes and densities
-- **modernize** by converting to webp format
-- **optimize** file sizes using `sharp`
+- **optimize** webp and fallback images using `sharp`
+- **lazy load** in modern browsers with prop forwarding (`loading="lazy"`)
+- **prevent layout shift** with automatic width/height attributes
 - **streamlined usage** with the built in `<Picture />` component
 - **art direction** with different images for different breakpoints
 - **fast** deployment and development workflow using persistent cache
@@ -32,7 +34,7 @@ By default Next.js or Webpack doesn't help you much with optimizing images. This
 In short, it takes the following:
 
 ```js
-<Picture src={require('./images/jelly.jpg?sizes=375,800')} />
+<Picture src={require('./images/jelly.jpg?sizes=375,800')} alt='Jelly fish' />
 ```
 
 Imports, resizes, optimizes, caches (persistently in the git repo) and outputs the following HTML:
@@ -68,6 +70,9 @@ Imports, resizes, optimizes, caches (persistently in the git repo) and outputs t
       /_next/static/images/jelly-800@1x-090d866969aba9b237e71ee52512a7c4.jpg  800w,
       /_next/static/images/jelly-800@2x-33f1639cadf8c4c5f19eb5c19e20a67d.jpg 1600w
     "
+    width="375"
+    height="250"
+    alt="Jelly fish"
   />
 </picture>
 ```
