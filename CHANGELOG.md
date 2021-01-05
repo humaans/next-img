@@ -1,3 +1,8 @@
+## 0.3.2
+
+- Fix: make sure the <Picture /> component does not crash if src is empty
+- Fix: remove the experimental config warning (Issue #2)
+
 ## 0.3.1
 
 - Fix boolean option parsing from the loader query, e.g. it is now possible to set `?png[webp][lossless]=false`.
