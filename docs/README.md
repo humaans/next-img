@@ -1,6 +1,6 @@
-# next-optimized-images Example
+# next-img-docs
 
-This example showcases a basic setup of `next-optimized-images`.
+This example showcases `next-img` usage.
 
 ## Setup
 

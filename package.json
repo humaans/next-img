@@ -2,50 +2,53 @@
   "name": "next-img",
   "version": "0.3.2",
   "description": "",
-  "main": "dist/react-components/index.js",
   "bin": {
     "next-img": "bin/next-img"
   },
   "files": [
     "bin/**/*",
-    "dist/**/*",
     "lib/**/*",
     "plugin.js",
-    "loader.js"
+    "loader.js",
+    "package.json",
+    "package-lock.json",
+    "CHANGELOG.md",
+    "README.md"
   ],
   "scripts": {
-    "test": "healthier",
-    "version": "npm run build",
-    "build": "babel lib/react-components --out-dir dist/react-components",
-    "watch": "babel lib/react-components --out-dir dist/react-components --watch",
+    "test": "healthier && ava",
     "release": "np"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "debug": "^4.1.1",
-    "deepmerge": "^4.2.2",
-    "del": "^5.1.0",
-    "loader-utils": "^2.0.0",
-    "mkdirp": "^1.0.4",
-    "ora": "^4.0.4",
-    "p-queue": "^6.4.0",
-    "qs": "^6.9.4",
-    "sharp": "^0.25.3"
+    "debug": "^4.3.4",
+    "deepmerge": "^4.3.1",
+    "kleur": "^4.1.5",
+    "loader-utils": "^3.2.1",
+    "mkdirp": "^3.0.0",
+    "qs": "^6.11.1",
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-transform-react-jsx": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "ava": "^3.8.2",
-    "healthier": "^3.3.0",
-    "np": "^6.2.3",
-    "prettier": "^2.0.5"
+    "@swc-node/register": "^1.6.4",
+    "ava": "^5.2.0",
+    "healthier": "^6.3.0",
+    "prettier": "^2.8.7",
+    "react-test-renderer": "^18.2.0",
+    "rimraf": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "ava": {
     "files": [
       "./test/**/*.test.js"
+    ],
+    "require": [
+      "./test/setup",
+      "@swc-node/register"
     ]
   }
 }

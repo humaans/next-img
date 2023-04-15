@@ -90,18 +90,13 @@ npm install next-img
 Add the plugin to your `next.config.js`:
 
 ```js
-const withPlugins = require('next-compose-plugins')
-const nextImg = require('next-img/plugin')
+const withImg = require('next-img/plugin')
 
-module.exports = withPlugins([
-  [
-    nextImg,
-    {
-      // specify the default breakpoints
-      breakpoints: [768],
-    },
-  ]
-])
+module.exports = withImg({
+  nextImg: {
+    breakpoints: [768],
+  },
+})
 ```
 
 In your application, import the images and embed using the `<Picture />` component:
@@ -144,8 +139,26 @@ Default plugin configuration options:
 
 ```js
 {
+  // global settings for images, can be overriden per image
   breakpoints: [768],
   densities: ['1x', '2x'],
+
+  // output image quality configuration
+  jpeg: {
+    quality: 80,
+    webp: {
+      quality: 90,
+      reductionEffort: 6,
+    },
+  },
+
+  png: {
+    quality: 100,
+    webp: {
+      reductionEffort: 6,
+      lossless: true,
+    },
+  },
 
   // the directory within Next.js build output
   imagesDir: 'images',
@@ -163,24 +176,7 @@ Default plugin configuration options:
   persistentCacheDir: 'resources',
 
   // this directory within .next is used in case persistent cache is turned off
-  cacheDir: path.join('cache', 'next-img'),
-
-  // image quality configuration
-  jpeg: {
-    quality: 80,
-    webp: {
-      quality: 90,
-      reductionEffort: 6,
-    },
-  },
-
-  png: {
-    quality: 100,
-    webp: {
-      reductionEffort: 6,
-      lossless: true,
-    },
-  },
+  cacheDir: path.join('cache', 'next-img')
 }
 ```
 
@@ -276,17 +272,12 @@ node ../bin/next-img
 
 ## Future
 
-Short term roadmap:
-
-#### V1:
+Roadmap
 
 - [x] Allow different config for `jpg->webp` and `png->webp` conversions
 - [ ] Allow turning `webp/jpg/png` output off
 - [ ] Add `?raw` query support that doesn’t process the image in any way
-- [ ] Remove the need for `next-img` command by plugging directly into `next build` via webpack plugin
-
-#### V2:
-
+- [ ] Remove the need for `next-img` command by plugging directly into `next build`
 - [ ] Add support for css images, in addition to the html images
 - [ ] Inline small images
 
@@ -295,7 +286,7 @@ And some ideas for where this project could be taken in the future:
 - Allow adding `imagemin` optimisation plugins into the pipeline via config. This way users can control how to optimise their images more granuarly.
 - Translate relative sizes `?sizes=100vw,50vw,900px` to pixels based on the breakpoint configuration, this would allow dynamic kind of imports that depend on your design system and relative sizing of images, e.g. if css says "50vw", you will not need to do that calculation manually.
 - Debug mode that prints image sizes into images themselves, so you can see what's shown when right in the browser inside images (or overlaying them using js at runtime).
-- Babel parser that analyses code for images to avoid the need to `require()`.
-- Optimize file read/write/hash operations to the maximum for improved performance.
-- A puppeteer script to render the website in all predefined breakpoints and automatically analyses all image sizes required.
+- Source code parser that analyses code for images to avoid the need to `require()` them.
+- Optimize file read/write/hash operations for improved performance.
+- A puppeteer script to render the website in all predefined breakpoints and automatically analyse all image sizes required.
 - Add support for gif and webp as source images.
