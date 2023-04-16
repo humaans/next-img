@@ -8,10 +8,9 @@
   "files": [
     "bin/**/*",
     "lib/**/*",
+    "index.js",
     "plugin.js",
     "loader.js",
-    "package.json",
-    "package-lock.json",
     "CHANGELOG.md",
     "README.md"
   ],
