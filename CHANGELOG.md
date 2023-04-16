@@ -1,3 +1,10 @@
+## 0.4.0
+
+- Add support for Next.js 13
+- Upgrade all dependencies
+- Remove the build step
+- Add tests
+
 ## 0.3.2
 
 - Fix: make sure the <Picture /> component does not crash if src is empty

@@ -1,5 +1,5 @@
 {
-  "name": "next-img-example",
+  "name": "next-img-docs",
   "scripts": {
     "dev": "next",
     "build": "next build && next export && touch out/.nojekyll",
@@ -8,16 +8,13 @@
     "release:docs": "npm run clean && npm run build && gh-pages -d out -t"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.5",
-    "@next/mdx": "^9.4.4",
-    "js-beautify": "^1.11.0",
-    "next": "^9.3.5",
-    "next-compose-plugins": "^2.2.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-syntax-highlighter": "^12.2.1"
+    "js-beautify": "^1.14.7",
+    "next": "^13.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
-    "gh-pages": "^3.0.0"
+    "gh-pages": "^5.0.0"
   }
 }
