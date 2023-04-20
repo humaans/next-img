@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Fix Picture.js to use CommonJS since Next.js does not traspile node_modules
+
 ## 0.4.0
 
 - Add support for Next.js 13
