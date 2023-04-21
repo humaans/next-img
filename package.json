@@ -27,6 +27,7 @@
     "loader-utils": "^3.2.1",
     "mkdirp": "^3.0.0",
     "qs": "^6.11.1",
+    "rimraf": "^5.0.0",
     "sharp": "^0.32.0"
   },
   "devDependencies": {
@@ -34,8 +35,7 @@
     "ava": "^5.2.0",
     "healthier": "^6.3.0",
     "prettier": "^2.8.7",
-    "react-test-renderer": "^18.2.0",
-    "rimraf": "^5.0.0"
+    "react-test-renderer": "^18.2.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
