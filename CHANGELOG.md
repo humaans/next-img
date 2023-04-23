@@ -1,3 +1,7 @@
+## 0.4.2
+
+- Fix `next-img` cli to work with Next.js 13 - account for webpack's caching bahevior.
+
 ## 0.4.1
 
 - Fix Picture.js to use CommonJS since Next.js does not traspile node_modules
