@@ -115,6 +115,45 @@ test('makeSizes', t => {
     makeSizes({ sizes: [200, 800, 1200] }, null, breakpoints),
     '(max-width: 768px) 200px, (max-width: 1024px) 800px, 1200px',
   )
+
+  breakpoints = ['(orientation: landscape)']
+  t.is(makeSizes({ sizes: [200, 800] }, null, breakpoints), '(orientation: landscape) 200px, 800px')
+
+  breakpoints = [768, '(orientation: landscape)']
+  t.is(
+    makeSizes({ sizes: [200, 800, 1200] }, null, breakpoints),
+    '(max-width: 768px) 200px, (orientation: landscape) 800px, 1200px',
+  )
+})
+
+test('media-query breakpoints', t => {
+  const landscape = {
+    src: 'landscape.jpg',
+    type: 'image/jpeg',
+    srcSet: 'landscape.jpg 800w',
+    images: [{ width: 800, height: 450 }],
+    name: 'landscape.jpg',
+    sizes: [800],
+    breakpoints: [],
+  }
+  const fallback = {
+    src: 'fallback.jpg',
+    type: 'image/jpeg',
+    srcSet: 'fallback.jpg 800w',
+    images: [{ width: 800, height: 800 }],
+    name: 'fallback.jpg',
+    sizes: [800],
+    breakpoints: [],
+  }
+
+  t.is(
+    renderToStaticMarkup(<Picture src={[landscape, fallback]} breakpoints={['(orientation: landscape)']} />),
+    '<picture>' +
+      '<source type="image/jpeg" srcSet="landscape.jpg 800w" sizes="800px" media="(orientation: landscape)"/>' +
+      '<source type="image/jpeg" srcSet="fallback.jpg 800w" sizes="800px"/>' +
+      '<img src="landscape.jpg" srcSet="landscape.jpg 800w"/>' +
+      '</picture>',
+  )
 })
 
 // test cases
