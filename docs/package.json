@@ -8,8 +8,8 @@
     "release:docs": "npm run clean && npm run build && gh-pages -d out -t"
   },
   "dependencies": {
-    "js-beautify": "^1.14.7",
-    "next": "^13.3.0",
+    "js-beautify": "^1.14.9",
+    "next": "^13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-syntax-highlighter": "^15.5.0"
