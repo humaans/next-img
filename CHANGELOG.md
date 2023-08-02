@@ -1,3 +1,7 @@
+## 0.4.3
+
+- Upgrade all dependencies to address security alerts.
+
 ## 0.4.2
 
 - Fix `next-img` cli to work with Next.js 13 - account for webpack's caching bahevior.
