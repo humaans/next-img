@@ -4,6 +4,7 @@ const withNextImg = require('../plugin')
 const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = withNextImg({
+  output: 'export',
   assetPrefix: isProduction ? '/next-img' : '',
   webpack: (config, options) => {
     config.resolve.alias.react = path.join(__dirname, 'node_modules', 'react')

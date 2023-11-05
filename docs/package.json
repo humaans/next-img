@@ -2,7 +2,7 @@
   "name": "next-img-docs",
   "scripts": {
     "dev": "next",
-    "build": "next build && next export && touch out/.nojekyll",
+    "build": "next build && touch out/.nojekyll",
     "clean": "rm -rf .next && rm -rf out",
     "start": "next start",
     "release:docs": "npm run clean && npm run build && gh-pages -d out -t"
