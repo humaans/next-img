@@ -1,6 +1,6 @@
 {
   "name": "next-img",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "",
   "bin": {
     "next-img": "bin/next-img"
