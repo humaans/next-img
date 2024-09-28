@@ -1,3 +1,7 @@
+## 0.4.5
+
+- Upgrade all dependencies to address security alerts.
+
 ## 0.4.4
 
 - Upgrade all dependencies to address security alerts.
