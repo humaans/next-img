@@ -8,13 +8,13 @@
     "release:docs": "npm run clean && npm run build && gh-pages -d out -t"
   },
   "dependencies": {
-    "js-beautify": "^1.15.1",
-    "next": "^15.1.3",
+    "js-beautify": "^1.15.4",
+    "next": "^15.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.6.1"
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.3.0"
   }
 }
