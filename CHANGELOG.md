@@ -1,3 +1,7 @@
+## 0.5.0
+
+- Update to support the latest version of Next.js
+
 ## 0.4.7
 
 - Upgrade all dependencies to address security alerts.
