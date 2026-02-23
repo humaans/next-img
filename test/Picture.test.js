@@ -1,11 +1,10 @@
-const React = require('react')
+const React = require('react') // eslint-disable-line no-unused-vars -- needed for JSX transform
 const test = require('ava')
-const TestRenderer = require('react-test-renderer')
+const { renderToStaticMarkup } = require('react-dom/server')
 const { Picture, makeSizes } = require('..')
 
 test('<Picture />', t => {
-  const res = TestRenderer.create(<Picture />)
-  t.is(res.toJSON(), null)
+  t.is(renderToStaticMarkup(<Picture />), '')
 })
 
 test('<Picture src />', t => {
@@ -87,44 +86,18 @@ test('<Picture src />', t => {
     breakpoints: [768],
   }
 
-  const res = TestRenderer.create(<Picture src={img} />)
-  t.deepEqual(res.toJSON(), {
-    type: 'picture',
-    props: {},
-    children: [
-      {
-        type: 'source',
-        props: {
-          type: 'image/webp',
-          srcSet:
-            '/_next/static/images/coffee1-375@1x-f1dc5dc288aa4461.webp 375w, /_next/static/images/coffee1-375@2x-4bb30d5cb8b57f76.webp 750w, /_next/static/images/coffee1-860@1x-e5df48f42a326173.webp 860w, /_next/static/images/coffee1-860@2x-cc59476c8e22c394.webp 1720w',
-          sizes: '(max-width: 768px) 375px, 860px',
-        },
-        children: null,
-      },
-      {
-        type: 'source',
-        props: {
-          type: 'image/jpeg',
-          srcSet:
-            '/_next/static/images/coffee1-375@1x-eef43d972bb2cea9.jpg 375w, /_next/static/images/coffee1-375@2x-afaa0eef3fd9d620.jpg 750w, /_next/static/images/coffee1-860@1x-5fd4aa9720369a82.jpg 860w, /_next/static/images/coffee1-860@2x-b4530e6ddf963a73.jpg 1720w',
-          sizes: '(max-width: 768px) 375px, 860px',
-        },
-        children: null,
-      },
-      {
-        type: 'img',
-        props: {
-          src: '/_next/static/images/coffee1-375@1x-eef43d972bb2cea9.jpg',
-          srcSet:
-            '/_next/static/images/coffee1-375@1x-eef43d972bb2cea9.jpg 375w, /_next/static/images/coffee1-375@2x-afaa0eef3fd9d620.jpg 750w, /_next/static/images/coffee1-860@1x-5fd4aa9720369a82.jpg 860w, /_next/static/images/coffee1-860@2x-b4530e6ddf963a73.jpg 1720w',
-          width: 375,
-          height: 250,
-        },
-        children: null,
-      },
-    ],
-  })
+  const webpSrcSet = '/_next/static/images/coffee1-375@1x-f1dc5dc288aa4461.webp 375w, /_next/static/images/coffee1-375@2x-4bb30d5cb8b57f76.webp 750w, /_next/static/images/coffee1-860@1x-e5df48f42a326173.webp 860w, /_next/static/images/coffee1-860@2x-cc59476c8e22c394.webp 1720w'
+  const jpegSrcSet = '/_next/static/images/coffee1-375@1x-eef43d972bb2cea9.jpg 375w, /_next/static/images/coffee1-375@2x-afaa0eef3fd9d620.jpg 750w, /_next/static/images/coffee1-860@1x-5fd4aa9720369a82.jpg 860w, /_next/static/images/coffee1-860@2x-b4530e6ddf963a73.jpg 1720w'
+  const sizes = '(max-width: 768px) 375px, 860px'
+
+  t.is(
+    renderToStaticMarkup(<Picture src={img} />),
+    '<picture>' +
+      `<source type="image/webp" srcSet="${webpSrcSet}" sizes="${sizes}"/>` +
+      `<source type="image/jpeg" srcSet="${jpegSrcSet}" sizes="${sizes}"/>` +
+      `<img src="${img.src}" srcSet="${jpegSrcSet}" width="375" height="250"/>` +
+    '</picture>',
+  )
 })
 
 test('makeSizes', t => {
