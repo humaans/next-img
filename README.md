@@ -7,15 +7,17 @@
 
 Features
 
-- **import** png/jpg images
-- **output** to webp format
-- **resize** to multiple screen sizes and densities
-- **optimize** webp and fallback images using `sharp`
+- **no CDN required** — images are optimized at build time, not at runtime
+- **static export** — works with `output: 'export'`, no server needed
+- **import** png/jpg images with query params to control sizes and densities
+- **output** to webp format with optimized fallbacks
+- **resize** to multiple screen sizes and densities in a single import
+- **optimize** using `sharp` at build time with results cached in your repo
 - **lazy load** in modern browsers with prop forwarding (`loading="lazy"`)
 - **prevent layout shift** with automatic width/height attributes
 - **streamlined usage** with the built in `<Picture />` component
 - **art direction** with different images for different breakpoints
-- **fast** deployment and development workflow using persistent cache
+- **fast** builds using a persistent cache that can be checked into version control
 
 By default **next-img** is configured to use:
 
