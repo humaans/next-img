@@ -1,6 +1,6 @@
 ## 0.6.0
 
-- Require React 19 and support Next.js 16
+- Add support for React 19 and Next.js 16 (React 18 still supported)
 - Replace ESLint/Healthier with OxLint
 - Replace react-test-renderer with react-dom/server in tests
 - Upgrade dependencies (sharp, qs, rimraf, prettier, ava)
