@@ -260,44 +260,28 @@ Yes, you could probably get ~10%-20% or more compression if you pass the `jpg/pn
 
 ## Development
 
-To develop this project, you'll need to run a watcher for the `<Picture />` component:
-
 ```
 npm install
-npm run watch
 ```
 
-You can use example as the playground:
+You can use the docs site as the playground:
 
 ```
-cd example
+cd docs
 npm install
-next
+npm start
 ```
 
-To execute the `next-img` command in the example dir:
+To rebuild the persistent image cache:
 
 ```
-node ../bin/next-img
+npx next-img
 ```
 
-## Future
+## Ideas
 
-Roadmap
-
-- [x] Allow different config for `jpg->webp` and `png->webp` conversions
-- [ ] Allow turning `webp/jpg/png` output off
-- [ ] Add `?raw` query support that doesn’t process the image in any way
-- [ ] Remove the need for `next-img` command by plugging directly into `next build`
-- [ ] Add support for css images, in addition to the html images
-- [ ] Inline small images
-
-And some ideas for where this project could be taken in the future:
-
-- Allow adding `imagemin` optimisation plugins into the pipeline via config. This way users can control how to optimise their images more granuarly.
-- Translate relative sizes `?sizes=100vw,50vw,900px` to pixels based on the breakpoint configuration, this would allow dynamic kind of imports that depend on your design system and relative sizing of images, e.g. if css says "50vw", you will not need to do that calculation manually.
-- Debug mode that prints image sizes into images themselves, so you can see what's shown when right in the browser inside images (or overlaying them using js at runtime).
-- Source code parser that analyses code for images to avoid the need to `require()` them.
-- Optimize file read/write/hash operations for improved performance.
-- A puppeteer script to render the website in all predefined breakpoints and automatically analyse all image sizes required.
-- Add support for gif and webp as source images.
+- Allow turning `webp/jpg/png` output off
+- Add `?raw` query support that doesn’t process the image in any way
+- Inline small images as base64
+- Add support for gif and webp as source images
+- Translate relative sizes `?sizes=100vw,50vw,900px` to pixels based on breakpoint configuration, so image sizing can follow your design system automatically
