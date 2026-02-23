@@ -237,6 +237,17 @@ For example, with breakpoints `[375, 768]` and `src=[img1, img2, img3]` the `<Pi
 </picture>
 ```
 
+## Turbopack Compatibility
+
+This plugin currently requires **webpack** and is not compatible with Turbopack. If you're using Next.js 16+ (which defaults to Turbopack), you'll need to opt into webpack mode:
+
+```
+next dev --webpack
+next build --webpack
+```
+
+The core limitation is that Turbopack does not support the [`emitFile`](https://github.com/vercel/next.js/issues/78592) loader API, which next-img relies on to output processed images into the build. Until Turbopack adds support for this API, webpack mode is required.
+
 ## FAQ
 
 **Do I have to use the `<Picture />` component?**
