@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "react/no-unknown-property": "off"
+  }
+}
