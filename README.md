@@ -31,12 +31,14 @@ Developed and used by [Humaans](https://humaans.io/).
 
 ## Motivation
 
-By default Next.js or Webpack doesn't help you much with optimizing images. This means custom configuration or scripting, processing images by hand, using an image CDN or not optimising images at all. **next-img** provides and alternative streamlined approach for adding images to your Next.js projects. It combines a Next.js plugin, a custom webpack loader and a React component to make serving images in an optimal fashion in a way that is almost as easy as typing `<img src='foo.png' />`.
+Next.js ships with `next/image` for runtime image optimization, but it requires a server or an image CDN — it doesn't work with `output: 'export'` (static builds). **next-img** takes a different approach: images are resized and optimized at build time using `sharp`, then output as static files. No server, no CDN, no runtime cost. It combines a Next.js plugin, a custom webpack loader and a React component to make serving optimized images almost as easy as typing `<img src='foo.png' />`.
 
 In short, it takes the following:
 
 ```js
-<Picture src={require('./images/jelly.jpg?sizes=375,800')} alt='Jellyfish' />
+import jelly from './images/jelly.jpg?sizes=375,800'
+
+<Picture src={jelly} alt='Jellyfish' />
 ```
 
 Imports, resizes, optimizes, caches (persistently in the git repo) and outputs the following HTML:
@@ -107,15 +109,7 @@ In your application, import the images and embed using the `<Picture />` compone
 import { Picture } from 'next-img'
 import jelly from './images/jelly.jpg?sizes=375,800'
 
-export default () => <Picture src={jelly} />
-```
-
-Or inline:
-
-```js
-import { Picture } from 'next-img'
-
-export default () => <Picture src={require('./images/jelly.jpg?sizes=375,800')} />
+export default () => <Picture src={jelly} alt='Jellyfish' />
 ```
 
 This particular example will generate the following images:
@@ -207,7 +201,7 @@ import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality
 
 `next-img` comes with a React component making embedding images easier.
 
-Here are the props this component access:
+Here are the props this component accepts:
 
 - **src** the imported image, or an array of imported images.
 - **breakpoints** - a list of breakpoints to override the global configuration.
@@ -232,7 +226,7 @@ For example, with breakpoints `[375, 768]` and `src=[img1, img2, img3]` the `<Pi
 
 ```html
 <picture>
-  <source media="(max-width: 480px)" sizes="{{img1 width}}" />
+  <source media="(max-width: 375px)" sizes="{{img1 width}}" />
   <source media="(max-width: 768px)" sizes="{{img2 width}}" />
   <source sizes="{{img3 width}}" />
   <img ... />
@@ -258,7 +252,7 @@ The Picture component is optional. You can handle the imported image object howe
 
 **Couldn't the images be optimized further?**
 
-Yes, you could probably get ~10%-20% or more compression if you pass the `jpg/png` through ImageOptim or other tools. Thing is, since this plugin outputs an already well optimized webp and you'll be serving webp to most modern browsers, that removes the need to squeeze that extra file size for `jpg/png` since they are the _fallback_ images. However, there might be use cases where custom compression algorhithms are needeed and we might add support for arbitrary transformations in this plugin in the future.
+Yes, you could probably get ~10%-20% or more compression if you pass the `jpg/png` through ImageOptim or other tools. Thing is, since this plugin outputs an already well optimized webp and you'll be serving webp to most modern browsers, that removes the need to squeeze that extra file size for `jpg/png` since they are the _fallback_ images. However, there might be use cases where custom compression algorithms are needed and we might add support for arbitrary transformations in this plugin in the future.
 
 ## Development
 
@@ -280,7 +274,7 @@ To rebuild the persistent image cache:
 npx next-img
 ```
 
-## Ideas
+## Roadmap
 
 - Allow turning `webp/jpg/png` output off
 - Add `?raw` query support that doesn’t process the image in any way
