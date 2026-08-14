@@ -1,5 +1,5 @@
 const React = require('react') // eslint-disable-line no-unused-vars -- needed for JSX transform
-const test = require('ava')
+const { default: test } = require('ava')
 const { renderToStaticMarkup } = require('react-dom/server')
 const { Picture, makeSizes } = require('..')
 

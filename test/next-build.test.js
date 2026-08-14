@@ -1,7 +1,7 @@
 const fs = require('fs')
 const os = require('os')
 const path = require('path')
-const test = require('ava')
+const { default: test } = require('ava')
 const createNextBuild = require('../lib/next-build')
 
 function createNextFixture(t, { bundler } = {}) {
