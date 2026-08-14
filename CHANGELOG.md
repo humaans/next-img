@@ -3,8 +3,9 @@
 - Add support for React 19 and Next.js 16 (React 18 still supported)
 - Fix `next-img` CLI hanging with Next.js 16.2 by explicitly using webpack
 - Replace ESLint/Healthier with OxLint
+- Replace Prettier with Oxfmt
 - Replace react-test-renderer with react-dom/server in tests
-- Upgrade dependencies (sharp, qs, rimraf, prettier, ava)
+- Upgrade dependencies (sharp, qs, rimraf, ava)
 
 ## 0.5.0
 

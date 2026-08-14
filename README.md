@@ -38,7 +38,7 @@ In short, it takes the following:
 ```js
 import jelly from './images/jelly.jpg?sizes=375,800'
 
-<Picture src={jelly} alt='Jellyfish' />
+;<Picture src={jelly} alt='Jellyfish' />
 ```
 
 Imports, resizes, optimizes, caches (persistently in the git repo) and outputs the following HTML:

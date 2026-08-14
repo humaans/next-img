@@ -86,8 +86,10 @@ test('<Picture src />', t => {
     breakpoints: [768],
   }
 
-  const webpSrcSet = '/_next/static/images/coffee1-375@1x-f1dc5dc288aa4461.webp 375w, /_next/static/images/coffee1-375@2x-4bb30d5cb8b57f76.webp 750w, /_next/static/images/coffee1-860@1x-e5df48f42a326173.webp 860w, /_next/static/images/coffee1-860@2x-cc59476c8e22c394.webp 1720w'
-  const jpegSrcSet = '/_next/static/images/coffee1-375@1x-eef43d972bb2cea9.jpg 375w, /_next/static/images/coffee1-375@2x-afaa0eef3fd9d620.jpg 750w, /_next/static/images/coffee1-860@1x-5fd4aa9720369a82.jpg 860w, /_next/static/images/coffee1-860@2x-b4530e6ddf963a73.jpg 1720w'
+  const webpSrcSet =
+    '/_next/static/images/coffee1-375@1x-f1dc5dc288aa4461.webp 375w, /_next/static/images/coffee1-375@2x-4bb30d5cb8b57f76.webp 750w, /_next/static/images/coffee1-860@1x-e5df48f42a326173.webp 860w, /_next/static/images/coffee1-860@2x-cc59476c8e22c394.webp 1720w'
+  const jpegSrcSet =
+    '/_next/static/images/coffee1-375@1x-eef43d972bb2cea9.jpg 375w, /_next/static/images/coffee1-375@2x-afaa0eef3fd9d620.jpg 750w, /_next/static/images/coffee1-860@1x-5fd4aa9720369a82.jpg 860w, /_next/static/images/coffee1-860@2x-b4530e6ddf963a73.jpg 1720w'
   const sizes = '(max-width: 768px) 375px, 860px'
 
   t.is(
@@ -96,7 +98,7 @@ test('<Picture src />', t => {
       `<source type="image/webp" srcSet="${webpSrcSet}" sizes="${sizes}"/>` +
       `<source type="image/jpeg" srcSet="${jpegSrcSet}" sizes="${sizes}"/>` +
       `<img src="${img.src}" srcSet="${jpegSrcSet}" width="375" height="250"/>` +
-    '</picture>',
+      '</picture>',
   )
 })
 
