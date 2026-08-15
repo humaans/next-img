@@ -19,12 +19,12 @@ function createNextFixture(t, { bundler } = {}) {
   return base
 }
 
-test('defaults to webpack when Next.js exposes its bundler API', t => {
+test('defaults to Turbopack when Next.js exposes its bundler API', t => {
   const base = createNextFixture(t, { bundler: { Turbopack: 0, Webpack: 1 } })
   const nextBuild = createNextBuild(base)
 
-  t.deepEqual(nextBuild('/app'), ['/app', undefined, undefined, undefined, undefined, undefined, undefined, 1])
-  t.deepEqual(nextBuild('/app', 'turbopack'), [
+  t.deepEqual(nextBuild('/app'), ['/app', undefined, undefined, undefined, undefined, undefined, undefined, 0])
+  t.deepEqual(nextBuild('/app', 'webpack'), [
     '/app',
     undefined,
     undefined,
@@ -32,7 +32,7 @@ test('defaults to webpack when Next.js exposes its bundler API', t => {
     undefined,
     undefined,
     undefined,
-    0,
+    1,
   ])
 })
 

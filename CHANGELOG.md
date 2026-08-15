@@ -5,7 +5,7 @@
 - Preserve build-time Sharp optimization, responsive candidates, WebP fallbacks, art direction, and static export without a CDN.
 - Add Next.js 16.3 integration fixtures for Turbopack and Webpack builds.
 - Make persistent-cache cleanup work when loaders execute in child processes.
-- Add `next-img --turbopack`; cleanup builds continue to use Webpack by default.
+- Use Turbopack for cleanup builds by default and add `next-img --webpack` for backwards compatibility.
 
 ## 0.6.0
 

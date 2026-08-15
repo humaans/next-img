@@ -125,10 +125,10 @@ The resized and optimized images will be saved to the `resources` directory in t
 npx next-img
 ```
 
-The cleanup build uses Webpack by default for backwards compatibility. Projects that build with Turbopack can exercise the same workflow with:
+The cleanup build uses Turbopack by default, matching current Next.js releases. Projects that still build with Webpack can use:
 
 ```
-npx next-img --turbopack
+npx next-img --webpack
 ```
 
 Now check in the `resources` directory to your source control to be reused later for development and production builds. You can turn this feature off by setting `persistentCache: false` in the plugin configuration, in which case the images will be only stored in a temporary cache inside `.next` directory.
