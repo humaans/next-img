@@ -67,6 +67,7 @@ test('configures the shared loader and generated assets for Turbopack', t => {
   t.notThrows(() => JSON.stringify(options))
   t.is(options.persistentCache, false)
   t.is(options.cacheMode, 'off')
+  t.is(options.cacheVersion, null)
   t.is(options.bundler, 'turbopack')
   t.regex(options.assetProxyDir, /\.next-img\/proxies$/)
   t.truthy(config.turbopack.rules['*.avif'])
@@ -74,11 +75,12 @@ test('configures the shared loader and generated assets for Turbopack', t => {
 
 test('supports explicit cache modes and legacy cache configuration', t => {
   const readOnly = withImg({
-    nextImg: { cache: { mode: 'read-only', dir: 'image-cache' } },
+    nextImg: { cache: { mode: 'read-only', dir: 'image-cache', version: 'photos-v2' } },
   })
   const readOnlyOptions = readOnly.turbopack.rules['*.jpg'][1].loaders[0].options
   t.is(readOnlyOptions.cacheMode, 'read-only')
   t.is(readOnlyOptions.persistentCacheDir, 'image-cache')
+  t.is(readOnlyOptions.cacheVersion, 'photos-v2')
   t.true(readOnlyOptions.failOnCacheMiss)
 
   const legacy = withImg({ nextImg: { persistentCacheDir: 'legacy-cache' } })
@@ -91,6 +93,12 @@ test('forwards global exact widths to the loader', t => {
   const config = withImg({ nextImg: { widths: [320, 640] } })
   const options = config.turbopack.rules['*.jpg'][1].loaders[0].options
   t.deepEqual(options.widths, [320, 640])
+})
+
+test('rejects invalid application cache versions', t => {
+  t.throws(() => withImg({ nextImg: { cache: { version: {} } } }), {
+    message: /cache.version must be a string, number, or null/,
+  })
 })
 
 test.serial('rejects cache rebuilds when caching is disabled', t => {

@@ -133,6 +133,8 @@ npx next-img --webpack
 
 You can check the `resources` directory into source control or preserve it in CI to reuse transformations. Set `cache.mode: 'read-only'` to make builds fail when a generated image is missing, or `cache.mode: 'off'` to keep the transformation cache inside `.next`. The former `persistentCache` and `persistentCacheDir` options remain supported as deprecated aliases.
 
+Persistent cache filenames are based on the source content, normalized transformation options, and next-img pipeline version—not the installed Sharp version. The cache stores the Sharp/libvips/codec fingerprint once in `.next-img-cache.json`. When that toolchain changes, ordinary builds keep using the reviewed cache and ask you to run `next-img`; the cleanup build then regenerates active entries in place and updates the manifest. Identical output bytes therefore create no Git diff. Use `cache.version` as an explicit application-level invalidation value for custom processing changes.
+
 Webpack stages generated files temporarily in the ignored `.next-img` directory. Turbopack instead resolves stable per-format proxy files created during configuration and loads the optimized bytes directly from the content-addressed cache. This avoids cold-build races in Turbopack's filesystem snapshot. `next-img` removes unused cached and staged files after a successful cleanup build.
 
 [View more usage examples](https://humaans.github.io/next-img/).
@@ -190,6 +192,8 @@ Default plugin configuration options:
   cache: {
     mode: 'read-write',
     dir: 'resources',
+    // optional manual invalidation value
+    version: null,
   },
 
   // this directory within .next is used in case persistent cache is turned off
@@ -305,7 +309,7 @@ next dev --webpack
 next build --webpack
 ```
 
-The shared loader auto-orients input images and writes optimized content-addressed files into the local cache. Cache keys include the complete transformation, Sharp version, and next-img pipeline version. Webpack emits staged asset imports; Turbopack emits stable proxy imports whose asset loader returns the cached optimized bytes. This keeps first-time cold builds reliable even though Turbopack snapshots resolvable paths before loaders finish. The browser downloads only the candidate selected by `<picture>`, `media`, `sizes`, and `srcset`.
+The shared loader auto-orients input images and writes optimized content-addressed files into the local cache. Persistent cache keys include the complete transformation, application cache version, and next-img pipeline version. Toolchain versions are tracked separately so dependency upgrades do not rename every committed cache entry. Webpack emits staged asset imports; Turbopack emits stable proxy imports whose asset loader returns the cached optimized bytes. This keeps first-time cold builds reliable even though Turbopack snapshots resolvable paths before loaders finish. The browser downloads only the candidate selected by `<picture>`, `media`, `sizes`, and `srcset`.
 
 Turbopack support requires a current Next.js release with custom loader rules and the `asset` module type. Next.js 16.3.1 is covered by the integration fixture in this repository.
 

@@ -7,6 +7,8 @@ declare namespace withImg {
   interface CacheConfig {
     mode?: CacheMode
     dir?: string
+    /** Manual cache invalidation value for transform changes outside next-img. */
+    version?: string | number | null
   }
 
   interface Config {

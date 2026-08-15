@@ -79,3 +79,58 @@ test('coalesces concurrent transformations for the same cache entry', async t =>
 
   t.is(transformations, 1)
 })
+
+test('refreshes toolchain changes in place during cleanup builds', async t => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-store-'))
+  const cacheDir = path.join(dir, 'resources')
+  const first = await createImage('red')
+  const second = await createImage('blue')
+  const warnings = []
+  let transformations = 0
+  const config = {
+    dir,
+    persistentCache: true,
+    persistentCacheDir: 'resources',
+    failOnCacheMiss: false,
+    toolchain: { sharp: 'one', vips: 'one' },
+    warn: warning => warnings.push(warning),
+  }
+  t.teardown(() => fs.rmSync(dir, { recursive: true, force: true }))
+
+  const create = data => async () => {
+    transformations += 1
+    return { data, width: 8, height: 8, format: 'jpeg' }
+  }
+
+  const firstSession = `first-${process.pid}-${Date.now()}`
+  await assetStore.cached(create(first), 'stable.jpg', { ...config, rebuildSession: firstSession }, 'processing')
+  await assetStore.gc(firstSession)
+
+  const changed = { ...config, toolchain: { sharp: 'two', vips: 'two' } }
+  const cached = await assetStore.cached(
+    create(second),
+    'stable.jpg',
+    { ...changed, rebuildSession: null },
+    'processing',
+  )
+  t.deepEqual(cached.data, first)
+  t.is(transformations, 1)
+  t.is(warnings.length, 1)
+
+  const secondSession = `second-${process.pid}-${Date.now()}`
+  await assetStore.cached(create(second), 'stable.jpg', { ...changed, rebuildSession: secondSession }, 'processing')
+  await assetStore.gc(secondSession)
+
+  t.is(transformations, 2)
+  t.deepEqual(fs.readFileSync(path.join(cacheDir, 'stable.jpg')), second)
+  t.deepEqual(fs.readdirSync(cacheDir).sort(), ['.next-img-cache.json', 'stable.jpg'])
+  t.deepEqual(JSON.parse(fs.readFileSync(path.join(cacheDir, '.next-img-cache.json'))).toolchain, changed.toolchain)
+})
+
+async function createImage(background) {
+  return sharp({
+    create: { width: 8, height: 8, channels: 3, background },
+  })
+    .jpeg()
+    .toBuffer()
+}

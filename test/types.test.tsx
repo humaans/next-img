@@ -14,6 +14,6 @@ declare const image: NextImgData
 withImg({
   nextImg: {
     formats: ['avif', 'webp'],
-    cache: { mode: 'read-only', dir: 'resources' },
+    cache: { mode: 'read-only', dir: 'resources', version: 'photos-v2' },
   },
 })
