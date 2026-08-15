@@ -13,7 +13,8 @@ Features
 - **output** to WebP and optional AVIF with optimized fallbacks
 - **resize** to multiple screen sizes and densities in a single import
 - **optimize** using `sharp` at build time with results cached in your repo
-- **browser-native loading hints** with `priority`, `loading`, `decoding`, and `fetchPriority`
+- **real responsive-image preloads** in the document head, plus `priority`, `loading`, `decoding`, and `fetchPriority` hints
+- **oversized-import guardrails** when large images are imported without responsive widths
 - **prevent layout shift** with automatic width/height attributes
 - **streamlined usage** with the built in `<Picture />` component
 - **art direction** with different images for different breakpoints
@@ -154,6 +155,8 @@ Default plugin configuration options:
   placeholderSize: 16,
   // turn unknown import-option warnings into build errors
   strict: false,
+  // warn when a bare import exceeds this intrinsic width or height
+  maxBareImportSize: 2048,
 
   // output image quality configuration
   jpeg: {
@@ -233,6 +236,8 @@ import img6 from './images/img.jpg?widths=375,750,1200&formats=avif,webp&placeho
 
 Known import options are validated strictly. Unknown names produce actionable warnings instead of being silently ignored; set `nextImg.strict: true` to turn those warnings into build errors. Invalid widths and incompatible combinations always fail the build.
 
+Bare imports intentionally keep their intrinsic dimensions. When an image is wider or taller than `maxBareImportSize`—2048px by default—next-img warns unless the import or global configuration provides `sizes` or `widths`. Strict mode promotes this warning to a build error. Increase the limit for unusually large intentional assets, or set `maxBareImportSize: false` to disable the check.
+
 ## Picture Props
 
 `next-img` comes with a React component making embedding images easier.
@@ -244,6 +249,7 @@ Here are the props this component accepts:
 - **breakpoints** - a list of breakpoints to override the global configuration. Each breakpoint can be a pixel width, such as `768`, or a complete media condition, such as `'(orientation: landscape)'`.
 - **sizes** - a custom [html sizes attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#How_do_you_create_responsive_images), by default the sizes attribute is generated based on the available images and breakpoints.
 - **priority** - sets `loading="eager"`, `decoding="sync"`, and `fetchPriority="high"` unless individually overridden.
+- **preload** - emits a responsive `<link rel="preload" as="image">` in the document head and applies the same eager/high-priority defaults. Only the first preferred format is preloaded, avoiding parallel AVIF/WebP/fallback downloads. React 19 uses `ReactDOM.preload`; React 18 Pages Router applications use `next/head`.
 - **autoSizes** - when combined with `loading="lazy"`, prefixes the generated `sizes` value with the modern `auto` keyword and retains the generated value as a browser fallback.
 - **pictureProps** - attributes for the outer `<picture>` element.
 - **the rest of the props and ref** are forwarded to the `img` tag. `decoding` defaults to `async`; loading behavior remains under application control so above-the-fold images are not accidentally lazy-loaded.

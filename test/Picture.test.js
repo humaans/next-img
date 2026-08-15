@@ -1,6 +1,8 @@
 const React = require('react') // eslint-disable-line no-unused-vars -- needed for JSX transform
+const ReactDOM = require('react-dom')
 const { default: test } = require('ava')
 const { renderToStaticMarkup } = require('react-dom/server')
+const { HeadManagerContext } = require('next/dist/shared/lib/head-manager-context.shared-runtime')
 const { Picture, makeSizes } = require('..')
 
 test('<Picture />', t => {
@@ -193,14 +195,91 @@ test('explicit art direction, modern formats, and picture props', t => {
       pictureProps={{ className: 'frame' }}
       alt='Example'
       priority
+      preload
     />,
   )
 
-  t.true(html.startsWith('<picture class="frame">'))
+  t.true(html.includes('<picture class="frame">'))
+  t.is((html.match(/rel="preload"/g) || []).length, 2)
+  t.true(html.includes('media="(max-width: 767px)"'))
+  t.true(html.includes('media="not all and (max-width: 767px)"'))
   t.true(html.includes('type="image/avif"'))
   t.true(html.includes('media="(max-width: 767px)" width="400" height="500"'))
   t.true(html.includes('src="desktop.jpg"'))
   t.true(html.includes('loading="eager" decoding="sync" fetchPriority="high"'))
+})
+
+test('preload emits one preferred responsive format into the document head', t => {
+  const image = {
+    src: 'hero.jpg',
+    type: 'image/jpeg',
+    format: 'jpeg',
+    fallbackFormat: 'jpeg',
+    formats: ['avif', 'webp', 'jpeg'],
+    sources: {
+      avif: {
+        type: 'image/avif',
+        srcSet: 'hero-400.avif 400w, hero-800.avif 800w',
+        images: [{ path: 'hero-400.avif', width: 400, height: 250, format: 'avif' }],
+      },
+      webp: {
+        type: 'image/webp',
+        srcSet: 'hero-400.webp 400w, hero-800.webp 800w',
+        images: [{ path: 'hero-400.webp', width: 400, height: 250, format: 'webp' }],
+      },
+      jpeg: {
+        type: 'image/jpeg',
+        srcSet: 'hero-400.jpg 400w, hero-800.jpg 800w',
+        images: [{ path: 'hero-400.jpg', width: 400, height: 250, format: 'jpeg' }],
+      },
+    },
+    images: [{ path: 'hero-400.jpg', width: 400, height: 250, format: 'jpeg' }],
+    sizes: [400, 800],
+    breakpoints: [768],
+  }
+  const html = renderToStaticMarkup(<Picture src={image} sizes='100vw' alt='Hero' preload />)
+
+  t.true(html.startsWith('<link rel="preload" as="image" type="image/avif"'))
+  t.true(html.includes('imageSrcSet="hero-400.avif 400w, hero-800.avif 800w"'))
+  t.true(html.includes('imageSizes="100vw"'))
+  t.is((html.match(/rel="preload"/g) || []).length, 1)
+  t.false(html.includes('<link rel="preload" as="image" type="image/webp"'))
+  t.true(html.includes('loading="eager" decoding="sync" fetchPriority="high"'))
+})
+
+test.serial('preload falls back to the Pages Router head manager on React 18', t => {
+  const image = {
+    src: 'hero.jpg',
+    type: 'image/jpeg',
+    srcSet: 'hero.jpg 800w',
+    webpSrcSet: 'hero.webp 800w',
+    images: [
+      { path: 'hero.jpg', width: 800, height: 500, format: 'jpeg' },
+      { path: 'hero.webp', width: 800, height: 500, format: 'webp' },
+    ],
+    sizes: [800],
+    breakpoints: [],
+  }
+  const originalPreload = ReactDOM.preload
+  const head = []
+
+  try {
+    ReactDOM.preload = undefined
+    renderToStaticMarkup(
+      <HeadManagerContext.Provider
+        value={{ mountedInstances: new Set(), updateHead: elements => head.push(...elements) }}
+      >
+        <Picture src={image} alt='Hero' preload />
+      </HeadManagerContext.Provider>,
+    )
+  } finally {
+    ReactDOM.preload = originalPreload
+  }
+
+  const link = head.find(element => element.type === 'link' && element.props.rel === 'preload')
+  t.is(link.props.type, 'image/webp')
+  t.is(link.props.imageSrcSet, 'hero.webp 800w')
+  t.is(link.props.imageSizes, '800px')
 })
 
 test('autoSizes prefixes a fallback for lazy images', t => {

@@ -87,7 +87,7 @@ export default function Index() {
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')} alt='Coffee' />`}
+            {`<Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')} alt='Coffee' preload />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
@@ -95,6 +95,7 @@ export default function Index() {
               <Picture
                 src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')}
                 alt='Coffee'
+                preload
               />,
             )}
           </Code>
@@ -103,6 +104,7 @@ export default function Index() {
               <Picture
                 src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')}
                 alt='Coffee'
+                preload
               />
             </div>
           </div>

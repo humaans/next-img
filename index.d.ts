@@ -51,6 +51,8 @@ export interface PictureProps extends Omit<React.ImgHTMLAttributes<HTMLImageElem
   breakpoints?: Array<number | string>
   pictureProps?: React.HTMLAttributes<HTMLPictureElement>
   priority?: boolean
+  /** Emit responsive image preload links in the document head. */
+  preload?: boolean
   autoSizes?: boolean
 }
 

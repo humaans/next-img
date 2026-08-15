@@ -68,6 +68,7 @@ test('configures the shared loader and generated assets for Turbopack', t => {
   t.is(options.persistentCache, false)
   t.is(options.cacheMode, 'off')
   t.is(options.cacheVersion, null)
+  t.is(options.maxBareImportSize, 2048)
   t.is(options.bundler, 'turbopack')
   t.regex(options.assetProxyDir, /\.next-img\/proxies$/)
   t.truthy(config.turbopack.rules['*.avif'])
@@ -99,6 +100,13 @@ test('rejects invalid application cache versions', t => {
   t.throws(() => withImg({ nextImg: { cache: { version: {} } } }), {
     message: /cache.version must be a string, number, or null/,
   })
+})
+
+test('validates the oversized bare-import limit', t => {
+  t.throws(() => withImg({ nextImg: { maxBareImportSize: 0 } }), {
+    message: /must be a positive integer or false/,
+  })
+  t.notThrows(() => withImg({ nextImg: { maxBareImportSize: false } }))
 })
 
 test.serial('rejects cache rebuilds when caching is disabled', t => {

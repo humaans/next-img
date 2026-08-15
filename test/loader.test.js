@@ -10,6 +10,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-loader-'))
   const imported = []
   const dependencies = []
+  const warnings = []
   const buffer =
     inputBuffer ||
     (await sharp({
@@ -33,6 +34,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
         rootContext: dir,
         async: () => (error, result) => (error ? reject(error) : resolve(result)),
         addDependency: dependency => dependencies.push(dependency),
+        emitWarning: warning => warnings.push(warning),
         getOptions: () => ({
           breakpoints: [768],
           densities: ['1x', '2x'],
@@ -77,6 +79,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
     dir,
     imported,
     source,
+    warnings,
   }
 }
 
@@ -218,4 +221,43 @@ test('rejects unknown options in strict mode and always rejects conflicting opti
 
   const conflicting = await t.throwsAsync(runLoader(t, '?widths=320&densities=2x'))
   t.regex(conflicting.message, /cannot be used together/)
+})
+
+test('warns for oversized bare imports and accepts explicit sizing', async t => {
+  const input = await sharp({
+    create: { width: 2050, height: 100, channels: 3, background: 'red' },
+  })
+    .jpeg()
+    .toBuffer()
+  const bare = await runLoader(t, '', {}, input)
+  const sized = await runLoader(t, '?widths=800', {}, input)
+
+  t.is(bare.warnings.length, 1)
+  t.regex(bare.warnings[0].message, /intrinsic 2050×100 size/)
+  t.regex(bare.warnings[0].message, /\?widths=\.\.\./)
+  t.is(sized.warnings.length, 0)
+})
+
+test('strict mode rejects oversized bare imports and the limit can be disabled', async t => {
+  const input = await sharp({
+    create: { width: 100, height: 2050, channels: 3, background: 'red' },
+  })
+    .jpeg()
+    .toBuffer()
+
+  const error = await t.throwsAsync(runLoader(t, '', { strict: true }, input))
+  t.regex(error.message, /intrinsic 100×2050 size/)
+  const disabled = await runLoader(t, '', { maxBareImportSize: false }, input)
+  t.is(disabled.warnings.length, 0)
+})
+
+test('accepts a custom oversized bare-import limit', async t => {
+  const input = await sharp({
+    create: { width: 3000, height: 100, channels: 3, background: 'red' },
+  })
+    .jpeg()
+    .toBuffer()
+
+  const accepted = await runLoader(t, '', { maxBareImportSize: 4096 }, input)
+  t.is(accepted.warnings.length, 0)
 })

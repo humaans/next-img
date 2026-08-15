@@ -20,6 +20,8 @@ declare namespace withImg {
     placeholder?: boolean | 'blur'
     placeholderSize?: number
     strict?: boolean
+    /** Warn for unsized imports above this intrinsic dimension. Strict mode turns the warning into an error. */
+    maxBareImportSize?: number | false
     jpeg?: Record<string, unknown>
     png?: Record<string, unknown>
     webp?: Record<string, unknown>
