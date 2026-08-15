@@ -136,6 +136,24 @@ test('uses stable proxy imports for Turbopack assets', async t => {
   t.true(dependencies.every(dependency => dependency.includes('next-img-proxies')))
 })
 
+test.serial('preserves persistent cache keys across Sharp upgrades', async t => {
+  const originalSharpVersion = sharp.versions.sharp
+
+  try {
+    const first = await runLoader(t, '', { persistentCache: true })
+    sharp.versions.sharp = '99.0.0'
+    const second = await runLoader(t, '', { persistentCache: true })
+    const cacheKeys = result =>
+      result.imported.map(request => new URLSearchParams(request.split('?')[1]).get('key')).sort()
+
+    const expectedLegacyKeys = ['image-800-3458bbf127cef6e2.webp', 'image-800-f4263d526890d58e.jpg']
+    t.deepEqual(cacheKeys(first), expectedLegacyKeys)
+    t.deepEqual(cacheKeys(second), expectedLegacyKeys)
+  } finally {
+    sharp.versions.sharp = originalSharpVersion
+  }
+})
+
 test('supports exact widths, AVIF, and blur metadata', async t => {
   const { data, imported } = await runLoader(t, '?widths=320,640&formats=avif,webp&placeholder=blur')
 
