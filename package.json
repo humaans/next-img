@@ -26,7 +26,7 @@
     "release": "np"
   },
   "dependencies": {
-    "commander": "^11.1.0",
+    "commander": "^15.0.0",
     "debug": "^4.4.3",
     "deepmerge": "^4.3.1",
     "kleur": "^4.1.5",
@@ -40,7 +40,7 @@
     "@swc-node/register": "^1.12.1",
     "ava": "^8.0.1",
     "next": "^16.3.1",
-    "oxfmt": "^0.61.0",
+    "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0"
   },
   "peerDependencies": {
@@ -57,6 +57,6 @@
     ]
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=22.12.0"
   }
 }
