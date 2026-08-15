@@ -50,6 +50,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
           persistentCache: false,
           persistentCacheDir: 'resources',
           assetStageDir: path.join(dir, '.next-img', 'assets'),
+          bundler: 'webpack',
           failOnCacheMiss: false,
           rebuildSession: null,
           ...optionOverrides,
@@ -101,7 +102,7 @@ test('emits one candidate per format when sizes are omitted', async t => {
     dependencies.map(dependency => path.basename(dependency)).sort(),
     imported.map(request => path.basename(request.split('?')[0])).sort(),
   )
-  t.true(imported.every(request => request.endsWith('?__next_img_generated__')))
+  t.true(imported.every(request => request.includes('?__next_img_generated__=&key=')))
   t.false(source.includes('emitFile'))
 })
 
@@ -121,6 +122,18 @@ test('deduplicates widths produced by different size and density combinations', 
   t.is(data.srcSet.split(',').length, 2)
   t.is(data.webpSrcSet.split(',').length, 2)
   t.is(imported.length, 4)
+})
+
+test('uses stable proxy imports for Turbopack assets', async t => {
+  const { dependencies, imported } = await runLoader(t, '?widths=320', {
+    bundler: 'turbopack',
+    assetProxyDir: path.join(os.tmpdir(), 'next-img-proxies'),
+  })
+
+  t.is(imported.length, 2)
+  t.deepEqual(imported.map(request => path.basename(request.split('?')[0])).sort(), ['generated.jpg', 'generated.webp'])
+  t.true(imported.every(request => request.includes('&key=image-320-')))
+  t.true(dependencies.every(dependency => dependency.includes('next-img-proxies')))
 })
 
 test('supports exact widths, AVIF, and blur metadata', async t => {

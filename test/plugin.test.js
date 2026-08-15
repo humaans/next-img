@@ -55,6 +55,7 @@ test('configures the shared loader and generated assets for Turbopack', t => {
   const [assetRule, loaderRule, preservedRule] = config.turbopack.rules['*.jpg']
   t.is(assetRule.type, 'asset')
   t.true(assetRule.condition.query.test('?__next_img_generated__'))
+  t.is(assetRule.loaders[0].loader, path.join(__dirname, '../lib/generated-asset-loader'))
   t.is(loaderRule.as, '*.js')
   t.is(loaderRule.loaders[0].loader, path.join(__dirname, '../lib/loader'))
   t.false(loaderRule.condition.not.query.test('?sizes=400'))
@@ -66,6 +67,8 @@ test('configures the shared loader and generated assets for Turbopack', t => {
   t.notThrows(() => JSON.stringify(options))
   t.is(options.persistentCache, false)
   t.is(options.cacheMode, 'off')
+  t.is(options.bundler, 'turbopack')
+  t.regex(options.assetProxyDir, /\.next-img\/proxies$/)
   t.truthy(config.turbopack.rules['*.avif'])
 })
 

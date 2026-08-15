@@ -23,6 +23,7 @@ declare namespace withImg {
     webp?: Record<string, unknown>
     avif?: Record<string, unknown>
     imagesDir?: string
+    /** Webpack output filename template. Turbopack owns emitted asset filenames. */
     imagesName?: string
     imagesPublicPath?: string | ((fileName: string) => string) | null
     imagesOutputPath?: string | ((fileName: string) => string) | null

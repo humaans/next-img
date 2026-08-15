@@ -16,6 +16,7 @@
 - Isolate asset storage and garbage collection from image transformation.
 - Run maintenance builds through the target application's public Next.js CLI.
 - Use Turbopack for cleanup builds by default and add `next-img --webpack` for backwards compatibility.
+- Avoid cold-build filesystem races by emitting Turbopack assets through stable per-format proxies backed by the content-addressed cache.
 
 ## 0.6.0
 
