@@ -87,25 +87,17 @@ export default function Index() {
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')} alt='Coffee' preload />`}
+            {`<Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp')} alt='Coffee' preload />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
             {toString(
-              <Picture
-                src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')}
-                alt='Coffee'
-                preload
-              />,
+              <Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp')} alt='Coffee' preload />,
             )}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture
-                src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')}
-                alt='Coffee'
-                preload
-              />
+              <Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp')} alt='Coffee' preload />
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import withImg = require('../plugin')
 
 declare const image: NextImgData
 
-;<Picture src={image} alt='Coffee' priority />
 ;<Picture src={image} alt='Coffee' preload />
 ;<Picture src={image} />
 ;<Picture

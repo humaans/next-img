@@ -3,8 +3,8 @@
 - Auto-orient images from EXIF metadata before resizing.
 - Preserve released persistent-cache filenames while tracking the next-img pipeline, application cache version, and Sharp toolchain separately for in-place refreshes without filename churn.
 - Validate import options and report unknown, malformed, or incompatible values.
-- Add exact `widths`, generic format metadata, optional AVIF, configurable fallbacks, and blur placeholders.
-- Add explicit art-direction sources, per-source dimensions, picture attributes, priority hints, and lazy `auto` sizes.
+- Add exact `widths`, generic format metadata, optional AVIF, and configurable fallbacks.
+- Add explicit art-direction sources, per-source dimensions, picture attributes, and lazy `auto` sizes.
 - Add responsive document-head image preloads with React 19 and React 18 Pages Router support.
 - Warn when images over 2048px are imported without responsive sizing, with configurable limits and strict-mode errors.
 - Centralize cache state, image-format definitions, and loader diagnostics behind explicit internal contracts.

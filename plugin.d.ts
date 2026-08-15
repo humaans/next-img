@@ -17,8 +17,6 @@ declare namespace withImg {
     widths?: number[]
     formats?: OutputFormat[]
     fallbackFormat?: OutputFormat | 'original'
-    placeholder?: boolean | 'blur'
-    placeholderSize?: number
     /** Promote next-img warnings to build errors. */
     strict?: boolean
     /** Warn for unsized imports above this intrinsic dimension. Strict mode turns the warning into an error. */
@@ -34,7 +32,6 @@ declare namespace withImg {
     imagesOutputPath?: string | ((fileName: string) => string) | null
     cache?: CacheConfig
     cacheDir?: string
-    assetStageDir?: string
     projectDir?: string
     /** @deprecated Use cache.mode instead. */
     persistentCache?: boolean

@@ -170,8 +170,8 @@ test('records pipeline, application cache, and toolchain versions in the manifes
   t.is(manifest.processing.toolchain.sharp, sharp.versions.sharp)
 })
 
-test('supports exact widths, AVIF, and blur metadata', async t => {
-  const { data, imported } = await runLoader(t, '?widths=320,640&formats=avif,webp&placeholder=blur')
+test('supports exact widths and AVIF metadata', async t => {
+  const { data, imported } = await runLoader(t, '?widths=320,640&formats=avif,webp')
 
   t.deepEqual(data.formats, ['avif', 'webp', 'jpeg'])
   t.deepEqual(data.sizes, [320, 640])
@@ -187,7 +187,6 @@ test('supports exact widths, AVIF, and blur metadata', async t => {
     ],
   )
   t.true(data.sources.avif.srcSet.includes('320w'))
-  t.true(data.blurDataURL.startsWith('data:image/webp;base64,'))
   t.is(imported.length, 6)
 })
 

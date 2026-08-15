@@ -33,7 +33,6 @@ export interface NextImgData {
   name: string
   sizes: number[]
   breakpoints: Array<number | string>
-  blurDataURL: string | null
 }
 
 export type ImageImport = NextImgData | { default: NextImgData }
@@ -50,7 +49,6 @@ export interface PictureProps extends Omit<React.ImgHTMLAttributes<HTMLImageElem
   sizes?: string | Array<string | undefined>
   breakpoints?: Array<number | string>
   pictureProps?: React.HTMLAttributes<HTMLPictureElement>
-  priority?: boolean
   /** Emit responsive image preload links in the document head. */
   preload?: boolean
   autoSizes?: boolean

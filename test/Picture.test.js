@@ -194,7 +194,6 @@ test('explicit art direction, modern formats, and picture props', t => {
       ]}
       pictureProps={{ className: 'frame' }}
       alt='Example'
-      priority
       preload
     />,
   )
@@ -206,7 +205,7 @@ test('explicit art direction, modern formats, and picture props', t => {
   t.true(html.includes('type="image/avif"'))
   t.true(html.includes('media="(max-width: 767px)" width="400" height="500"'))
   t.true(html.includes('src="desktop.jpg"'))
-  t.true(html.includes('loading="eager" decoding="sync" fetchPriority="high"'))
+  t.true(html.includes('loading="eager" decoding="async" fetchPriority="high"'))
 })
 
 test('preload emits one preferred responsive format into the document head', t => {
@@ -244,7 +243,7 @@ test('preload emits one preferred responsive format into the document head', t =
   t.true(html.includes('imageSizes="100vw"'))
   t.is((html.match(/rel="preload"/g) || []).length, 1)
   t.false(html.includes('<link rel="preload" as="image" type="image/webp"'))
-  t.true(html.includes('loading="eager" decoding="sync" fetchPriority="high"'))
+  t.true(html.includes('loading="eager" decoding="async" fetchPriority="high"'))
 })
 
 test.serial('preload falls back to the Pages Router head manager on React 18', t => {
@@ -312,6 +311,31 @@ test('explicit art direction requires an unconditional fallback', t => {
     renderToStaticMarkup(<Picture sources={[{ src: image, media: '(max-width: 767px)' }]} alt='Example' />),
   )
   t.regex(error.message, /unconditional fallback/)
+})
+
+test('preload rejects more than one conditional art-direction source', t => {
+  const image = {
+    src: 'image.jpg',
+    type: 'image/jpeg',
+    srcSet: 'image.jpg 800w',
+    images: [{ path: 'image.jpg', width: 800, height: 500, format: 'jpeg' }],
+    sizes: [800],
+  }
+  const error = t.throws(() =>
+    renderToStaticMarkup(
+      <Picture
+        sources={[
+          { src: image, media: '(max-width: 479px)' },
+          { src: image, media: '(max-width: 767px)' },
+          { src: image },
+        ]}
+        alt='Example'
+        preload
+      />,
+    ),
+  )
+
+  t.regex(error.message, /at most one conditional art-direction source/)
 })
 
 // test cases

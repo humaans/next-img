@@ -13,7 +13,7 @@ Features
 - **output** to WebP and optional AVIF with optimized fallbacks
 - **resize** to multiple screen sizes and densities in a single import
 - **optimize** using `sharp` at build time with results cached in your repo
-- **real responsive-image preloads** in the document head, plus `priority`, `loading`, `decoding`, and `fetchPriority` hints
+- **real responsive-image preloads** in the document head, plus native `loading`, `decoding`, and `fetchPriority` controls
 - **oversized-import guardrails** when large images are imported without responsive widths
 - **prevent layout shift** with automatic width/height attributes
 - **streamlined usage** with the built in `<Picture />` component
@@ -151,8 +151,6 @@ Default plugin configuration options:
   densities: ['1x', '2x'],
   formats: ['webp'],
   fallbackFormat: 'original',
-  placeholder: false,
-  placeholderSize: 16,
   // turn next-img warnings into build errors
   strict: false,
   // warn when a bare import exceeds this intrinsic width or height
@@ -219,7 +217,6 @@ When importing an image, you can use query parameters to customise the optimisat
 - **densities** - pixel densities for the legacy `sizes` API. `widths` and `densities` cannot be combined.
 - **formats** - preferred output formats in browser-selection order, for example `?formats=avif,webp`. The fallback is always added last.
 - **fallbackFormat** - `original` by default, or an explicit `jpeg`, `png`, `webp`, or `avif` fallback.
-- **placeholder** - set `?placeholder=blur` to include a tiny `blurDataURL` in the imported metadata.
 - **jpeg** - quality configuration options for `jpeg` images. Note, the `jpeg->webp` settings need to be nested under this param, e.g. `?jpeg[webp][quality]=95`
 - **png** - quality configuration options for `png` images. Note, the `png->webp` settings need to be nested under this param, e.g. `?png[webp][lossless]=false&png[webp][nearLossless]=true`
 
@@ -231,7 +228,7 @@ import img2 from './images/img.jpg?sizes=375,900'
 import img3 from './images/img.jpg?sizes=375,900&densities=1x'
 import img4 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x'
 import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality]=70&jpeg[webp][quality]=70'
-import img6 from './images/img.jpg?widths=375,750,1200&formats=avif,webp&placeholder=blur'
+import img6 from './images/img.jpg?widths=375,750,1200&formats=avif,webp'
 ```
 
 Known import options are validated strictly. Unknown names produce actionable warnings instead of being silently ignored; set `nextImg.strict: true` to turn all next-img warnings into build errors. Invalid widths and incompatible combinations always fail the build.
@@ -248,11 +245,10 @@ Here are the props this component accepts:
 - **sources** - explicit art-direction entries shaped as `{ src, media?, sizes? }`. The final entry without `media` acts as the fallback.
 - **breakpoints** - a list of breakpoints to override the global configuration. Each breakpoint can be a pixel width, such as `768`, or a complete media condition, such as `'(orientation: landscape)'`.
 - **sizes** - a custom [html sizes attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#How_do_you_create_responsive_images), by default the sizes attribute is generated based on the available images and breakpoints.
-- **priority** - sets `loading="eager"`, `decoding="sync"`, and `fetchPriority="high"` unless individually overridden.
-- **preload** - emits a responsive `<link rel="preload" as="image">` in the document head and applies the same eager/high-priority defaults. Only the first preferred format is preloaded, avoiding parallel AVIF/WebP/fallback downloads. React 19 uses `ReactDOM.preload`; React 18 Pages Router applications use `next/head`.
+- **preload** - emits a responsive `<link rel="preload" as="image">` in the document head and defaults to eager loading with `fetchPriority="high"`. Only the first preferred format is preloaded, avoiding parallel AVIF/WebP/fallback downloads. A preload may use a single image, or one conditional art-direction source followed by an unconditional fallback; more complex art direction must manage preloads explicitly. React 19 uses `ReactDOM.preload`; React 18 Pages Router applications use `next/head`.
 - **autoSizes** - when combined with `loading="lazy"`, prefixes the generated `sizes` value with the modern `auto` keyword and retains the generated value as a browser fallback.
 - **pictureProps** - attributes for the outer `<picture>` element.
-- **the rest of the props and ref** are forwarded to the `img` tag. `decoding` defaults to `async`; loading behavior remains under application control so above-the-fold images are not accidentally lazy-loaded.
+- **the rest of the props and ref** are forwarded to the `img` tag. `decoding` defaults to `async`; loading behavior remains under application control unless `preload` is enabled.
 
 Always provide useful `alt` text, or `alt=''` for decorative images. The TypeScript API keeps it optional for backwards compatibility with wrappers written against earlier untyped releases.
 
