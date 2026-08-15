@@ -1,7 +1,7 @@
 ## Unreleased
 
 - Auto-orient images from EXIF metadata before resizing.
-- Version persistent-cache entries by the complete transform and processing pipeline while tracking the Sharp toolchain separately to avoid filename churn, while preserving existing Sharp 0.35.3-era cache filenames.
+- Preserve released persistent-cache filenames while tracking the next-img pipeline, application cache version, and Sharp toolchain separately for in-place refreshes without filename churn.
 - Validate import options and report unknown, malformed, or incompatible values.
 - Add exact `widths`, generic format metadata, optional AVIF, configurable fallbacks, and blur placeholders.
 - Add explicit art-direction sources, per-source dimensions, picture attributes, priority hints, and lazy `auto` sizes.

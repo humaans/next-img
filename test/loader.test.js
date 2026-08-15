@@ -3,6 +3,7 @@ const os = require('os')
 const path = require('path')
 const { default: test } = require('ava')
 const sharp = require('sharp')
+const assetStore = require('../lib/asset-store')
 const loader = require('../lib/loader')
 
 async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffer) {
@@ -136,7 +137,7 @@ test('uses stable proxy imports for Turbopack assets', async t => {
   t.true(dependencies.every(dependency => dependency.includes('next-img-proxies')))
 })
 
-test.serial('preserves persistent cache keys across Sharp upgrades', async t => {
+test.serial('preserves released persistent cache keys across Sharp upgrades', async t => {
   const originalSharpVersion = sharp.versions.sharp
 
   try {
@@ -146,12 +147,28 @@ test.serial('preserves persistent cache keys across Sharp upgrades', async t => 
     const cacheKeys = result =>
       result.imported.map(request => new URLSearchParams(request.split('?')[1]).get('key')).sort()
 
-    const expectedLegacyKeys = ['image-800-3458bbf127cef6e2.webp', 'image-800-f4263d526890d58e.jpg']
+    const expectedLegacyKeys = ['image-800-0cddac0df359e9f5.webp', 'image-800-7998063232322a57.jpg']
     t.deepEqual(cacheKeys(first), expectedLegacyKeys)
     t.deepEqual(cacheKeys(second), expectedLegacyKeys)
   } finally {
     sharp.versions.sharp = originalSharpVersion
   }
+})
+
+test('records pipeline, application cache, and toolchain versions in the manifest', async t => {
+  const rebuildSession = `loader-manifest-${process.pid}-${Date.now()}`
+  const { dir } = await runLoader(t, '', {
+    persistentCache: true,
+    rebuildSession,
+    cacheVersion: 'photos-v2',
+  })
+
+  await assetStore.gc(rebuildSession)
+  const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'resources', '.next-img-cache.json')))
+
+  t.is(manifest.processing.pipelineVersion, 2)
+  t.is(manifest.processing.cacheVersion, 'photos-v2')
+  t.is(manifest.processing.toolchain.sharp, sharp.versions.sharp)
 })
 
 test('supports exact widths, AVIF, and blur metadata', async t => {

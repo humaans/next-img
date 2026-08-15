@@ -80,7 +80,7 @@ test('coalesces concurrent transformations for the same cache entry', async t =>
   t.is(transformations, 1)
 })
 
-test('refreshes toolchain changes in place during cleanup builds', async t => {
+test('refreshes processing changes in place during cleanup builds', async t => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-store-'))
   const cacheDir = path.join(dir, 'resources')
   const first = await createImage('red')
@@ -92,7 +92,7 @@ test('refreshes toolchain changes in place during cleanup builds', async t => {
     persistentCache: true,
     persistentCacheDir: 'resources',
     failOnCacheMiss: false,
-    toolchain: { sharp: 'one', vips: 'one' },
+    processing: { pipelineVersion: 2, toolchain: { sharp: 'one', vips: 'one' } },
     warn: warning => warnings.push(warning),
   }
   t.teardown(() => fs.rmSync(dir, { recursive: true, force: true }))
@@ -106,7 +106,10 @@ test('refreshes toolchain changes in place during cleanup builds', async t => {
   await assetStore.cached(create(first), 'stable.jpg', { ...config, rebuildSession: firstSession }, 'processing')
   await assetStore.gc(firstSession)
 
-  const changed = { ...config, toolchain: { sharp: 'two', vips: 'two' } }
+  const changed = {
+    ...config,
+    processing: { pipelineVersion: 2, toolchain: { sharp: 'two', vips: 'two' } },
+  }
   const cached = await assetStore.cached(
     create(second),
     'stable.jpg',
@@ -124,7 +127,7 @@ test('refreshes toolchain changes in place during cleanup builds', async t => {
   t.is(transformations, 2)
   t.deepEqual(fs.readFileSync(path.join(cacheDir, 'stable.jpg')), second)
   t.deepEqual(fs.readdirSync(cacheDir).sort(), ['.next-img-cache.json', 'stable.jpg'])
-  t.deepEqual(JSON.parse(fs.readFileSync(path.join(cacheDir, '.next-img-cache.json'))).toolchain, changed.toolchain)
+  t.deepEqual(JSON.parse(fs.readFileSync(path.join(cacheDir, '.next-img-cache.json'))).processing, changed.processing)
 })
 
 async function createImage(background) {
