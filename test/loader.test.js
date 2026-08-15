@@ -5,9 +5,9 @@ const { default: test } = require('ava')
 const sharp = require('sharp')
 const loader = require('../lib/loader')
 
-async function runLoader(t, resourceQuery = '') {
+async function runLoader(t, resourceQuery = '', optionOverrides = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-loader-'))
-  const emitted = []
+  const imported = []
   const buffer = await sharp({
     create: {
       width: 800,
@@ -28,7 +28,6 @@ async function runLoader(t, resourceQuery = '') {
         resourceQuery,
         rootContext: dir,
         async: () => (error, result) => (error ? reject(error) : resolve(result)),
-        emitFile: (fileName, data) => emitted.push({ fileName, data }),
         getOptions: () => ({
           breakpoints: [768],
           densities: ['1x', '2x'],
@@ -43,27 +42,39 @@ async function runLoader(t, resourceQuery = '') {
           imagesName: '[name]-[size]@[density]-[hash].[ext]',
           dir,
           distDir: '.next',
-          publicPath: '/images/',
-          outputPath: 'images',
           cacheDir: path.join('cache', 'next-img'),
           persistentCache: false,
           persistentCacheDir: 'resources',
+          assetStageDir: path.join(dir, 'node_modules', '.cache', 'next-img', 'assets'),
           failOnCacheMiss: false,
-          rebuildPersistentCache: false,
+          rebuildSession: null,
+          ...optionOverrides,
         }),
       },
       buffer,
     )
   })
 
+  const module = { exports: {} }
+  Function(
+    'module',
+    'require',
+    source,
+  )(module, request => {
+    imported.push(request)
+    return `/images/${path.basename(request.split('?')[0])}`
+  })
+
   return {
-    data: JSON.parse(source.replace(/^module\.exports = /, '')),
-    emitted,
+    data: module.exports,
+    dir,
+    imported,
+    source,
   }
 }
 
 test('emits one candidate per format when sizes are omitted', async t => {
-  const { data, emitted } = await runLoader(t)
+  const { data, imported, source } = await runLoader(t)
 
   t.deepEqual(
     data.images.map(({ width, format }) => ({ width, format })),
@@ -75,11 +86,13 @@ test('emits one candidate per format when sizes are omitted', async t => {
   t.deepEqual(data.sizes, [800])
   t.is(data.srcSet.split(',').length, 1)
   t.is(data.webpSrcSet.split(',').length, 1)
-  t.is(emitted.length, 2)
+  t.is(imported.length, 2)
+  t.true(imported.every(request => request.endsWith('?__next_img_generated__')))
+  t.false(source.includes('emitFile'))
 })
 
 test('deduplicates widths produced by different size and density combinations', async t => {
-  const { data, emitted } = await runLoader(t, '?sizes=400,800')
+  const { data, imported } = await runLoader(t, '?sizes=400,800')
 
   t.deepEqual(
     data.images.map(({ width, format }) => ({ width, format })),
@@ -93,5 +106,21 @@ test('deduplicates widths produced by different size and density combinations', 
   t.deepEqual(data.sizes, [400, 800])
   t.is(data.srcSet.split(',').length, 2)
   t.is(data.webpSrcSet.split(',').length, 2)
-  t.is(emitted.length, 4)
+  t.is(imported.length, 4)
+})
+
+test('garbage collection works across loader processes', async t => {
+  const session = `test-${process.pid}-${Date.now()}`
+  const { dir } = await runLoader(t, '?sizes=400&densities=1x', {
+    persistentCache: true,
+    rebuildSession: session,
+  })
+  const cacheDir = path.join(dir, 'resources')
+  fs.writeFileSync(path.join(cacheDir, 'unused.jpg'), 'unused')
+
+  await loader.gc(session)
+
+  const files = fs.readdirSync(cacheDir)
+  t.false(files.includes('unused.jpg'))
+  t.is(files.length, 2)
 })

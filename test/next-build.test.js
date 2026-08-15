@@ -19,11 +19,21 @@ function createNextFixture(t, { bundler } = {}) {
   return base
 }
 
-test('selects webpack when Next.js exposes its bundler API', t => {
+test('defaults to webpack when Next.js exposes its bundler API', t => {
   const base = createNextFixture(t, { bundler: { Turbopack: 0, Webpack: 1 } })
   const nextBuild = createNextBuild(base)
 
   t.deepEqual(nextBuild('/app'), ['/app', undefined, undefined, undefined, undefined, undefined, undefined, 1])
+  t.deepEqual(nextBuild('/app', 'turbopack'), [
+    '/app',
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    0,
+  ])
 })
 
 test('supports Next.js versions without the bundler API', t => {

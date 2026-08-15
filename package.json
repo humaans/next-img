@@ -20,6 +20,9 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "test": "oxlint && ava",
+    "test:integration": "npm run test:integration:turbopack && npm run test:integration:webpack",
+    "test:integration:turbopack": "next build test/fixtures/next-app",
+    "test:integration:webpack": "next build test/fixtures/next-app --webpack",
     "release": "np"
   },
   "dependencies": {
@@ -35,6 +38,7 @@
   "devDependencies": {
     "@swc-node/register": "^1.12.1",
     "ava": "^8.0.1",
+    "next": "^16.3.1",
     "oxfmt": "^0.61.0",
     "oxlint": "^1.78.0"
   },
