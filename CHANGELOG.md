@@ -1,3 +1,14 @@
+## Unreleased
+
+- Add a shared image loader architecture for Webpack and Turbopack.
+- Replace webpack-only `emitFile()` calls with generated static asset imports.
+- Preserve build-time Sharp optimization, responsive candidates, WebP fallbacks, art direction, and static export without a CDN.
+- Add Next.js 16.3 integration fixtures for Turbopack and Webpack builds.
+- Make persistent-cache cleanup work when loaders execute in child processes.
+- Isolate asset storage and garbage collection from image transformation.
+- Run maintenance builds through the target application's public Next.js CLI.
+- Use Turbopack for cleanup builds by default and add `next-img --webpack` for backwards compatibility.
+
 ## 0.6.0
 
 - Add support for React 19 and Next.js 16 (React 18 still supported)

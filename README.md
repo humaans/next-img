@@ -31,7 +31,7 @@ Developed and used by [Humaans](https://humaans.io/).
 
 ## Motivation
 
-Next.js ships with `next/image` for runtime image optimization, but it requires a server or an image CDN — it doesn't work with `output: 'export'` (static builds). **next-img** takes a different approach: images are resized and optimized at build time using `sharp`, then output as static files. No server, no CDN, no runtime cost. It combines a Next.js plugin, a custom webpack loader and a React component to make serving optimized images almost as easy as typing `<img src='foo.png' />`.
+Next.js ships with `next/image` for runtime image optimization, but its default optimizer requires a server or image CDN. A custom URL loader is required with `output: 'export'`, and it does not generate local derivatives. **next-img** takes a different approach: images are resized and optimized at build time using `sharp`, then output as static files. No server, no CDN, no runtime cost. It combines a Next.js plugin, a shared Webpack/Turbopack loader and a React component to make serving optimized images almost as easy as typing `<img src='foo.png' />`.
 
 In short, it takes the following:
 
@@ -125,6 +125,12 @@ The resized and optimized images will be saved to the `resources` directory in t
 npx next-img
 ```
 
+The cleanup build uses Turbopack by default, matching current Next.js releases. Projects that still build with Webpack can use:
+
+```
+npx next-img --webpack
+```
+
 Now check in the `resources` directory to your source control to be reused later for development and production builds. You can turn this feature off by setting `persistentCache: false` in the plugin configuration, in which case the images will be only stored in a temporary cache inside `.next` directory.
 
 [View more usage examples](https://humaans.github.io/next-img/).
@@ -175,6 +181,10 @@ Default plugin configuration options:
   cacheDir: path.join('cache', 'next-img')
 }
 ```
+
+When invoking Next with an application directory from a different working directory, set `nextImg.projectDir` to the absolute application directory. The `next-img` CLI sets this automatically.
+
+Webpack continues to support `imagesDir`, `imagesPublicPath`, and `imagesOutputPath`. Turbopack owns the final emitted asset directory and adds its own content hash, while preserving the configured `imagesName` as the base filename. `assetPrefix` and `basePath` are applied by Next.js in both modes.
 
 Refer to [sharp documentation](https://sharp.pixelplumbing.com/api-output) for `jpeg/png/webp` compression options.
 
@@ -241,14 +251,23 @@ String breakpoints are used as-is, allowing art direction based on conditions ot
 
 ## Turbopack Compatibility
 
-This plugin currently requires **webpack** and is not compatible with Turbopack. If you're using Next.js 16+ (which defaults to Turbopack), you'll need to opt into webpack mode:
+`next-img` supports both Webpack and Turbopack on current Next.js 16 releases. No bundler flag is required for the default Turbopack workflow:
+
+```
+next dev
+next build
+```
+
+Webpack remains supported explicitly:
 
 ```
 next dev --webpack
 next build --webpack
 ```
 
-The core limitation is that Turbopack does not support the [`emitFile`](https://github.com/vercel/next.js/issues/78592) loader API, which next-img relies on to output processed images into the build. Until Turbopack adds support for this API, webpack mode is required.
+The shared loader writes optimized, content-addressed files into the local cache and returns JavaScript imports for those generated assets. Webpack and Turbopack then emit each imported image as a separate resource. The image bytes are not embedded in JavaScript, and the browser still downloads only the candidate selected by `<picture>`, `media`, `sizes`, and `srcset`.
+
+Turbopack support requires a current Next.js release with custom loader rules and the `asset` module type. Next.js 16.3.1 is covered by the integration fixture in this repository.
 
 ## FAQ
 
@@ -264,6 +283,8 @@ Yes, you could probably get ~10%-20% or more compression if you pass the `jpg/pn
 
 ```
 npm install
+npm test
+npm run test:integration
 ```
 
 You can use the docs site as the playground:
