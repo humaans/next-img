@@ -26,6 +26,7 @@
     "release": "np"
   },
   "dependencies": {
+    "commander": "^11.1.0",
     "debug": "^4.4.3",
     "deepmerge": "^4.3.1",
     "kleur": "^4.1.5",

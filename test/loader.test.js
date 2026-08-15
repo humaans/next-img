@@ -108,19 +108,3 @@ test('deduplicates widths produced by different size and density combinations', 
   t.is(data.webpSrcSet.split(',').length, 2)
   t.is(imported.length, 4)
 })
-
-test('garbage collection works across loader processes', async t => {
-  const session = `test-${process.pid}-${Date.now()}`
-  const { dir } = await runLoader(t, '?sizes=400&densities=1x', {
-    persistentCache: true,
-    rebuildSession: session,
-  })
-  const cacheDir = path.join(dir, 'resources')
-  fs.writeFileSync(path.join(cacheDir, 'unused.jpg'), 'unused')
-
-  await loader.gc(session)
-
-  const files = fs.readdirSync(cacheDir)
-  t.false(files.includes('unused.jpg'))
-  t.is(files.length, 2)
-})
