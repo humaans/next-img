@@ -65,4 +65,40 @@ test('configures the shared loader and generated assets for Turbopack', t => {
   const options = loaderRule.loaders[0].options
   t.notThrows(() => JSON.stringify(options))
   t.is(options.persistentCache, false)
+  t.is(options.cacheMode, 'off')
+  t.truthy(config.turbopack.rules['*.avif'])
+})
+
+test('supports explicit cache modes and legacy cache configuration', t => {
+  const readOnly = withImg({
+    nextImg: { cache: { mode: 'read-only', dir: 'image-cache' } },
+  })
+  const readOnlyOptions = readOnly.turbopack.rules['*.jpg'][1].loaders[0].options
+  t.is(readOnlyOptions.cacheMode, 'read-only')
+  t.is(readOnlyOptions.persistentCacheDir, 'image-cache')
+  t.true(readOnlyOptions.failOnCacheMiss)
+
+  const legacy = withImg({ nextImg: { persistentCacheDir: 'legacy-cache' } })
+  const legacyOptions = legacy.turbopack.rules['*.jpg'][1].loaders[0].options
+  t.is(legacyOptions.cacheMode, 'read-write')
+  t.is(legacyOptions.persistentCacheDir, 'legacy-cache')
+})
+
+test('forwards global exact widths to the loader', t => {
+  const config = withImg({ nextImg: { widths: [320, 640] } })
+  const options = config.turbopack.rules['*.jpg'][1].loaders[0].options
+  t.deepEqual(options.widths, [320, 640])
+})
+
+test.serial('rejects cache rebuilds when caching is disabled', t => {
+  const previous = process.env.NEXT_IMG_REBUILD
+  process.env.NEXT_IMG_REBUILD = 'test-session'
+  try {
+    t.throws(() => withImg({ nextImg: { cache: { mode: 'off' } } }), {
+      message: /cannot be used when cache.mode is "off"/,
+    })
+  } finally {
+    if (previous === undefined) delete process.env.NEXT_IMG_REBUILD
+    else process.env.NEXT_IMG_REBUILD = previous
+  }
 })

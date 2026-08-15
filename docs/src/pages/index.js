@@ -17,7 +17,7 @@ export default function Index() {
                 <strong>import</strong> png/jpg images
               </li>
               <li>
-                <strong>output</strong> to webp format
+                <strong>output</strong> to WebP and optional AVIF
               </li>
               <li>
                 <strong>resize</strong> to multiple screen sizes and densities
@@ -26,7 +26,7 @@ export default function Index() {
                 <strong>optimize</strong> webp and fallback images using sharp
               </li>
               <li>
-                <strong>lazy load</strong> in modern browsers with prop forwarding (loading="lazy")
+                <strong>prioritize and lazy load</strong> with modern browser hints
               </li>
               <li>
                 <strong>prevent layout shift</strong> with automatic width/height attributes
@@ -87,15 +87,23 @@ export default function Index() {
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee1.jpg?sizes=375,860')} />`}
+            {`<Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')} alt='Coffee' />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
-            {toString(<Picture src={require('../images/coffee1.jpg?sizes=375,860')} />)}
+            {toString(
+              <Picture
+                src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')}
+                alt='Coffee'
+              />,
+            )}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee1.jpg?sizes=375,860')} />
+              <Picture
+                src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp&placeholder=blur')}
+                alt='Coffee'
+              />
             </div>
           </div>
         </div>
@@ -115,15 +123,26 @@ export default function Index() {
             {`<Picture
   src={require('../images/coffee2.jpg?sizes=375,600,860')}
   breakpoints={[768,1080]}
+  alt='Coffee'
 />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
-            {toString(<Picture src={require('../images/coffee2.jpg?sizes=375,600,860')} breakpoints={[768, 1080]} />)}
+            {toString(
+              <Picture
+                src={require('../images/coffee2.jpg?sizes=375,600,860')}
+                breakpoints={[768, 1080]}
+                alt='Coffee'
+              />,
+            )}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee2.jpg?sizes=375,600,860')} breakpoints={[768, 1080]} />
+              <Picture
+                src={require('../images/coffee2.jpg?sizes=375,600,860')}
+                breakpoints={[768, 1080]}
+                alt='Coffee'
+              />
             </div>
           </div>
         </div>
@@ -149,6 +168,7 @@ export default function Index() {
             {`<Picture
   src={require('../images/coffee3.jpg?sizes=375,600,860')}
   sizes='(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px'
+  alt='Coffee'
 />`}
           </Code>
           <h3>Output</h3>
@@ -157,6 +177,7 @@ export default function Index() {
               <Picture
                 src={require('../images/coffee3.jpg?sizes=375,600,860')}
                 sizes='(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px'
+                alt='Coffee'
               />,
             )}
           </Code>
@@ -165,6 +186,7 @@ export default function Index() {
               <Picture
                 src={require('../images/coffee3.jpg?sizes=375,600,860')}
                 sizes='(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px'
+                alt='Coffee'
               />
             </div>
           </div>
@@ -182,15 +204,15 @@ export default function Index() {
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee4.jpg')} />`}
+            {`<Picture src={require('../images/coffee4.jpg')} alt='Coffee' />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
-            {toString(<Picture src={require('../images/coffee4.jpg')} />)}
+            {toString(<Picture src={require('../images/coffee4.jpg')} alt='Coffee' />)}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee4.jpg')} />
+              <Picture src={require('../images/coffee4.jpg')} alt='Coffee' />
             </div>
           </div>
         </div>
@@ -227,6 +249,7 @@ export default function Index() {
     require('../images/coffee5-l.jpg?sizes=860'),
   ]}
   breakpoints={[768, 1180]}
+  alt='Coffee'
 />`}
           </Code>
           <h3>Output</h3>
@@ -239,6 +262,7 @@ export default function Index() {
                   require('../images/coffee5-l.jpg?sizes=860'),
                 ]}
                 breakpoints={[768, 1180]}
+                alt='Coffee'
               />,
             )}
           </Code>
@@ -251,6 +275,7 @@ export default function Index() {
                   require('../images/coffee5-l.jpg?sizes=860'),
                 ]}
                 breakpoints={[768, 1180]}
+                alt='Coffee'
               />
             </div>
           </div>
@@ -269,17 +294,25 @@ export default function Index() {
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' />`}
+            {`<Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' alt='Coffee' />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
             {toString(
-              <Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' />,
+              <Picture
+                src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')}
+                sizes='100vw'
+                alt='Coffee'
+              />,
             )}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' />
+              <Picture
+                src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')}
+                sizes='100vw'
+                alt='Coffee'
+              />
             </div>
           </div>
         </div>
@@ -292,15 +325,15 @@ export default function Index() {
           <p>PNG images are supported as well. In this case, a lossless webp is outputted by default.</p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/illustration.png?sizes=480,860')} />`}
+            {`<Picture src={require('../images/illustration.png?sizes=480,860')} alt='Illustration' />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
-            {toString(<Picture src={require('../images/illustration.png?sizes=480,860')} />)}
+            {toString(<Picture src={require('../images/illustration.png?sizes=480,860')} alt='Illustration' />)}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/illustration.png?sizes=480,860')} />
+              <Picture src={require('../images/illustration.png?sizes=480,860')} alt='Illustration' />
             </div>
           </div>
         </div>

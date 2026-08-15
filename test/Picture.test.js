@@ -96,8 +96,7 @@ test('<Picture src />', t => {
     renderToStaticMarkup(<Picture src={img} />),
     '<picture>' +
       `<source type="image/webp" srcSet="${webpSrcSet}" sizes="${sizes}"/>` +
-      `<source type="image/jpeg" srcSet="${jpegSrcSet}" sizes="${sizes}"/>` +
-      `<img src="${img.src}" srcSet="${jpegSrcSet}" width="375" height="250"/>` +
+      `<img src="${img.src}" srcSet="${jpegSrcSet}" sizes="${sizes}" width="375" height="250" decoding="async"/>` +
       '</picture>',
   )
 })
@@ -149,11 +148,91 @@ test('media-query breakpoints', t => {
   t.is(
     renderToStaticMarkup(<Picture src={[landscape, fallback]} breakpoints={['(orientation: landscape)']} />),
     '<picture>' +
-      '<source type="image/jpeg" srcSet="landscape.jpg 800w" sizes="800px" media="(orientation: landscape)"/>' +
-      '<source type="image/jpeg" srcSet="fallback.jpg 800w" sizes="800px"/>' +
-      '<img src="landscape.jpg" srcSet="landscape.jpg 800w"/>' +
+      '<source type="image/jpeg" srcSet="landscape.jpg 800w" sizes="800px" media="(orientation: landscape)" width="800" height="450"/>' +
+      '<source type="image/jpeg" srcSet="fallback.jpg 800w" sizes="800px" width="800" height="800"/>' +
+      '<img src="fallback.jpg" srcSet="fallback.jpg 800w" sizes="800px" width="800" height="800" decoding="async"/>' +
       '</picture>',
   )
+})
+
+test('explicit art direction, modern formats, and picture props', t => {
+  const image = (name, width, height) => ({
+    src: `${name}.jpg`,
+    type: 'image/jpeg',
+    format: 'jpeg',
+    fallbackFormat: 'jpeg',
+    formats: ['avif', 'webp', 'jpeg'],
+    sources: {
+      avif: {
+        type: 'image/avif',
+        srcSet: `${name}.avif ${width}w`,
+        images: [{ path: `${name}.avif`, width, height, format: 'avif' }],
+      },
+      webp: {
+        type: 'image/webp',
+        srcSet: `${name}.webp ${width}w`,
+        images: [{ path: `${name}.webp`, width, height, format: 'webp' }],
+      },
+      jpeg: {
+        type: 'image/jpeg',
+        srcSet: `${name}.jpg ${width}w`,
+        images: [{ path: `${name}.jpg`, width, height, format: 'jpeg' }],
+      },
+    },
+    images: [{ path: `${name}.jpg`, width, height, format: 'jpeg' }],
+    sizes: [width],
+  })
+  const mobile = image('mobile', 400, 500)
+  const desktop = image('desktop', 1200, 600)
+  const html = renderToStaticMarkup(
+    <Picture
+      sources={[
+        { src: mobile, media: '(max-width: 767px)', sizes: '100vw' },
+        { src: desktop, sizes: '1200px' },
+      ]}
+      pictureProps={{ className: 'frame' }}
+      alt='Example'
+      priority
+    />,
+  )
+
+  t.true(html.startsWith('<picture class="frame">'))
+  t.true(html.includes('type="image/avif"'))
+  t.true(html.includes('media="(max-width: 767px)" width="400" height="500"'))
+  t.true(html.includes('src="desktop.jpg"'))
+  t.true(html.includes('loading="eager" decoding="sync" fetchPriority="high"'))
+})
+
+test('autoSizes prefixes a fallback for lazy images', t => {
+  const image = {
+    src: 'image.jpg',
+    type: 'image/jpeg',
+    srcSet: 'image.jpg 800w',
+    images: [{ width: 800, height: 500, format: 'jpeg' }],
+    name: 'image.jpg',
+    sizes: [800],
+    breakpoints: [],
+  }
+
+  t.true(
+    renderToStaticMarkup(<Picture src={image} alt='Example' loading='lazy' autoSizes />).includes(
+      'sizes="auto, 800px"',
+    ),
+  )
+})
+
+test('explicit art direction requires an unconditional fallback', t => {
+  const image = {
+    src: 'image.jpg',
+    type: 'image/jpeg',
+    srcSet: 'image.jpg 800w',
+    images: [{ width: 800, height: 500, format: 'jpeg' }],
+    sizes: [800],
+  }
+  const error = t.throws(() =>
+    renderToStaticMarkup(<Picture sources={[{ src: image, media: '(max-width: 767px)' }]} alt='Example' />),
+  )
+  t.regex(error.message, /unconditional fallback/)
 })
 
 // test cases

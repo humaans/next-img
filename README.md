@@ -10,10 +10,10 @@ Features
 - **no CDN required** — images are optimized at build time, not at runtime
 - **static export** — works with `output: 'export'`, no server needed
 - **import** png/jpg images with query params to control sizes and densities
-- **output** to webp format with optimized fallbacks
+- **output** to WebP and optional AVIF with optimized fallbacks
 - **resize** to multiple screen sizes and densities in a single import
 - **optimize** using `sharp` at build time with results cached in your repo
-- **lazy load** in modern browsers with prop forwarding (`loading="lazy"`)
+- **browser-native loading hints** with `priority`, `loading`, `decoding`, and `fetchPriority`
 - **prevent layout shift** with automatic width/height attributes
 - **streamlined usage** with the built in `<Picture />` component
 - **art direction** with different images for different breakpoints
@@ -23,7 +23,7 @@ By default **next-img** is configured to use:
 
 - 1 breakpoint at `768px`
 - 2 pixel densities of 1x, 2x
-- to output the original and webp formats
+- to output WebP plus the original format as a fallback
 
 All of these settings and more can be changed in your `next.config.js` or in the individual image imports.
 
@@ -119,7 +119,7 @@ This particular example will generate the following images:
 - 800px wide image to show on large screens with low pixel density of 1x
 - 1600px wide image to show on large screens with high pixel density of 2x or more
 
-The resized and optimized images will be saved to the `resources` directory in the root of your project during the development. This means, that if you tweak the image import parameters or plugin configuration, you might generate extra images that are no longer used by your project. In that case execute `next-img` command to remove any unnecessary images and build any missing ones:
+The resized and optimized images are saved to the `resources` directory in the root of your project. Cache misses are processed during development and production builds. If you tweak image imports or plugin configuration, run `next-img` to rebuild the image graph and remove entries that are no longer used:
 
 ```
 npx next-img
@@ -131,7 +131,9 @@ The cleanup build uses Turbopack by default, matching current Next.js releases. 
 npx next-img --webpack
 ```
 
-Now check in the `resources` directory to your source control to be reused later for development and production builds. You can turn this feature off by setting `persistentCache: false` in the plugin configuration, in which case the images will be only stored in a temporary cache inside `.next` directory.
+You can check the `resources` directory into source control or preserve it in CI to reuse transformations. Set `cache.mode: 'read-only'` to make builds fail when a generated image is missing, or `cache.mode: 'off'` to keep the transformation cache inside `.next`. The former `persistentCache` and `persistentCacheDir` options remain supported as deprecated aliases.
+
+Generated modules are staged temporarily in the ignored `.next-img` directory. This keeps newly generated files visible to both Turbopack and Webpack; `next-img` removes unused staged files after a successful cleanup build.
 
 [View more usage examples](https://humaans.github.io/next-img/).
 
@@ -144,6 +146,12 @@ Default plugin configuration options:
   // global settings for images, can be overriden per image
   breakpoints: [768],
   densities: ['1x', '2x'],
+  formats: ['webp'],
+  fallbackFormat: 'original',
+  placeholder: false,
+  placeholderSize: 16,
+  // turn unknown import-option warnings into build errors
+  strict: false,
 
   // output image quality configuration
   jpeg: {
@@ -162,6 +170,12 @@ Default plugin configuration options:
     },
   },
 
+  // used when AVIF is enabled through formats
+  avif: {
+    quality: 50,
+    effort: 4,
+  },
+
   // the directory within Next.js build output
   imagesDir: 'images',
   // the output image name template
@@ -171,11 +185,12 @@ Default plugin configuration options:
   // advanced - customise the image output path
   imagesOutputPath: null,
 
-  // persistent cache allows for fast deploy and
-  // development workflow by avoiding reprocessing
-  // images that were previously processed
-  persistentCache: true,
-  persistentCacheDir: 'resources',
+  // read-write builds missing entries; read-only verifies that every
+  // transformation already exists; off uses the temporary .next cache
+  cache: {
+    mode: 'read-write',
+    dir: 'resources',
+  },
 
   // this directory within .next is used in case persistent cache is turned off
   cacheDir: path.join('cache', 'next-img')
@@ -192,8 +207,12 @@ Refer to [sharp documentation](https://sharp.pixelplumbing.com/api-output) for `
 
 When importing an image, you can use query parameters to customise the optimisation:
 
-- **sizes** - a list of comma separated sizes you will be showing images at. Note that you do not need to take into account the pixel densities here. That is, if you're showing an image at `320px` wide on your website, simply specify `320` here, the plugin will produce any necessary larger versions based on the `densities` configuration.
-- **densities** - a list of comma separated densities you need each image size to be produced at. By default `1x` and `2x` sizes of images will be produced, specify `1x` if you want to produce only one image per size, or `1x,2x,3x`, etc. if you want more densities.
+- **widths** - a list of exact output widths, such as `?widths=320,640,960`. Use this for fluid responsive images together with the HTML `sizes` prop.
+- **sizes** - the backwards-compatible logical-size API. Each size is multiplied by `densities`; existing imports can continue using it unchanged.
+- **densities** - pixel densities for the legacy `sizes` API. `widths` and `densities` cannot be combined.
+- **formats** - preferred output formats in browser-selection order, for example `?formats=avif,webp`. The fallback is always added last.
+- **fallbackFormat** - `original` by default, or an explicit `jpeg`, `png`, `webp`, or `avif` fallback.
+- **placeholder** - set `?placeholder=blur` to include a tiny `blurDataURL` in the imported metadata.
 - **jpeg** - quality configuration options for `jpeg` images. Note, the `jpeg->webp` settings need to be nested under this param, e.g. `?jpeg[webp][quality]=95`
 - **png** - quality configuration options for `png` images. Note, the `png->webp` settings need to be nested under this param, e.g. `?png[webp][lossless]=false&png[webp][nearLossless]=true`
 
@@ -205,7 +224,10 @@ import img2 from './images/img.jpg?sizes=375,900'
 import img3 from './images/img.jpg?sizes=375,900&densities=1x'
 import img4 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x'
 import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality]=70&jpeg[webp][quality]=70'
+import img6 from './images/img.jpg?widths=375,750,1200&formats=avif,webp&placeholder=blur'
 ```
+
+Known import options are validated strictly. Unknown names produce actionable warnings instead of being silently ignored; set `nextImg.strict: true` to turn those warnings into build errors. Invalid widths and incompatible combinations always fail the build.
 
 ## Picture Props
 
@@ -213,10 +235,28 @@ import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality
 
 Here are the props this component accepts:
 
-- **src** the imported image, or an array of imported images.
+- **src** - the imported image, or an array of imported images for backwards-compatible art direction.
+- **sources** - explicit art-direction entries shaped as `{ src, media?, sizes? }`. The final entry without `media` acts as the fallback.
 - **breakpoints** - a list of breakpoints to override the global configuration. Each breakpoint can be a pixel width, such as `768`, or a complete media condition, such as `'(orientation: landscape)'`.
 - **sizes** - a custom [html sizes attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#How_do_you_create_responsive_images), by default the sizes attribute is generated based on the available images and breakpoints.
-- **the rest of the props and ref** are forwarded to the `img` tag. This allows the use of attributes such as `alt`, `loading="lazy"`, etc..
+- **priority** - sets `loading="eager"`, `decoding="sync"`, and `fetchPriority="high"` unless individually overridden.
+- **autoSizes** - when combined with `loading="lazy"`, prefixes the generated `sizes` value with the modern `auto` keyword and retains the generated value as a browser fallback.
+- **pictureProps** - attributes for the outer `<picture>` element.
+- **the rest of the props and ref** are forwarded to the `img` tag. `decoding` defaults to `async`; loading behavior remains under application control so above-the-fold images are not accidentally lazy-loaded.
+
+Always provide useful `alt` text, or `alt=''` for decorative images. The TypeScript API keeps it optional for backwards compatibility with wrappers written against earlier untyped releases.
+
+Explicit art direction avoids coordinating positional arrays:
+
+```js
+<Picture
+  sources={[
+    { src: mobile, media: '(max-width: 767px)', sizes: '100vw' },
+    { src: desktop, sizes: '1200px' },
+  ]}
+  alt='Team collaborating'
+/>
+```
 
 #### A note on how sizes/media attributes are generated
 
@@ -246,7 +286,7 @@ For example, with breakpoints `[375, 768]` and `src=[img1, img2, img3]` the `<Pi
 String breakpoints are used as-is, allowing art direction based on conditions other than width:
 
 ```js
-<Picture src={[landscape, fallback]} breakpoints={['(orientation: landscape)']} />
+<Picture src={[landscape, fallback]} breakpoints={['(orientation: landscape)']} alt='Example' />
 ```
 
 ## Turbopack Compatibility
@@ -265,7 +305,7 @@ next dev --webpack
 next build --webpack
 ```
 
-The shared loader writes optimized, content-addressed files into the local cache and returns JavaScript imports for those generated assets. Webpack and Turbopack then emit each imported image as a separate resource. The image bytes are not embedded in JavaScript, and the browser still downloads only the candidate selected by `<picture>`, `media`, `sizes`, and `srcset`.
+The shared loader auto-orients input images, writes optimized content-addressed files into the local cache, and returns JavaScript imports for those generated assets. Cache keys include the complete transformation, Sharp version, and next-img pipeline version. Webpack and Turbopack then emit each imported image as a separate resource. The browser downloads only the candidate selected by `<picture>`, `media`, `sizes`, and `srcset`.
 
 Turbopack support requires a current Next.js release with custom loader rules and the `asset` module type. Next.js 16.3.1 is covered by the integration fixture in this repository.
 
@@ -303,8 +343,6 @@ npx next-img
 
 ## Roadmap
 
-- Allow turning `webp/jpg/png` output off
 - Add `?raw` query support that doesn’t process the image in any way
 - Inline small images as base64
-- Add support for gif and webp as source images
 - Translate relative sizes `?sizes=100vw,50vw,900px` to pixels based on breakpoint configuration, so image sizing can follow your design system automatically

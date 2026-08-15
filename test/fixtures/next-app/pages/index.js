@@ -1,5 +1,11 @@
-const image = require('../../../../docs/src/images/coffee1.jpg?sizes=100&densities=1x')
+const image = require('../../../../docs/src/images/coffee1.jpg?widths=100&formats=avif,webp&placeholder=blur')
+const { Picture } = require('../../../..')
 
 export default function Home() {
-  return <img src={image.src} width={image.images[0].width} height={image.images[0].height} alt='Coffee' />
+  return (
+    <main>
+      <Picture src={image} alt='Coffee' priority />
+      <span data-formats={image.formats.join(',')} data-width={image.width} data-height={image.height} />
+    </main>
+  )
 }

@@ -1,5 +1,13 @@
 ## Unreleased
 
+- Auto-orient images from EXIF metadata before resizing.
+- Version persistent-cache entries by the complete transform, Sharp version, and processing pipeline.
+- Validate import options and report unknown, malformed, or incompatible values.
+- Add exact `widths`, generic format metadata, optional AVIF, configurable fallbacks, and blur placeholders.
+- Add explicit art-direction sources, per-source dimensions, picture attributes, priority hints, and lazy `auto` sizes.
+- Add TypeScript declarations for the component, generated metadata, and plugin configuration.
+- Add explicit read-write, read-only, and off cache modes while preserving the legacy cache options.
+- Prune staged assets safely and remove Commander, mkdirp, and rimraf in favor of Node.js APIs.
 - Add a shared image loader architecture for Webpack and Turbopack.
 - Replace webpack-only `emitFile()` calls with generated static asset imports.
 - Preserve build-time Sharp optimization, responsive candidates, WebP fallbacks, art direction, and static export without a CDN.

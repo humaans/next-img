@@ -5,19 +5,22 @@ const { default: test } = require('ava')
 const sharp = require('sharp')
 const loader = require('../lib/loader')
 
-async function runLoader(t, resourceQuery = '', optionOverrides = {}) {
+async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffer) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-loader-'))
   const imported = []
-  const buffer = await sharp({
-    create: {
-      width: 800,
-      height: 500,
-      channels: 3,
-      background: { r: 20, g: 40, b: 60 },
-    },
-  })
-    .jpeg()
-    .toBuffer()
+  const dependencies = []
+  const buffer =
+    inputBuffer ||
+    (await sharp({
+      create: {
+        width: 800,
+        height: 500,
+        channels: 3,
+        background: { r: 20, g: 40, b: 60 },
+      },
+    })
+      .jpeg()
+      .toBuffer())
 
   t.teardown(() => fs.rmSync(dir, { recursive: true, force: true }))
 
@@ -28,6 +31,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}) {
         resourceQuery,
         rootContext: dir,
         async: () => (error, result) => (error ? reject(error) : resolve(result)),
+        addDependency: dependency => dependencies.push(dependency),
         getOptions: () => ({
           breakpoints: [768],
           densities: ['1x', '2x'],
@@ -45,7 +49,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}) {
           cacheDir: path.join('cache', 'next-img'),
           persistentCache: false,
           persistentCacheDir: 'resources',
-          assetStageDir: path.join(dir, 'node_modules', '.cache', 'next-img', 'assets'),
+          assetStageDir: path.join(dir, '.next-img', 'assets'),
           failOnCacheMiss: false,
           rebuildSession: null,
           ...optionOverrides,
@@ -67,6 +71,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}) {
 
   return {
     data: module.exports,
+    dependencies,
     dir,
     imported,
     source,
@@ -74,7 +79,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}) {
 }
 
 test('emits one candidate per format when sizes are omitted', async t => {
-  const { data, imported, source } = await runLoader(t)
+  const { data, dependencies, imported, source } = await runLoader(t)
 
   t.deepEqual(
     data.images.map(({ width, format }) => ({ width, format })),
@@ -84,9 +89,18 @@ test('emits one candidate per format when sizes are omitted', async t => {
     ],
   )
   t.deepEqual(data.sizes, [800])
+  t.deepEqual(data.formats, ['webp', 'jpeg'])
+  t.is(data.width, 800)
+  t.is(data.height, 500)
+  t.is(data.sources.webp.srcSet, data.webpSrcSet)
+  t.is(data.sources.jpeg.srcSet, data.srcSet)
   t.is(data.srcSet.split(',').length, 1)
   t.is(data.webpSrcSet.split(',').length, 1)
   t.is(imported.length, 2)
+  t.deepEqual(
+    dependencies.map(dependency => path.basename(dependency)).sort(),
+    imported.map(request => path.basename(request.split('?')[0])).sort(),
+  )
   t.true(imported.every(request => request.endsWith('?__next_img_generated__')))
   t.false(source.includes('emitFile'))
 })
@@ -107,4 +121,53 @@ test('deduplicates widths produced by different size and density combinations', 
   t.is(data.srcSet.split(',').length, 2)
   t.is(data.webpSrcSet.split(',').length, 2)
   t.is(imported.length, 4)
+})
+
+test('supports exact widths, AVIF, and blur metadata', async t => {
+  const { data, imported } = await runLoader(t, '?widths=320,640&formats=avif,webp&placeholder=blur')
+
+  t.deepEqual(data.formats, ['avif', 'webp', 'jpeg'])
+  t.deepEqual(data.sizes, [320, 640])
+  t.deepEqual(
+    data.images.map(({ width, format }) => ({ width, format })),
+    [
+      { width: 320, format: 'jpeg' },
+      { width: 320, format: 'avif' },
+      { width: 320, format: 'webp' },
+      { width: 640, format: 'jpeg' },
+      { width: 640, format: 'avif' },
+      { width: 640, format: 'webp' },
+    ],
+  )
+  t.true(data.sources.avif.srcSet.includes('320w'))
+  t.true(data.blurDataURL.startsWith('data:image/webp;base64,'))
+  t.is(imported.length, 6)
+})
+
+test('auto-orients images before calculating and generating dimensions', async t => {
+  const input = await sharp({
+    create: { width: 40, height: 20, channels: 3, background: 'red' },
+  })
+    .jpeg()
+    .withMetadata({ orientation: 6 })
+    .toBuffer()
+  const { data } = await runLoader(t, '?widths=20&formats=webp', {}, input)
+
+  t.is(data.width, 20)
+  t.is(data.height, 40)
+  t.deepEqual(
+    data.images.map(({ width, height }) => ({ width, height })),
+    [
+      { width: 20, height: 40 },
+      { width: 20, height: 40 },
+    ],
+  )
+})
+
+test('rejects unknown options in strict mode and always rejects conflicting options', async t => {
+  const unknown = await t.throwsAsync(runLoader(t, '?size=120', { strict: true }))
+  t.regex(unknown.message, /Did you mean "sizes" or "widths"/)
+
+  const conflicting = await t.throwsAsync(runLoader(t, '?widths=320&densities=2x'))
+  t.regex(conflicting.message, /cannot be used together/)
 })
