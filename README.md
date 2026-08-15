@@ -204,7 +204,7 @@ import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality
 Here are the props this component accepts:
 
 - **src** the imported image, or an array of imported images.
-- **breakpoints** - a list of breakpoints to override the global configuration.
+- **breakpoints** - a list of breakpoints to override the global configuration. Each breakpoint can be a pixel width, such as `768`, or a complete media condition, such as `'(orientation: landscape)'`.
 - **sizes** - a custom [html sizes attribute](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#How_do_you_create_responsive_images), by default the sizes attribute is generated based on the available images and breakpoints.
 - **the rest of the props and ref** are forwarded to the `img` tag. This allows the use of attributes such as `alt`, `loading="lazy"`, etc..
 
@@ -231,6 +231,12 @@ For example, with breakpoints `[375, 768]` and `src=[img1, img2, img3]` the `<Pi
   <source sizes="{{img3 width}}" />
   <img ... />
 </picture>
+```
+
+String breakpoints are used as-is, allowing art direction based on conditions other than width:
+
+```js
+<Picture src={[landscape, fallback]} breakpoints={['(orientation: landscape)']} />
 ```
 
 ## Turbopack Compatibility
