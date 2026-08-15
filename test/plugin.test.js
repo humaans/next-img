@@ -72,6 +72,13 @@ test('configures the shared loader and generated assets for Turbopack', t => {
   t.truthy(config.turbopack.rules['*.avif'])
 })
 
+test('pins the default filename hash algorithm', t => {
+  const config = withImg({ nextImg: { persistentCache: false } })
+  const options = config.turbopack.rules['*.jpg'][1].loaders[0].options
+
+  t.is(options.imagesName, '[name]-[size]@[density]-[xxhash64:hash:hex:16].[ext]')
+})
+
 test('supports explicit cache modes and legacy cache configuration', t => {
   const readOnly = withImg({
     nextImg: { cache: { mode: 'read-only', dir: 'image-cache', version: 'photos-v2' } },

@@ -46,7 +46,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
             quality: 100,
             webp: { lossless: true },
           },
-          imagesName: '[name]-[size]@[density]-[hash].[ext]',
+          imagesName: '[name]-[size]@[density]-[xxhash64:hash:hex:16].[ext]',
           dir,
           distDir: '.next',
           cacheDir: path.join('cache', 'next-img'),
@@ -137,7 +137,7 @@ test('uses stable proxy imports for Turbopack assets', async t => {
   t.true(dependencies.every(dependency => dependency.includes('next-img-proxies')))
 })
 
-test.serial('preserves released persistent cache keys across Sharp upgrades', async t => {
+test.serial('preserves released persistent cache keys with pinned hashing across Sharp upgrades', async t => {
   const originalSharpVersion = sharp.versions.sharp
 
   try {
