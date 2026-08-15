@@ -3,7 +3,6 @@ const os = require('os')
 const path = require('path')
 const { default: test } = require('ava')
 const sharp = require('sharp')
-const assetStore = require('../lib/asset-store')
 const loader = require('../lib/loader')
 
 async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffer) {
@@ -50,7 +49,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
           dir,
           distDir: '.next',
           cacheDir: path.join('cache', 'next-img'),
-          cache: { mode: 'off', dir: 'resources', version: null, rebuildSession: null },
+          cache: { mode: 'off', dir: 'resources', rebuildSession: null },
           assetStageDir: path.join(dir, '.next-img', 'assets'),
           bundler: 'webpack',
           ...optionOverrides,
@@ -78,6 +77,10 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
     source,
     warnings,
   }
+}
+
+function getCacheKeys(result) {
+  return result.imported.map(request => new URLSearchParams(request.split('?')[1]).get('key')).sort()
 }
 
 test('emits one candidate per format when sizes are omitted', async t => {
@@ -141,33 +144,34 @@ test.serial('preserves released persistent cache keys with pinned hashing across
   const originalSharpVersion = sharp.versions.sharp
 
   try {
-    const cache = { mode: 'read-write', dir: 'resources', version: null, rebuildSession: null }
+    const cache = { mode: 'read-write', dir: 'resources', rebuildSession: null }
     const first = await runLoader(t, '', { cache })
     sharp.versions.sharp = '99.0.0'
     const second = await runLoader(t, '', { cache })
-    const cacheKeys = result =>
-      result.imported.map(request => new URLSearchParams(request.split('?')[1]).get('key')).sort()
 
     const expectedLegacyKeys = ['image-800-0cddac0df359e9f5.webp', 'image-800-7998063232322a57.jpg']
-    t.deepEqual(cacheKeys(first), expectedLegacyKeys)
-    t.deepEqual(cacheKeys(second), expectedLegacyKeys)
+    t.deepEqual(getCacheKeys(first), expectedLegacyKeys)
+    t.deepEqual(getCacheKeys(second), expectedLegacyKeys)
   } finally {
     sharp.versions.sharp = originalSharpVersion
   }
 })
 
-test('records pipeline, application cache, and toolchain versions in the manifest', async t => {
-  const rebuildSession = `loader-manifest-${process.pid}-${Date.now()}`
-  const { dir } = await runLoader(t, '', {
-    cache: { mode: 'read-write', dir: 'resources', version: 'photos-v2', rebuildSession },
+test('uses one derivative key for persistent and temporary caches', async t => {
+  const input = await sharp({
+    create: { width: 800, height: 500, channels: 3, background: { r: 20, g: 40, b: 60 } },
   })
+    .jpeg()
+    .toBuffer()
+  const persistent = await runLoader(
+    t,
+    '',
+    { cache: { mode: 'read-write', dir: 'resources', rebuildSession: null } },
+    input,
+  )
+  const temporary = await runLoader(t, '', {}, input)
 
-  await assetStore.gc(rebuildSession)
-  const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'resources', '.next-img-cache.json')))
-
-  t.is(manifest.processing.pipelineVersion, 2)
-  t.is(manifest.processing.cacheVersion, 'photos-v2')
-  t.is(manifest.processing.toolchain.sharp, sharp.versions.sharp)
+  t.deepEqual(getCacheKeys(temporary), getCacheKeys(persistent))
 })
 
 test('supports exact widths and AVIF metadata', async t => {

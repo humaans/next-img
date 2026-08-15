@@ -100,18 +100,15 @@ test('read-only cache mode rejects misses except during rebuilds', async t => {
   t.true(fs.existsSync(path.join(dir, 'resources', 'missing.jpg')))
 })
 
-test('refreshes processing changes in place during cleanup builds', async t => {
+test('rebuild sessions regenerate existing files and remove legacy manifests', async t => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-store-'))
   const cacheDir = path.join(dir, 'resources')
   const first = await createImage('red')
   const second = await createImage('blue')
-  const warnings = []
   let transformations = 0
   const config = {
     dir,
     cache: { mode: 'read-write', dir: 'resources', rebuildSession: null },
-    processing: { pipelineVersion: 2, toolchain: { sharp: 'one', vips: 'one' } },
-    warn: warning => warnings.push(warning),
   }
   t.teardown(() => fs.rmSync(dir, { recursive: true, force: true }))
 
@@ -120,37 +117,25 @@ test('refreshes processing changes in place during cleanup builds', async t => {
     return { data, width: 8, height: 8, format: 'jpeg' }
   }
 
-  const firstSession = `first-${process.pid}-${Date.now()}`
-  await assetStore.cached(
-    create(first),
-    'stable.jpg',
-    { ...config, cache: { ...config.cache, rebuildSession: firstSession } },
-    'processing',
-  )
-  await assetStore.gc(firstSession)
+  await assetStore.cached(create(first), 'stable.jpg', config, 'processing')
+  fs.writeFileSync(path.join(cacheDir, '.next-img-cache.json'), '{}')
 
-  const changed = {
-    ...config,
-    processing: { pipelineVersion: 2, toolchain: { sharp: 'two', vips: 'two' } },
-  }
-  const cached = await assetStore.cached(create(second), 'stable.jpg', changed, 'processing')
+  const cached = await assetStore.cached(create(second), 'stable.jpg', config, 'processing')
   t.deepEqual(cached.data, first)
   t.is(transformations, 1)
-  t.is(warnings.length, 1)
 
-  const secondSession = `second-${process.pid}-${Date.now()}`
+  const rebuildSession = `rebuild-${process.pid}-${Date.now()}`
   await assetStore.cached(
     create(second),
     'stable.jpg',
-    { ...changed, cache: { ...changed.cache, rebuildSession: secondSession } },
+    { ...config, cache: { ...config.cache, rebuildSession } },
     'processing',
   )
-  await assetStore.gc(secondSession)
+  await assetStore.gc(rebuildSession)
 
   t.is(transformations, 2)
   t.deepEqual(fs.readFileSync(path.join(cacheDir, 'stable.jpg')), second)
-  t.deepEqual(fs.readdirSync(cacheDir).sort(), ['.next-img-cache.json', 'stable.jpg'])
-  t.deepEqual(JSON.parse(fs.readFileSync(path.join(cacheDir, '.next-img-cache.json'))).processing, changed.processing)
+  t.deepEqual(fs.readdirSync(cacheDir), ['stable.jpg'])
 })
 
 async function createImage(background) {

@@ -124,13 +124,14 @@ module.exports = withImg({
     cache: {
       mode: 'read-write',
       dir: 'resources',
-      version: null,
     },
   },
 })
 ```
 
-Cache filenames remain stable across next-img and Sharp upgrades. `.next-img-cache.json` records the processing versions; the cleanup command refreshes changed output in place. Use `cache.version` to invalidate images for an application-specific processing change.
+Cache filenames remain stable across next-img and Sharp upgrades. `npx next-img` always regenerates every referenced derivative in place, then removes unused files. Run it after upgrading next-img or Sharp.
+
+The maintenance command requires a persistent cache. With `cache.mode: 'off'`, clear `.next` after upgrading next-img or Sharp instead.
 
 The deprecated `persistentCache` and `persistentCacheDir` options remain supported.
 

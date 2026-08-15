@@ -65,7 +65,7 @@ test('configures the shared loader and generated assets for Turbopack', t => {
 
   const options = loaderRule.loaders[0].options
   t.notThrows(() => JSON.stringify(options))
-  t.deepEqual(options.cache, { mode: 'off', dir: 'resources', version: null, rebuildSession: null })
+  t.deepEqual(options.cache, { mode: 'off', dir: 'resources', rebuildSession: null })
   t.is(options.maxBareImportSize, 2048)
   t.is(options.bundler, 'turbopack')
   t.regex(options.assetProxyDir, /\.next-img\/proxies$/)
@@ -81,13 +81,12 @@ test('pins the default filename hash algorithm', t => {
 
 test('supports explicit cache modes and legacy cache configuration', t => {
   const readOnly = withImg({
-    nextImg: { cache: { mode: 'read-only', dir: 'image-cache', version: 'photos-v2' } },
+    nextImg: { cache: { mode: 'read-only', dir: 'image-cache' } },
   })
   const readOnlyOptions = readOnly.turbopack.rules['*.jpg'][1].loaders[0].options
   t.deepEqual(readOnlyOptions.cache, {
     mode: 'read-only',
     dir: 'image-cache',
-    version: 'photos-v2',
     rebuildSession: null,
   })
 
@@ -96,7 +95,6 @@ test('supports explicit cache modes and legacy cache configuration', t => {
   t.deepEqual(legacyOptions.cache, {
     mode: 'read-write',
     dir: 'legacy-cache',
-    version: null,
     rebuildSession: null,
   })
 })
@@ -105,12 +103,6 @@ test('forwards global exact widths to the loader', t => {
   const config = withImg({ nextImg: { widths: [320, 640] } })
   const options = config.turbopack.rules['*.jpg'][1].loaders[0].options
   t.deepEqual(options.widths, [320, 640])
-})
-
-test('rejects invalid application cache versions', t => {
-  t.throws(() => withImg({ nextImg: { cache: { version: {} } } }), {
-    message: /cache.version must be a string, number, or null/,
-  })
 })
 
 test('validates the oversized bare-import limit', t => {

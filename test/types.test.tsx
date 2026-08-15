@@ -15,6 +15,6 @@ withImg({
   nextImg: {
     formats: ['avif', 'webp'],
     maxBareImportSize: 2048,
-    cache: { mode: 'read-only', dir: 'resources', version: 'photos-v2' },
+    cache: { mode: 'read-only', dir: 'resources' },
   },
 })

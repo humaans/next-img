@@ -1,7 +1,7 @@
 ## Unreleased
 
 - Auto-orient images from EXIF metadata before resizing.
-- Preserve released persistent-cache filenames while tracking the next-img pipeline, application cache version, and Sharp toolchain separately for in-place refreshes without filename churn.
+- Simplify persistent caching: preserve released filenames, remove processing manifests and `cache.version`, and make `next-img` regenerate every referenced derivative in place.
 - Validate import options and report unknown, malformed, or incompatible values.
 - Add exact `widths`, generic format metadata, optional AVIF, and configurable fallbacks.
 - Add explicit art-direction sources, per-source dimensions, picture attributes, and lazy `auto` sizes.
