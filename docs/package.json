@@ -9,9 +9,9 @@
     "release:docs": "npm run clean && npm run build && gh-pages -d out -t"
   },
   "dependencies": {
-    "js-beautify": "^1.15.4",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "js-beautify": "^2.0.3",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "react-syntax-highlighter": "^16.1.1"
   },
   "devDependencies": {

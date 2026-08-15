@@ -7,16 +7,14 @@ export function Layout({ children }) {
       <div className='header'>
         <div className='header-inner'>
           <div>
-            <Link href='/' legacyBehavior>
-              <a className='logo'>next-img</a>
+            <Link href='/' className='logo'>
+              next-img
             </Link>
           </div>
 
           <ul className='nav'>
             <li>
-              <Link href='https://github.com/humaans/next-img/' legacyBehavior>
-                <a>View on Github →</a>
-              </Link>
+              <a href='https://github.com/humaans/next-img/'>View on Github →</a>
             </li>
           </ul>
         </div>
