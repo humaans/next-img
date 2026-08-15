@@ -1,25 +1,24 @@
-## Unreleased
+## 0.7.0
 
-- Auto-orient images from EXIF metadata before resizing.
-- Simplify persistent caching: preserve released filenames, remove processing manifests and `cache.version`, and make `next-img` regenerate every referenced derivative in place.
-- Validate import options and report unknown, malformed, or incompatible values.
-- Add exact `widths`, generic format metadata, optional AVIF, and configurable fallbacks.
-- Add explicit art-direction sources, per-source dimensions, picture attributes, and lazy `auto` sizes.
-- Add responsive document-head image preloads with React 19 and React 18 Pages Router support.
-- Warn when images over 2048px are imported without responsive sizing, with configurable limits and strict-mode errors.
-- Centralize cache state, image-format definitions, and loader diagnostics behind explicit internal contracts.
-- Add TypeScript declarations for the component, generated metadata, and plugin configuration.
-- Add explicit read-write, read-only, and off cache modes while preserving the legacy cache options.
-- Prune staged assets safely and remove Commander, mkdirp, and rimraf in favor of Node.js APIs.
-- Add a shared image loader architecture for Webpack and Turbopack.
-- Replace webpack-only `emitFile()` calls with generated static asset imports.
-- Preserve build-time Sharp optimization, responsive candidates, WebP fallbacks, art direction, and static export without a CDN.
-- Add Next.js 16.3 integration fixtures for Turbopack and Webpack builds.
-- Make persistent-cache cleanup work when loaders execute in child processes.
-- Isolate asset storage and garbage collection from image transformation.
-- Run maintenance builds through the target application's public Next.js CLI.
-- Use Turbopack for cleanup builds by default and add `next-img --webpack` for backwards compatibility.
-- Avoid cold-build filesystem races by emitting Turbopack assets through stable per-format proxies backed by the content-addressed cache.
+Existing `?sizes` imports, `src={[...]}` art direction, `persistentCache`, and `persistentCacheDir` remain supported.
+
+### Breaking changes
+
+- `npx next-img` now uses Turbopack by default. Pass `--webpack` for Webpack projects.
+- Turbopack owns emitted filenames; custom image output paths and names remain Webpack-only.
+- `npx next-img` now rebuilds every referenced derivative before deleting unused files.
+- Production builds now generate missing cache entries. Use `cache.mode: 'read-only'` to fail on a miss.
+- Malformed or conflicting import options now fail; unknown options warn. `strict: true` turns warnings into errors.
+- Deep imports and `.js` package subpaths no longer work. Import only from `next-img`, `next-img/plugin`, `next-img/loader`, or `next-img/package.json`.
+
+### New
+
+- Supports current Next.js 16 builds with Turbopack or Webpack, including static export and cold builds.
+- Adds exact `widths`, AVIF input and output, configurable formats and fallbacks, format metadata, and EXIF auto-orientation.
+- Adds explicit art-direction `sources`, `pictureProps`, responsive document-head preloads, lazy `autoSizes`, and per-source dimensions.
+- Warns when an import over 2048px has no responsive size. Set `maxBareImportSize` to change the limit or `false` to disable it.
+- Adds `read-write`, `read-only`, and `off` cache modes while preserving released cache filenames.
+- Adds TypeScript declarations and supports Node.js 20.19 or newer.
 
 ## 0.6.0
 
