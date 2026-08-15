@@ -65,9 +65,7 @@ test('configures the shared loader and generated assets for Turbopack', t => {
 
   const options = loaderRule.loaders[0].options
   t.notThrows(() => JSON.stringify(options))
-  t.is(options.persistentCache, false)
-  t.is(options.cacheMode, 'off')
-  t.is(options.cacheVersion, null)
+  t.deepEqual(options.cache, { mode: 'off', dir: 'resources', version: null, rebuildSession: null })
   t.is(options.maxBareImportSize, 2048)
   t.is(options.bundler, 'turbopack')
   t.regex(options.assetProxyDir, /\.next-img\/proxies$/)
@@ -79,15 +77,21 @@ test('supports explicit cache modes and legacy cache configuration', t => {
     nextImg: { cache: { mode: 'read-only', dir: 'image-cache', version: 'photos-v2' } },
   })
   const readOnlyOptions = readOnly.turbopack.rules['*.jpg'][1].loaders[0].options
-  t.is(readOnlyOptions.cacheMode, 'read-only')
-  t.is(readOnlyOptions.persistentCacheDir, 'image-cache')
-  t.is(readOnlyOptions.cacheVersion, 'photos-v2')
-  t.true(readOnlyOptions.failOnCacheMiss)
+  t.deepEqual(readOnlyOptions.cache, {
+    mode: 'read-only',
+    dir: 'image-cache',
+    version: 'photos-v2',
+    rebuildSession: null,
+  })
 
   const legacy = withImg({ nextImg: { persistentCacheDir: 'legacy-cache' } })
   const legacyOptions = legacy.turbopack.rules['*.jpg'][1].loaders[0].options
-  t.is(legacyOptions.cacheMode, 'read-write')
-  t.is(legacyOptions.persistentCacheDir, 'legacy-cache')
+  t.deepEqual(legacyOptions.cache, {
+    mode: 'read-write',
+    dir: 'legacy-cache',
+    version: null,
+    rebuildSession: null,
+  })
 })
 
 test('forwards global exact widths to the loader', t => {

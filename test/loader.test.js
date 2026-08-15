@@ -50,12 +50,9 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
           dir,
           distDir: '.next',
           cacheDir: path.join('cache', 'next-img'),
-          persistentCache: false,
-          persistentCacheDir: 'resources',
+          cache: { mode: 'off', dir: 'resources', version: null, rebuildSession: null },
           assetStageDir: path.join(dir, '.next-img', 'assets'),
           bundler: 'webpack',
-          failOnCacheMiss: false,
-          rebuildSession: null,
           ...optionOverrides,
         }),
       },
@@ -144,9 +141,10 @@ test.serial('preserves released persistent cache keys across Sharp upgrades', as
   const originalSharpVersion = sharp.versions.sharp
 
   try {
-    const first = await runLoader(t, '', { persistentCache: true })
+    const cache = { mode: 'read-write', dir: 'resources', version: null, rebuildSession: null }
+    const first = await runLoader(t, '', { cache })
     sharp.versions.sharp = '99.0.0'
-    const second = await runLoader(t, '', { persistentCache: true })
+    const second = await runLoader(t, '', { cache })
     const cacheKeys = result =>
       result.imported.map(request => new URLSearchParams(request.split('?')[1]).get('key')).sort()
 
@@ -161,9 +159,7 @@ test.serial('preserves released persistent cache keys across Sharp upgrades', as
 test('records pipeline, application cache, and toolchain versions in the manifest', async t => {
   const rebuildSession = `loader-manifest-${process.pid}-${Date.now()}`
   const { dir } = await runLoader(t, '', {
-    persistentCache: true,
-    rebuildSession,
-    cacheVersion: 'photos-v2',
+    cache: { mode: 'read-write', dir: 'resources', version: 'photos-v2', rebuildSession },
   })
 
   await assetStore.gc(rebuildSession)
@@ -216,6 +212,10 @@ test('auto-orients images before calculating and generating dimensions', async t
 })
 
 test('rejects unknown options in strict mode and always rejects conflicting options', async t => {
+  const warned = await runLoader(t, '?size=120')
+  t.is(warned.warnings.length, 1)
+  t.regex(warned.warnings[0].message, /Did you mean "sizes" or "widths"/)
+
   const unknown = await t.throwsAsync(runLoader(t, '?size=120', { strict: true }))
   t.regex(unknown.message, /Did you mean "sizes" or "widths"/)
 

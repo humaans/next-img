@@ -7,6 +7,7 @@
 - Add explicit art-direction sources, per-source dimensions, picture attributes, priority hints, and lazy `auto` sizes.
 - Add responsive document-head image preloads with React 19 and React 18 Pages Router support.
 - Warn when images over 2048px are imported without responsive sizing, with configurable limits and strict-mode errors.
+- Centralize cache state, image-format definitions, and loader diagnostics behind explicit internal contracts.
 - Add TypeScript declarations for the component, generated metadata, and plugin configuration.
 - Add explicit read-write, read-only, and off cache modes while preserving the legacy cache options.
 - Prune staged assets safely and remove Commander, mkdirp, and rimraf in favor of Node.js APIs.

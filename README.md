@@ -153,7 +153,7 @@ Default plugin configuration options:
   fallbackFormat: 'original',
   placeholder: false,
   placeholderSize: 16,
-  // turn unknown import-option warnings into build errors
+  // turn next-img warnings into build errors
   strict: false,
   // warn when a bare import exceeds this intrinsic width or height
   maxBareImportSize: 2048,
@@ -234,7 +234,7 @@ import img5 from './images/img.jpg?sizes=375,900&densities=1x,2x,3x&jpeg[quality
 import img6 from './images/img.jpg?widths=375,750,1200&formats=avif,webp&placeholder=blur'
 ```
 
-Known import options are validated strictly. Unknown names produce actionable warnings instead of being silently ignored; set `nextImg.strict: true` to turn those warnings into build errors. Invalid widths and incompatible combinations always fail the build.
+Known import options are validated strictly. Unknown names produce actionable warnings instead of being silently ignored; set `nextImg.strict: true` to turn all next-img warnings into build errors. Invalid widths and incompatible combinations always fail the build.
 
 Bare imports intentionally keep their intrinsic dimensions. When an image is wider or taller than `maxBareImportSize`—2048px by default—next-img warns unless the import or global configuration provides `sizes` or `widths`. Strict mode promotes this warning to a build error. Increase the limit for unusually large intentional assets, or set `maxBareImportSize: false` to disable the check.
 

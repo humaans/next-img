@@ -26,7 +26,7 @@ test('reads optimized bytes from the content-addressed cache', async t => {
     dir,
     distDir: '.next',
     cacheDir: path.join('cache', 'next-img'),
-    persistentCache: false,
+    cache: { mode: 'off', dir: 'resources', rebuildSession: null },
   })
 
   t.deepEqual(actual, expected)
@@ -37,7 +37,7 @@ test('rejects missing and unsafe cache keys', async t => {
     dir: os.tmpdir(),
     distDir: '.next',
     cacheDir: path.join('cache', 'next-img'),
-    persistentCache: false,
+    cache: { mode: 'off', dir: 'resources', rebuildSession: null },
   }
 
   await t.throwsAsync(runLoader('?__next_img_generated__', config), { message: /without a cache key/ })

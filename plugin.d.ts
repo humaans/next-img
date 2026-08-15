@@ -19,6 +19,7 @@ declare namespace withImg {
     fallbackFormat?: OutputFormat | 'original'
     placeholder?: boolean | 'blur'
     placeholderSize?: number
+    /** Promote next-img warnings to build errors. */
     strict?: boolean
     /** Warn for unsized imports above this intrinsic dimension. Strict mode turns the warning into an error. */
     maxBareImportSize?: number | false
