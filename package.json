@@ -28,7 +28,7 @@
     "test:integration": "npm run test:integration:turbopack && npm run test:integration:webpack",
     "test:integration:turbopack": "next build test/fixtures/next-app",
     "test:integration:webpack": "next build test/fixtures/next-app --webpack",
-    "release": "np"
+    "release": "np --no-publish && npm publish"
   },
   "dependencies": {
     "debug": "^4.4.3",
