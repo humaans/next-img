@@ -9,7 +9,6 @@ Existing `?sizes` imports, `src={[...]}` art direction, `persistentCache`, and `
 - `npx next-img` now rebuilds every referenced derivative before deleting unused files.
 - Production builds now generate missing cache entries. Use `cache.mode: 'read-only'` to fail on a miss.
 - Malformed or conflicting import options now fail; unknown options warn. `strict: true` turns warnings into errors.
-- Deep imports and `.js` package subpaths no longer work. Import only from `next-img`, `next-img/plugin`, `next-img/loader`, or `next-img/package.json`.
 
 ### New
 

@@ -20,20 +20,6 @@
   ],
   "main": "index.js",
   "types": "index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "require": "./index.js",
-      "default": "./index.js"
-    },
-    "./plugin": {
-      "types": "./plugin.d.ts",
-      "require": "./plugin.js",
-      "default": "./plugin.js"
-    },
-    "./loader": "./loader.js",
-    "./package.json": "./package.json"
-  },
   "scripts": {
     "format": "oxfmt",
     "format:check": "oxfmt --check",
