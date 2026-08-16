@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": [".claude"],
+  "ignorePatterns": [".claude", "tools/oxlint/anti-slop/**"],
   "semi": false,
   "singleQuote": true,
   "jsxSingleQuote": true,

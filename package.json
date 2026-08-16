@@ -39,6 +39,7 @@
     "sharp": "^0.35.3"
   },
   "devDependencies": {
+    "@oxlint/plugins": "^1.78.0",
     "@swc-node/register": "^1.12.1",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",

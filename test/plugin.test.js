@@ -41,6 +41,34 @@ test('preserves constraints from the Next.js image loader rule', t => {
   t.true(rule.resourceQuery.not.some(query => query.test('__next_img_generated__')))
 })
 
+test('preserves atomic resource query conditions', t => {
+  const resourceQuery = /raw/
+  const webpackConfig = {
+    cache: true,
+    module: {
+      rules: [
+        {
+          test: /\.jpg$/i,
+          loader: 'next-image-loader',
+          resourceQuery,
+        },
+      ],
+    },
+  }
+
+  const config = withImg({ nextImg: { persistentCache: false } })
+  const result = config.webpack(webpackConfig, {
+    isServer: false,
+    dir: '/app',
+    dev: true,
+    config: { distDir: '.next', assetPrefix: '' },
+  })
+  const rule = result.module.rules[1]
+
+  t.is(rule.resourceQuery.and[0], resourceQuery)
+  t.true(rule.resourceQuery.and[1].not[0].test('__next_img_generated__'))
+})
+
 test('configures the shared loader and generated assets for Turbopack', t => {
   const existingRule = { loaders: ['existing-loader'], as: '*.js' }
   const config = withImg({
