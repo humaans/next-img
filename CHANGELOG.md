@@ -1,4 +1,4 @@
-## 0.7.0
+## 0.6.0
 
 Existing `?sizes` imports, `src={[...]}` art direction, `persistentCache`, and `persistentCacheDir` remain supported.
 
@@ -13,21 +13,18 @@ Existing `?sizes` imports, `src={[...]}` art direction, `persistentCache`, and `
 
 ### New
 
-- Supports current Next.js 16 builds with Turbopack or Webpack, including static export and cold builds.
+- Supports React 19 while retaining React 18 support, and current Next.js 16 builds with Turbopack or Webpack, including static export and cold builds.
 - Adds AVIF input and output, configurable formats and fallbacks, format metadata, and EXIF auto-orientation.
 - Adds explicit art-direction `sources`, `pictureProps`, responsive document-head preloads, and per-source dimensions.
 - Warns when an import over 2048px has no responsive size. Set `maxBareImportSize` to change the limit or `false` to disable it.
 - Adds `read-write`, `read-only`, and `off` cache modes while preserving released cache filenames.
 - Adds TypeScript declarations and supports Node.js 20.19 or newer.
 
-## 0.6.0
+### Maintenance
 
-- Add support for React 19 and Next.js 16 (React 18 still supported)
-- Fix `next-img` CLI hanging with Next.js 16.2 by explicitly using webpack
-- Replace ESLint/Healthier with OxLint
-- Replace Prettier with Oxfmt
-- Replace react-test-renderer with react-dom/server in tests
-- Upgrade dependencies (sharp, qs, rimraf, ava)
+- Replaces ESLint/Healthier with OxLint and Prettier with Oxfmt.
+- Replaces `react-test-renderer` with `react-dom/server` in tests.
+- Upgrades dependencies including Sharp, qs, Rimraf, and AVA.
 
 ## 0.5.0
 
