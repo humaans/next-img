@@ -49,7 +49,8 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
           dir,
           distDir: '.next',
           cacheDir: path.join('cache', 'next-img'),
-          cache: { mode: 'off', dir: 'resources', rebuildSession: null, force: false },
+          cache: { mode: 'off', dir: 'resources' },
+          maintenance: null,
           assetStageDir: path.join(dir, '.next-img', 'assets'),
           bundler: 'webpack',
           ...optionOverrides,
@@ -146,7 +147,7 @@ test.serial('preserves released persistent cache keys with pinned hashing across
   const originalSharpVersion = sharp.versions.sharp
 
   try {
-    const cache = { mode: 'read-write', dir: 'resources', rebuildSession: null }
+    const cache = { mode: 'read-write', dir: 'resources' }
     const first = await runLoader(t, '', { cache })
     sharp.versions.sharp = '99.0.0'
     const second = await runLoader(t, '', { cache })
@@ -165,12 +166,7 @@ test('uses one derivative key for persistent and temporary caches', async t => {
   })
     .jpeg()
     .toBuffer()
-  const persistent = await runLoader(
-    t,
-    '',
-    { cache: { mode: 'read-write', dir: 'resources', rebuildSession: null } },
-    input,
-  )
+  const persistent = await runLoader(t, '', { cache: { mode: 'read-write', dir: 'resources' } }, input)
   const temporary = await runLoader(t, '', {}, input)
 
   t.deepEqual(getCacheKeys(temporary), getCacheKeys(persistent))

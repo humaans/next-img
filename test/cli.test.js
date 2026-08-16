@@ -34,7 +34,7 @@ test('runs and garbage collects cache maintenance', async t => {
   t.is(builds[0].dir, '/project/app')
   t.is(builds[0].bundler, 'webpack')
   t.false('TURBOPACK' in builds[0].env)
-  t.is(builds[0].env.NEXT_IMG_REBUILD, sessions[0])
+  t.is(builds[0].env.NEXT_IMG_MAINTENANCE, sessions[0])
   t.false('NEXT_IMG_FORCE' in builds[0].env)
 })
 
