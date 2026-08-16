@@ -158,7 +158,6 @@ test('explicit art direction, modern formats, and picture props', t => {
   const image = (name, width, height) => ({
     src: `${name}.jpg`,
     type: 'image/jpeg',
-    format: 'jpeg',
     fallbackFormat: 'jpeg',
     formats: ['avif', 'webp', 'jpeg'],
     sources: {
@@ -210,7 +209,6 @@ test('preload emits one preferred responsive format into the document head', t =
   const image = {
     src: 'hero.jpg',
     type: 'image/jpeg',
-    format: 'jpeg',
     fallbackFormat: 'jpeg',
     formats: ['avif', 'webp', 'jpeg'],
     sources: {

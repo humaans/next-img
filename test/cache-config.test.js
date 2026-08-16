@@ -1,17 +1,19 @@
 const { default: test } = require('ava')
-const { getCacheConfig, normalizeCacheConfig } = require('../lib/cache-config')
+const { resolveCacheConfig } = require('../lib/cache-config')
 
-test('preserves canonical cache configuration', t => {
-  const cache = { mode: 'read-only', dir: 'resources', rebuildSession: 'session' }
-  const config = { cache }
-
-  t.is(getCacheConfig(config), cache)
-  t.is(normalizeCacheConfig(config), config)
+test('resolves canonical cache configuration and defaults', t => {
+  t.deepEqual(resolveCacheConfig({}), { mode: 'read-write', dir: 'resources' })
+  t.deepEqual(resolveCacheConfig({ cache: null }), { mode: 'read-write', dir: 'resources' })
+  t.deepEqual(resolveCacheConfig({ cache: { mode: 'read-only', rebuildSession: 'session' } }), {
+    mode: 'read-only',
+    dir: 'resources',
+    rebuildSession: 'session',
+  })
 })
 
 test('normalizes legacy loader cache options at the compatibility boundary', t => {
   t.deepEqual(
-    getCacheConfig({
+    resolveCacheConfig({
       persistentCache: true,
       persistentCacheDir: 'legacy-resources',
       failOnCacheMiss: true,
@@ -23,5 +25,14 @@ test('normalizes legacy loader cache options at the compatibility boundary', t =
       rebuildSession: null,
     },
   )
-  t.is(getCacheConfig({ persistentCache: false }).mode, 'off')
+  t.deepEqual(resolveCacheConfig({ persistentCache: false }), {
+    mode: 'off',
+    dir: 'resources',
+    rebuildSession: null,
+  })
+})
+
+test('validates cache configuration at its boundary', t => {
+  t.throws(() => resolveCacheConfig({ cache: { mode: 'unknown' } }), { message: /Unknown next-img cache mode/ })
+  t.throws(() => resolveCacheConfig({ cache: { dir: '' } }), { message: /cache.dir must be a non-empty string/ })
 })

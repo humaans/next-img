@@ -95,6 +95,8 @@ test('emits one candidate per format when sizes are omitted', async t => {
   )
   t.deepEqual(data.sizes, [800])
   t.deepEqual(data.formats, ['webp', 'jpeg'])
+  t.is(data.fallbackFormat, 'jpeg')
+  t.false(Object.prototype.hasOwnProperty.call(data, 'format'))
   t.is(data.width, 800)
   t.is(data.height, 500)
   t.is(data.sources.webp.srcSet, data.webpSrcSet)

@@ -21,7 +21,6 @@ export interface NextImgData {
   src: string
   width: number
   height: number
-  format: ImageFormat
   type: string
   srcSet: string | null
   webpSrcSet: string | null
