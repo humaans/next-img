@@ -9,12 +9,13 @@ Existing `?sizes` imports, `src={[...]}` art direction, `persistentCache`, and `
 - `npx next-img` now rebuilds every referenced derivative before deleting unused files.
 - Production builds now generate missing cache entries. Use `cache.mode: 'read-only'` to fail on a miss.
 - Malformed import options now fail; unknown options warn. `strict: true` turns warnings into errors.
+- The package root now exports only `Picture`; the undocumented `makeSizes` and `flattenSrc` helpers were removed.
 
 ### New
 
 - Supports current Next.js 16 builds with Turbopack or Webpack, including static export and cold builds.
 - Adds AVIF input and output, configurable formats and fallbacks, format metadata, and EXIF auto-orientation.
-- Adds explicit art-direction `sources`, `pictureProps`, responsive document-head preloads, lazy `autoSizes`, and per-source dimensions.
+- Adds explicit art-direction `sources`, `pictureProps`, responsive document-head preloads, and per-source dimensions.
 - Warns when an import over 2048px has no responsive size. Set `maxBareImportSize` to change the limit or `false` to disable it.
 - Adds `read-write`, `read-only`, and `off` cache modes while preserving released cache filenames.
 - Adds TypeScript declarations and supports Node.js 20.19 or newer.

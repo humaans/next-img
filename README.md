@@ -70,7 +70,7 @@ Preload an above-the-fold image with responsive metadata:
 <Picture src={hero} alt='Our team at work' preload />
 ```
 
-`preload` defaults to eager loading and `fetchPriority="high"`; decoding remains asynchronous. It preloads only the first preferred format to avoid duplicate downloads.
+`preload` defaults to eager loading and `fetchPriority="high"`. It preloads only the first preferred format to avoid duplicate downloads.
 
 For art direction, provide explicit sources and finish with an unconditional fallback:
 
@@ -84,14 +84,15 @@ For art direction, provide explicit sources and finish with an unconditional fal
 />
 ```
 
+`sources` is the complete ordered list. Every item except the last must have `media`; the final item is the fallback. Put any `sizes` override on the relevant source.
+
 Automatic art-direction preloading supports one conditional source plus its fallback. Manage preloads separately for more complex source sets.
 
 Useful component props:
 
-- `sizes`: overrides the generated HTML `sizes` attribute
-- `breakpoints`: overrides the configured breakpoints
+- `sizes`: overrides the generated HTML `sizes` attribute for `src`
+- `breakpoints`: overrides the configured breakpoints for `src`
 - `preload`: emits a responsive image preload
-- `autoSizes`: prefixes lazy images with `sizes="auto"`
 - `pictureProps`: props for the outer `<picture>` element
 
 Legacy image arrays remain supported through `src={[mobile, desktop]}` with `breakpoints`.

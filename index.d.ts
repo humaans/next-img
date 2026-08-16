@@ -25,7 +25,6 @@ export interface NextImgData {
   type: string
   srcSet: string | null
   webpSrcSet: string | null
-  avifSrcSet: string | null
   sources: Partial<Record<ImageFormat, ImageFormatSource>>
   formats: ImageFormat[]
   fallbackFormat: ImageFormat
@@ -43,27 +42,26 @@ export interface ArtDirectionSource {
   sizes?: string
 }
 
-export interface PictureProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'srcSet' | 'sizes'> {
-  src?: ImageImport | ImageImport[]
-  sources?: ArtDirectionSource[]
-  sizes?: string | Array<string | undefined>
-  breakpoints?: Array<number | string>
+interface CommonPictureProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'srcSet' | 'sizes'> {
   pictureProps?: React.HTMLAttributes<HTMLPictureElement>
   /** Emit responsive image preload links in the document head. */
   preload?: boolean
-  autoSizes?: boolean
 }
 
+interface ImagePictureProps {
+  src?: ImageImport | ImageImport[]
+  sources?: never
+  sizes?: string | Array<string | undefined>
+  breakpoints?: Array<number | string>
+}
+
+interface ArtDirectionPictureProps {
+  sources: ArtDirectionSource[]
+  src?: never
+  sizes?: never
+  breakpoints?: never
+}
+
+export type PictureProps = CommonPictureProps & (ImagePictureProps | ArtDirectionPictureProps)
+
 export const Picture: React.ForwardRefExoticComponent<PictureProps & React.RefAttributes<HTMLImageElement>>
-
-export function makeSizes(
-  image: Pick<NextImgData, 'sizes' | 'name'>,
-  sizes?: string | null,
-  breakpoints?: Array<number | string>,
-): string | undefined
-
-export function flattenSrc(
-  src: NextImgData[],
-  sizes: Array<string | undefined>,
-  breakpoints: Array<number | string>,
-): unknown[]
