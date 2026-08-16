@@ -4,10 +4,9 @@ const { resolveCacheConfig } = require('../lib/cache-config')
 test('resolves canonical cache configuration and defaults', t => {
   t.deepEqual(resolveCacheConfig({}), { mode: 'read-write', dir: 'resources' })
   t.deepEqual(resolveCacheConfig({ cache: null }), { mode: 'read-write', dir: 'resources' })
-  t.deepEqual(resolveCacheConfig({ cache: { mode: 'read-only', rebuildSession: 'session' } }), {
+  t.deepEqual(resolveCacheConfig({ cache: { mode: 'read-only' } }), {
     mode: 'read-only',
     dir: 'resources',
-    rebuildSession: 'session',
   })
 })
 
@@ -17,18 +16,15 @@ test('normalizes legacy loader cache options at the compatibility boundary', t =
       persistentCache: true,
       persistentCacheDir: 'legacy-resources',
       failOnCacheMiss: true,
-      rebuildSession: null,
     }),
     {
       mode: 'read-only',
       dir: 'legacy-resources',
-      rebuildSession: null,
     },
   )
   t.deepEqual(resolveCacheConfig({ persistentCache: false }), {
     mode: 'off',
     dir: 'resources',
-    rebuildSession: null,
   })
 })
 

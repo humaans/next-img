@@ -93,7 +93,8 @@ test('configures the shared loader and generated assets for Turbopack', t => {
 
   const options = loaderRule.loaders[0].options
   t.notThrows(() => JSON.stringify(options))
-  t.deepEqual(options.cache, { mode: 'off', dir: 'resources', rebuildSession: null })
+  t.deepEqual(options.cache, { mode: 'off', dir: 'resources' })
+  t.is(options.maintenance, null)
   t.is(options.maxBareImportSize, 2048)
   t.is(options.bundler, 'turbopack')
   t.regex(options.assetProxyDir, /\.next-img\/proxies$/)
@@ -115,16 +116,16 @@ test('supports explicit cache modes and legacy cache configuration', t => {
   t.deepEqual(readOnlyOptions.cache, {
     mode: 'read-only',
     dir: 'image-cache',
-    rebuildSession: null,
   })
+  t.is(readOnlyOptions.maintenance, null)
 
   const legacy = withImg({ nextImg: { persistentCacheDir: 'legacy-cache' } })
   const legacyOptions = legacy.turbopack.rules['*.jpg'][1].loaders[0].options
   t.deepEqual(legacyOptions.cache, {
     mode: 'read-write',
     dir: 'legacy-cache',
-    rebuildSession: null,
   })
+  t.is(legacyOptions.maintenance, null)
 })
 
 test('validates the oversized bare-import limit', t => {
@@ -134,15 +135,45 @@ test('validates the oversized bare-import limit', t => {
   t.notThrows(() => withImg({ nextImg: { maxBareImportSize: false } }))
 })
 
-test.serial('rejects cache rebuilds when caching is disabled', t => {
-  const previous = process.env.NEXT_IMG_REBUILD
-  process.env.NEXT_IMG_REBUILD = 'test-session'
+test.serial('passes force through to maintenance loaders', t => {
+  const previousMaintenance = process.env.NEXT_IMG_MAINTENANCE
+  const previousForce = process.env.NEXT_IMG_FORCE
+  process.env.NEXT_IMG_MAINTENANCE = 'test-session'
+  process.env.NEXT_IMG_FORCE = '1'
+  try {
+    const config = withImg({})
+    const options = config.turbopack.rules['*.jpg'][1].loaders[0].options
+    t.deepEqual(options.maintenance, { session: 'test-session', force: true })
+  } finally {
+    if (previousMaintenance === undefined) delete process.env.NEXT_IMG_MAINTENANCE
+    else process.env.NEXT_IMG_MAINTENANCE = previousMaintenance
+    if (previousForce === undefined) delete process.env.NEXT_IMG_FORCE
+    else process.env.NEXT_IMG_FORCE = previousForce
+  }
+})
+
+test.serial('ignores force outside cache maintenance', t => {
+  const previousForce = process.env.NEXT_IMG_FORCE
+  process.env.NEXT_IMG_FORCE = '1'
+  try {
+    const config = withImg({})
+    const options = config.turbopack.rules['*.jpg'][1].loaders[0].options
+    t.is(options.maintenance, null)
+  } finally {
+    if (previousForce === undefined) delete process.env.NEXT_IMG_FORCE
+    else process.env.NEXT_IMG_FORCE = previousForce
+  }
+})
+
+test.serial('rejects cache maintenance when caching is disabled', t => {
+  const previous = process.env.NEXT_IMG_MAINTENANCE
+  process.env.NEXT_IMG_MAINTENANCE = 'test-session'
   try {
     t.throws(() => withImg({ nextImg: { cache: { mode: 'off' } } }), {
       message: /cannot be used when cache.mode is "off"/,
     })
   } finally {
-    if (previous === undefined) delete process.env.NEXT_IMG_REBUILD
-    else process.env.NEXT_IMG_REBUILD = previous
+    if (previous === undefined) delete process.env.NEXT_IMG_MAINTENANCE
+    else process.env.NEXT_IMG_MAINTENANCE = previous
   }
 })

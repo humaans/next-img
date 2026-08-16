@@ -1,3 +1,8 @@
+## 0.6.1
+
+- `npx next-img` now reuses healthy cached derivatives, repairs missing or invalid files, and removes unused files without re-encoding cache hits.
+- Add `npx next-img --force` to rebuild every active derivative before removing unused files.
+
 ## 0.6.0
 
 Existing `?sizes` imports, `src={[...]}` art direction, `persistentCache`, and `persistentCacheDir` remain supported.

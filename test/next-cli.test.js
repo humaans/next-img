@@ -24,7 +24,7 @@ test('runs the target project Next.js CLI with the selected bundler', async t =>
     `require('fs').writeFileSync(process.env.CAPTURE_PATH, JSON.stringify({
       args: process.argv.slice(2),
       projectDir: process.env.NEXT_IMG_PROJECT_DIR,
-      session: process.env.NEXT_IMG_REBUILD,
+      session: process.env.NEXT_IMG_MAINTENANCE,
     }))`,
   )
   t.teardown(() => fs.rmSync(capturePath, { force: true }))
@@ -36,7 +36,7 @@ test('runs the target project Next.js CLI with the selected bundler', async t =>
       ...process.env,
       CAPTURE_PATH: capturePath,
       NEXT_IMG_PROJECT_DIR: dir,
-      NEXT_IMG_REBUILD: 'test-session',
+      NEXT_IMG_MAINTENANCE: 'test-session',
     },
   })
 
