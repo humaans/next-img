@@ -75,7 +75,7 @@ test('coalesces concurrent transformations for the same cache entry', async t =>
   t.is(transformations, 1)
 })
 
-test('read-only cache mode rejects misses except during rebuilds', async t => {
+test('read-only cache mode rejects misses except during maintenance', async t => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-store-'))
   const session = `read-only-${process.pid}-${Date.now()}`
   const data = await createImage('red')
@@ -100,11 +100,12 @@ test('read-only cache mode rejects misses except during rebuilds', async t => {
   t.true(fs.existsSync(path.join(dir, 'resources', 'missing.jpg')))
 })
 
-test('rebuild sessions regenerate existing files and remove legacy manifests', async t => {
+test('maintenance reuses healthy files and force refreshes them', async t => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-store-'))
   const cacheDir = path.join(dir, 'resources')
   const first = await createImage('red')
   const second = await createImage('blue')
+  const third = await createImage('green')
   let transformations = 0
   const config = {
     dir,
@@ -118,24 +119,77 @@ test('rebuild sessions regenerate existing files and remove legacy manifests', a
   }
 
   await assetStore.cached(create(first), 'stable.jpg', config, 'processing')
-  fs.writeFileSync(path.join(cacheDir, '.next-img-cache.json'), '{}')
+  fs.writeFileSync(path.join(cacheDir, 'unused.jpg'), first)
 
-  const cached = await assetStore.cached(create(second), 'stable.jpg', config, 'processing')
+  const maintenanceSession = `maintenance-${process.pid}-${Date.now()}`
+  const cached = await assetStore.cached(
+    create(second),
+    'stable.jpg',
+    { ...config, cache: { ...config.cache, rebuildSession: maintenanceSession } },
+    'processing',
+    { width: 8, format: 'jpeg' },
+  )
+  await assetStore.gc(maintenanceSession)
+
   t.deepEqual(cached.data, first)
   t.is(transformations, 1)
+  t.deepEqual(fs.readdirSync(cacheDir), ['stable.jpg'])
 
-  const rebuildSession = `rebuild-${process.pid}-${Date.now()}`
+  const forceSession = `force-${process.pid}-${Date.now()}`
   await assetStore.cached(
     create(second),
     'stable.jpg',
-    { ...config, cache: { ...config.cache, rebuildSession } },
+    { ...config, cache: { ...config.cache, rebuildSession: forceSession, force: true } },
     'processing',
+    { width: 8, format: 'jpeg' },
   )
-  await assetStore.gc(rebuildSession)
+  await assetStore.gc(forceSession)
 
   t.is(transformations, 2)
   t.deepEqual(fs.readFileSync(path.join(cacheDir, 'stable.jpg')), second)
-  t.deepEqual(fs.readdirSync(cacheDir), ['stable.jpg'])
+
+  const currentSession = `current-${process.pid}-${Date.now()}`
+  const current = await assetStore.cached(
+    create(third),
+    'stable.jpg',
+    { ...config, cache: { ...config.cache, rebuildSession: currentSession } },
+    'processing',
+    { width: 8, format: 'jpeg' },
+  )
+  await assetStore.gc(currentSession)
+
+  t.deepEqual(current.data, second)
+  t.is(transformations, 2)
+})
+
+test('maintenance repairs invalid or unexpected derivatives', async t => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'next-img-store-'))
+  const cacheDir = path.join(dir, 'resources')
+  const data = await createImage('green')
+  let transformations = 0
+  const create = async () => {
+    transformations += 1
+    return { data, width: 8, height: 8, format: 'jpeg' }
+  }
+  t.teardown(() => fs.rmSync(dir, { recursive: true, force: true }))
+
+  fs.mkdirSync(cacheDir, { recursive: true })
+  fs.writeFileSync(path.join(cacheDir, 'invalid.jpg'), 'not an image')
+  fs.writeFileSync(path.join(cacheDir, 'wrong-size.jpg'), await createImage('red'))
+
+  const session = `repair-${process.pid}-${Date.now()}`
+  const config = {
+    dir,
+    cache: { mode: 'read-write', dir: 'resources', rebuildSession: session },
+  }
+  await assetStore.cached(create, 'invalid.jpg', config, 'processing', { width: 8, format: 'jpeg' })
+  await assetStore.cached(create, 'wrong-size.jpg', config, 'processing', { width: 16, format: 'jpeg' })
+  await assetStore.cached(create, 'invalid.jpg', config, 'processing', { width: 8, format: 'jpeg' })
+  await assetStore.gc(session)
+
+  t.is(transformations, 2)
+  t.deepEqual(fs.readFileSync(path.join(cacheDir, 'invalid.jpg')), data)
+  t.deepEqual(fs.readFileSync(path.join(cacheDir, 'wrong-size.jpg')), data)
 })
 
 async function createImage(background) {

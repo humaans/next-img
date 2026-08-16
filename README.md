@@ -101,7 +101,7 @@ Legacy image arrays remain supported through `src={[mobile, desktop]}` with `bre
 
 Optimized files are stored in `resources` by default. Commit this directory or preserve it in CI. Ordinary development and production builds process missing images.
 
-Run the CLI after changing imports, image settings, or Sharp versions. It rebuilds active images and removes unused files:
+Run the CLI after changing imports or image settings. It generates missing images, repairs invalid files, and removes unused files without re-encoding healthy cache hits:
 
 ```sh
 npx next-img
@@ -130,7 +130,7 @@ module.exports = withImg({
 })
 ```
 
-Cache filenames remain stable across next-img and Sharp upgrades. `npx next-img` always regenerates every referenced derivative in place, then removes unused files. Run it after upgrading next-img or Sharp.
+Cache filenames remain stable across next-img and Sharp upgrades. Run `npx next-img --force` when you want to rebuild every active derivative in place. Both commands remove unused files.
 
 The maintenance command requires a persistent cache. With `cache.mode: 'off'`, clear `.next` after upgrading next-img or Sharp instead.
 

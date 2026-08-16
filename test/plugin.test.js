@@ -93,7 +93,7 @@ test('configures the shared loader and generated assets for Turbopack', t => {
 
   const options = loaderRule.loaders[0].options
   t.notThrows(() => JSON.stringify(options))
-  t.deepEqual(options.cache, { mode: 'off', dir: 'resources', rebuildSession: null })
+  t.deepEqual(options.cache, { mode: 'off', dir: 'resources', rebuildSession: null, force: false })
   t.is(options.maxBareImportSize, 2048)
   t.is(options.bundler, 'turbopack')
   t.regex(options.assetProxyDir, /\.next-img\/proxies$/)
@@ -116,6 +116,7 @@ test('supports explicit cache modes and legacy cache configuration', t => {
     mode: 'read-only',
     dir: 'image-cache',
     rebuildSession: null,
+    force: false,
   })
 
   const legacy = withImg({ nextImg: { persistentCacheDir: 'legacy-cache' } })
@@ -124,6 +125,7 @@ test('supports explicit cache modes and legacy cache configuration', t => {
     mode: 'read-write',
     dir: 'legacy-cache',
     rebuildSession: null,
+    force: false,
   })
 })
 
@@ -134,7 +136,25 @@ test('validates the oversized bare-import limit', t => {
   t.notThrows(() => withImg({ nextImg: { maxBareImportSize: false } }))
 })
 
-test.serial('rejects cache rebuilds when caching is disabled', t => {
+test.serial('passes force through to maintenance loaders', t => {
+  const previousRebuild = process.env.NEXT_IMG_REBUILD
+  const previousForce = process.env.NEXT_IMG_FORCE
+  process.env.NEXT_IMG_REBUILD = 'test-session'
+  process.env.NEXT_IMG_FORCE = '1'
+  try {
+    const config = withImg({})
+    const options = config.turbopack.rules['*.jpg'][1].loaders[0].options
+    t.is(options.cache.rebuildSession, 'test-session')
+    t.true(options.cache.force)
+  } finally {
+    if (previousRebuild === undefined) delete process.env.NEXT_IMG_REBUILD
+    else process.env.NEXT_IMG_REBUILD = previousRebuild
+    if (previousForce === undefined) delete process.env.NEXT_IMG_FORCE
+    else process.env.NEXT_IMG_FORCE = previousForce
+  }
+})
+
+test.serial('rejects cache maintenance when caching is disabled', t => {
   const previous = process.env.NEXT_IMG_REBUILD
   process.env.NEXT_IMG_REBUILD = 'test-session'
   try {

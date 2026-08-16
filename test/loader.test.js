@@ -49,7 +49,7 @@ async function runLoader(t, resourceQuery = '', optionOverrides = {}, inputBuffe
           dir,
           distDir: '.next',
           cacheDir: path.join('cache', 'next-img'),
-          cache: { mode: 'off', dir: 'resources', rebuildSession: null },
+          cache: { mode: 'off', dir: 'resources', rebuildSession: null, force: false },
           assetStageDir: path.join(dir, '.next-img', 'assets'),
           bundler: 'webpack',
           ...optionOverrides,
