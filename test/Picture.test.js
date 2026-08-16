@@ -1,7 +1,14 @@
 const React = require('react') // eslint-disable-line no-unused-vars -- needed for JSX transform
+const ReactDOM = require('react-dom')
 const { default: test } = require('ava')
 const { renderToStaticMarkup } = require('react-dom/server')
-const { Picture, makeSizes } = require('..')
+const { HeadManagerContext } = require('next/dist/shared/lib/head-manager-context.shared-runtime')
+const nextImg = require('..')
+const { Picture } = nextImg
+
+test('exports only the public component', t => {
+  t.deepEqual(Object.keys(nextImg), ['Picture'])
+})
 
 test('<Picture />', t => {
   t.is(renderToStaticMarkup(<Picture />), '')
@@ -96,34 +103,25 @@ test('<Picture src />', t => {
     renderToStaticMarkup(<Picture src={img} />),
     '<picture>' +
       `<source type="image/webp" srcSet="${webpSrcSet}" sizes="${sizes}"/>` +
-      `<source type="image/jpeg" srcSet="${jpegSrcSet}" sizes="${sizes}"/>` +
-      `<img src="${img.src}" srcSet="${jpegSrcSet}" width="375" height="250"/>` +
+      `<img src="${img.src}" srcSet="${jpegSrcSet}" sizes="${sizes}" width="375" height="250"/>` +
       '</picture>',
   )
+  t.true(renderToStaticMarkup(<Picture src={img} decoding='sync' />).includes('decoding="sync"'))
 })
 
-test('makeSizes', t => {
-  let breakpoints = []
-  t.deepEqual(makeSizes({ sizes: [200] }, null, breakpoints), '200px')
+test('generates HTML sizes from imported CSS sizes and breakpoints', t => {
+  const image = {
+    src: 'image.jpg',
+    type: 'image/jpeg',
+    srcSet: 'image.jpg 1200w',
+    images: [{ width: 1200, height: 800, format: 'jpeg' }],
+    name: 'image.jpg',
+    sizes: [200, 800, 1200],
+    breakpoints: [768, '(orientation: landscape)'],
+  }
 
-  breakpoints = [768]
-  t.deepEqual(makeSizes({ sizes: [200] }, null, breakpoints), '200px')
-  t.deepEqual(makeSizes({ sizes: [200, 800] }, null, breakpoints), '(max-width: 768px) 200px, 800px')
-
-  breakpoints = [768, 1024]
-  t.is(
-    makeSizes({ sizes: [200, 800, 1200] }, null, breakpoints),
-    '(max-width: 768px) 200px, (max-width: 1024px) 800px, 1200px',
-  )
-
-  breakpoints = ['(orientation: landscape)']
-  t.is(makeSizes({ sizes: [200, 800] }, null, breakpoints), '(orientation: landscape) 200px, 800px')
-
-  breakpoints = [768, '(orientation: landscape)']
-  t.is(
-    makeSizes({ sizes: [200, 800, 1200] }, null, breakpoints),
-    '(max-width: 768px) 200px, (orientation: landscape) 800px, 1200px',
-  )
+  const html = renderToStaticMarkup(<Picture src={image} alt='Example' />)
+  t.true(html.includes('sizes="(max-width: 768px) 200px, (orientation: landscape) 800px, 1200px"'))
 })
 
 test('media-query breakpoints', t => {
@@ -149,11 +147,194 @@ test('media-query breakpoints', t => {
   t.is(
     renderToStaticMarkup(<Picture src={[landscape, fallback]} breakpoints={['(orientation: landscape)']} />),
     '<picture>' +
-      '<source type="image/jpeg" srcSet="landscape.jpg 800w" sizes="800px" media="(orientation: landscape)"/>' +
-      '<source type="image/jpeg" srcSet="fallback.jpg 800w" sizes="800px"/>' +
-      '<img src="landscape.jpg" srcSet="landscape.jpg 800w"/>' +
+      '<source type="image/jpeg" srcSet="landscape.jpg 800w" sizes="800px" media="(orientation: landscape)" width="800" height="450"/>' +
+      '<source type="image/jpeg" srcSet="fallback.jpg 800w" sizes="800px" width="800" height="800"/>' +
+      '<img src="fallback.jpg" srcSet="fallback.jpg 800w" sizes="800px" width="800" height="800"/>' +
       '</picture>',
   )
+})
+
+test('explicit art direction, modern formats, and picture props', t => {
+  const image = (name, width, height) => ({
+    src: `${name}.jpg`,
+    type: 'image/jpeg',
+    fallbackFormat: 'jpeg',
+    formats: ['avif', 'webp', 'jpeg'],
+    sources: {
+      avif: {
+        type: 'image/avif',
+        srcSet: `${name}.avif ${width}w`,
+        images: [{ path: `${name}.avif`, width, height, format: 'avif' }],
+      },
+      webp: {
+        type: 'image/webp',
+        srcSet: `${name}.webp ${width}w`,
+        images: [{ path: `${name}.webp`, width, height, format: 'webp' }],
+      },
+      jpeg: {
+        type: 'image/jpeg',
+        srcSet: `${name}.jpg ${width}w`,
+        images: [{ path: `${name}.jpg`, width, height, format: 'jpeg' }],
+      },
+    },
+    images: [{ path: `${name}.jpg`, width, height, format: 'jpeg' }],
+    sizes: [width],
+  })
+  const mobile = image('mobile', 400, 500)
+  const desktop = image('desktop', 1200, 600)
+  const html = renderToStaticMarkup(
+    <Picture
+      sources={[
+        { src: mobile, media: '(max-width: 767px)', sizes: '100vw' },
+        { src: desktop, sizes: '1200px' },
+      ]}
+      pictureProps={{ className: 'frame' }}
+      alt='Example'
+      preload
+    />,
+  )
+
+  t.true(html.includes('<picture class="frame">'))
+  t.is((html.match(/rel="preload"/g) || []).length, 2)
+  t.true(html.includes('media="(max-width: 767px)"'))
+  t.true(html.includes('media="not all and (max-width: 767px)"'))
+  t.true(html.includes('type="image/avif"'))
+  t.true(html.includes('media="(max-width: 767px)" width="400" height="500"'))
+  t.true(html.includes('src="desktop.jpg"'))
+  t.true(html.includes('loading="eager" fetchPriority="high"'))
+  t.false(html.includes('decoding='))
+})
+
+test('preload emits one preferred responsive format into the document head', t => {
+  const image = {
+    src: 'hero.jpg',
+    type: 'image/jpeg',
+    fallbackFormat: 'jpeg',
+    formats: ['avif', 'webp', 'jpeg'],
+    sources: {
+      avif: {
+        type: 'image/avif',
+        srcSet: 'hero-400.avif 400w, hero-800.avif 800w',
+        images: [{ path: 'hero-400.avif', width: 400, height: 250, format: 'avif' }],
+      },
+      webp: {
+        type: 'image/webp',
+        srcSet: 'hero-400.webp 400w, hero-800.webp 800w',
+        images: [{ path: 'hero-400.webp', width: 400, height: 250, format: 'webp' }],
+      },
+      jpeg: {
+        type: 'image/jpeg',
+        srcSet: 'hero-400.jpg 400w, hero-800.jpg 800w',
+        images: [{ path: 'hero-400.jpg', width: 400, height: 250, format: 'jpeg' }],
+      },
+    },
+    images: [{ path: 'hero-400.jpg', width: 400, height: 250, format: 'jpeg' }],
+    sizes: [400, 800],
+    breakpoints: [768],
+  }
+  const html = renderToStaticMarkup(<Picture src={image} sizes='100vw' alt='Hero' preload />)
+
+  t.true(html.startsWith('<link rel="preload" as="image" type="image/avif"'))
+  t.true(html.includes('imageSrcSet="hero-400.avif 400w, hero-800.avif 800w"'))
+  t.true(html.includes('imageSizes="100vw"'))
+  t.is((html.match(/rel="preload"/g) || []).length, 1)
+  t.false(html.includes('<link rel="preload" as="image" type="image/webp"'))
+  t.true(html.includes('loading="eager" fetchPriority="high"'))
+  t.false(html.includes('decoding='))
+})
+
+test.serial('preload falls back to the Pages Router head manager on React 18', t => {
+  const image = {
+    src: 'hero.jpg',
+    type: 'image/jpeg',
+    srcSet: 'hero.jpg 800w',
+    webpSrcSet: 'hero.webp 800w',
+    images: [
+      { path: 'hero.jpg', width: 800, height: 500, format: 'jpeg' },
+      { path: 'hero.webp', width: 800, height: 500, format: 'webp' },
+    ],
+    sizes: [800],
+    breakpoints: [],
+  }
+  const originalPreload = ReactDOM.preload
+  const head = []
+
+  try {
+    ReactDOM.preload = undefined
+    renderToStaticMarkup(
+      <HeadManagerContext.Provider
+        value={{ mountedInstances: new Set(), updateHead: elements => head.push(...elements) }}
+      >
+        <Picture src={image} alt='Hero' preload />
+      </HeadManagerContext.Provider>,
+    )
+  } finally {
+    ReactDOM.preload = originalPreload
+  }
+
+  const link = head.find(element => element.type === 'link' && element.props.rel === 'preload')
+  t.is(link.props.type, 'image/webp')
+  t.is(link.props.imageSrcSet, 'hero.webp 800w')
+  t.is(link.props.imageSizes, '800px')
+})
+
+test('explicit art direction has one canonical source contract', t => {
+  const image = {
+    src: 'image.jpg',
+    type: 'image/jpeg',
+    srcSet: 'image.jpg 800w',
+    images: [{ width: 800, height: 500, format: 'jpeg' }],
+    sizes: [800],
+  }
+  const error = t.throws(() =>
+    renderToStaticMarkup(<Picture sources={[{ src: image, media: '(max-width: 767px)' }]} alt='Example' />),
+  )
+  t.regex(error.message, /unconditional fallback/)
+
+  const missingMedia = t.throws(() =>
+    renderToStaticMarkup(<Picture sources={[{ src: image }, { src: image }]} alt='Example' />),
+  )
+  t.regex(missingMedia.message, /source at index 0 must provide media/)
+
+  const mixedSrc = t.throws(() =>
+    renderToStaticMarkup(<Picture src={image} sources={[{ src: image }]} alt='Example' />),
+  )
+  t.regex(mixedSrc.message, /cannot use src and sources together/)
+
+  const rootSizes = t.throws(() =>
+    renderToStaticMarkup(<Picture sources={[{ src: image }]} sizes='100vw' alt='Example' />),
+  )
+  t.regex(rootSizes.message, /sizes must be set on each explicit source/)
+
+  const rootBreakpoints = t.throws(() =>
+    renderToStaticMarkup(<Picture sources={[{ src: image }]} breakpoints={[768]} alt='Example' />),
+  )
+  t.regex(rootBreakpoints.message, /explicit sources use media instead of breakpoints/)
+})
+
+test('preload rejects more than one conditional art-direction source', t => {
+  const image = {
+    src: 'image.jpg',
+    type: 'image/jpeg',
+    srcSet: 'image.jpg 800w',
+    images: [{ path: 'image.jpg', width: 800, height: 500, format: 'jpeg' }],
+    sizes: [800],
+  }
+  const error = t.throws(() =>
+    renderToStaticMarkup(
+      <Picture
+        sources={[
+          { src: image, media: '(max-width: 479px)' },
+          { src: image, media: '(max-width: 767px)' },
+          { src: image },
+        ]}
+        alt='Example'
+        preload
+      />,
+    ),
+  )
+
+  t.regex(error.message, /at most one conditional art-direction source/)
 })
 
 // test cases

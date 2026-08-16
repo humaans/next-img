@@ -14,19 +14,19 @@ export default function Index() {
             <h3 className='toc-heading'>Next.js plugin for embedding optimized images.</h3>
             <ul className='toc'>
               <li>
-                <strong>import</strong> png/jpg images
+                <strong>import</strong> JPEG, PNG, WebP, and AVIF images
               </li>
               <li>
-                <strong>output</strong> to webp format
+                <strong>output</strong> to WebP and optional AVIF
               </li>
               <li>
                 <strong>resize</strong> to multiple screen sizes and densities
               </li>
               <li>
-                <strong>optimize</strong> webp and fallback images using sharp
+                <strong>optimize</strong> WebP and fallback images using Sharp
               </li>
               <li>
-                <strong>lazy load</strong> in modern browsers with prop forwarding (loading="lazy")
+                <strong>preload and lazy load</strong> with modern browser hints
               </li>
               <li>
                 <strong>prevent layout shift</strong> with automatic width/height attributes
@@ -53,7 +53,7 @@ export default function Index() {
                 <a href='#example-2'>Override breakpoints</a>
               </li>
               <li>
-                <a href='#example-3'>Override sizes attribute</a>
+                <a href='#example-3'>Override HTML sizes attribute</a>
               </li>
               <li>
                 <a href='#example-4'>Single image</a>
@@ -62,7 +62,7 @@ export default function Index() {
                 <a href='#example-5'>Art direction</a>
               </li>
               <li>
-                <a href='#example-6'>Exact image sizes</a>
+                <a href='#example-6'>One file per size</a>
               </li>
               <li>
                 <a href='#example-7'>PNG images</a>
@@ -80,22 +80,22 @@ export default function Index() {
           <aside>Example 1</aside>
           <h2>One size per breakpoint</h2>
           <p>
-            The most typical usage. Provide one image per each device size you're targeting. For example, if you're
-            targeting small/large at 768px breakpoint (as configured in your <code>next.config.js</code>), provide 2
-            sizes. If you're targeting mobile/tablet/desktop with breakpoints 480px and 768px (as configured in your{' '}
-            <code>next.config.js</code>) - provide 3 sizes, and so on.
+            The <code>sizes</code> query describes the image's CSS width at each configured breakpoint. Next-img
+            generates each size at the configured pixel densities, which default to 1x and 2x.
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee1.jpg?sizes=375,860')} />`}
+            {`<Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp')} alt='Coffee' preload />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
-            {toString(<Picture src={require('../images/coffee1.jpg?sizes=375,860')} />)}
+            {toString(
+              <Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp')} alt='Coffee' preload />,
+            )}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee1.jpg?sizes=375,860')} />
+              <Picture src={require('../images/coffee1.jpg?sizes=375,860&formats=avif,webp')} alt='Coffee' preload />
             </div>
           </div>
         </div>
@@ -106,24 +106,34 @@ export default function Index() {
           <aside>Example 2</aside>
           <h2>Override breakpoints</h2>
           <p>
-            You can specify a different set of breakpoints for an individual image. Let's say your preconfigured
-            breakpoints are <code>[768]</code>, but for some image you want to use 3 sizes at breakpoints{' '}
-            <code>[768, 1080]</code>.
+            Override the configured breakpoints for one image. This example maps three CSS sizes to breakpoints at{' '}
+            <code>768px</code> and <code>1080px</code>.
           </p>
 
           <Code language='html' style={syntax}>
             {`<Picture
   src={require('../images/coffee2.jpg?sizes=375,600,860')}
   breakpoints={[768,1080]}
+  alt='Coffee'
 />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
-            {toString(<Picture src={require('../images/coffee2.jpg?sizes=375,600,860')} breakpoints={[768, 1080]} />)}
+            {toString(
+              <Picture
+                src={require('../images/coffee2.jpg?sizes=375,600,860')}
+                breakpoints={[768, 1080]}
+                alt='Coffee'
+              />,
+            )}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee2.jpg?sizes=375,600,860')} breakpoints={[768, 1080]} />
+              <Picture
+                src={require('../images/coffee2.jpg?sizes=375,600,860')}
+                breakpoints={[768, 1080]}
+                alt='Coffee'
+              />
             </div>
           </div>
         </div>
@@ -132,7 +142,7 @@ export default function Index() {
       <div className='example example-3' id='example-3'>
         <div className='example-inner'>
           <aside>Example 3</aside>
-          <h2>Override sizes attribute</h2>
+          <h2>Override HTML sizes attribute</h2>
           <p>
             Use the{' '}
             <a
@@ -141,14 +151,14 @@ export default function Index() {
             >
               sizes
             </a>{' '}
-            prop in order to get full control over specifying which image should be used at what breakpoint. This way
-            you can specify any number of image sizes and choose to show them at any breakpoint.
+            prop to tell the browser how wide the image will render at each breakpoint.
           </p>
 
           <Code language='html' style={syntax}>
             {`<Picture
   src={require('../images/coffee3.jpg?sizes=375,600,860')}
   sizes='(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px'
+  alt='Coffee'
 />`}
           </Code>
           <h3>Output</h3>
@@ -157,6 +167,7 @@ export default function Index() {
               <Picture
                 src={require('../images/coffee3.jpg?sizes=375,600,860')}
                 sizes='(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px'
+                alt='Coffee'
               />,
             )}
           </Code>
@@ -165,6 +176,7 @@ export default function Index() {
               <Picture
                 src={require('../images/coffee3.jpg?sizes=375,600,860')}
                 sizes='(max-width: 768px) 100vw, (max-width: 1180px) 600px, 860px'
+                alt='Coffee'
               />
             </div>
           </div>
@@ -176,21 +188,20 @@ export default function Index() {
           <aside>Example 4</aside>
           <h2>Single image</h2>
           <p>
-            You can leave out the <code>sizes</code> query param altogether. That will load the original image size
-            across any device width. Note, this still outputs an image per screen density and shows the appropriate one
-            based on the device.
+            Without <code>sizes</code>, next-img keeps the source dimensions and emits one candidate per format. Large
+            bare imports warn by default; provide CSS sizes for content images.
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee4.jpg')} />`}
+            {`<Picture src={require('../images/coffee4.jpg')} alt='Coffee' />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
-            {toString(<Picture src={require('../images/coffee4.jpg')} />)}
+            {toString(<Picture src={require('../images/coffee4.jpg')} alt='Coffee' />)}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee4.jpg')} />
+              <Picture src={require('../images/coffee4.jpg')} alt='Coffee' />
             </div>
           </div>
         </div>
@@ -201,56 +212,48 @@ export default function Index() {
           <aside>Example 5</aside>
           <h2>Art direction</h2>
           <p>
-            You can pass an array of images to the src. This way you can show an entirely different image at each
-            breakpoint. This changes the html output to switch between the images using the html{' '}
+            Use <code>sources</code> to show a different crop or image at each breakpoint. Each conditional source has a{' '}
             <a
               href='https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Art_direction'
               target='blank_'
             >
               media attribute
             </a>
-            . Note, you can take this even further by specifying multiple sizes for each image and using the{' '}
-            <a
-              href='https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Resolution_switching_Different_sizes'
-              target='blank_'
-            >
-              sizes prop
-            </a>
-            to specify what should be shown when.
+            ; the final unconditional source is the fallback.
           </p>
 
           <Code language='html' style={syntax}>
             {`<Picture
-  src={[
-    require('../images/coffee5-s.jpg?sizes=375'),
-    require('../images/coffee5-m.jpg?sizes=600'),
-    require('../images/coffee5-l.jpg?sizes=860'),
+  sources={[
+    { src: require('../images/coffee5-s.jpg?sizes=375'), media: '(max-width: 768px)' },
+    { src: require('../images/coffee5-m.jpg?sizes=600'), media: '(max-width: 1180px)' },
+    { src: require('../images/coffee5-l.jpg?sizes=860') },
   ]}
-  breakpoints={[768, 1180]}
+  alt='Coffee'
 />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
             {toString(
               <Picture
-                src={[
-                  require('../images/coffee5-s.jpg?sizes=375'),
-                  require('../images/coffee5-m.jpg?sizes=600'),
-                  require('../images/coffee5-l.jpg?sizes=860'),
+                sources={[
+                  { src: require('../images/coffee5-s.jpg?sizes=375'), media: '(max-width: 768px)' },
+                  { src: require('../images/coffee5-m.jpg?sizes=600'), media: '(max-width: 1180px)' },
+                  { src: require('../images/coffee5-l.jpg?sizes=860') },
                 ]}
-                breakpoints={[768, 1180]}
+                alt='Coffee'
               />,
             )}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
               <Picture
-                src={[
-                  require('../images/coffee5-s.jpg?sizes=375'),
-                  require('../images/coffee5-m.jpg?sizes=600'),
-                  require('../images/coffee5-l.jpg?sizes=860'),
+                sources={[
+                  { src: require('../images/coffee5-s.jpg?sizes=375'), media: '(max-width: 768px)' },
+                  { src: require('../images/coffee5-m.jpg?sizes=600'), media: '(max-width: 1180px)' },
+                  { src: require('../images/coffee5-l.jpg?sizes=860') },
                 ]}
-                breakpoints={[768, 1180]}
+                alt='Coffee'
               />
             </div>
           </div>
@@ -260,26 +263,32 @@ export default function Index() {
       <div className='example example-6' id='example-6'>
         <div className='example-inner'>
           <aside>Example 6</aside>
-          <h2>Exact image sizes</h2>
+          <h2>One file per size</h2>
           <p>
-            By default, every image gets translated to 1x and 2x densities. That is, if you display the image in the
-            browser at 800px width, then specifying <code>?sizes=800</code> will produce and show 800px wide image for
-            low density devices and 1600px wide image for high density devices. If you'd like, however, you can specify
-            any number of exact sizes by setting densities to 1x.
+            Next-img normally generates every CSS size at 1x and 2x. Set <code>densities=1x</code> when you need only
+            one output file for each size.
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' />`}
+            {`<Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' alt='Coffee' />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
             {toString(
-              <Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' />,
+              <Picture
+                src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')}
+                sizes='100vw'
+                alt='Coffee'
+              />,
             )}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' />
+              <Picture
+                src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')}
+                sizes='100vw'
+                alt='Coffee'
+              />
             </div>
           </div>
         </div>
@@ -289,18 +298,18 @@ export default function Index() {
         <div className='example-inner'>
           <aside>Example 7</aside>
           <h2>PNG images</h2>
-          <p>PNG images are supported as well. In this case, a lossless webp is outputted by default.</p>
+          <p>PNG inputs produce lossless WebP plus a PNG fallback by default.</p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/illustration.png?sizes=480,860')} />`}
+            {`<Picture src={require('../images/illustration.png?sizes=480,860')} alt='Illustration' />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
-            {toString(<Picture src={require('../images/illustration.png?sizes=480,860')} />)}
+            {toString(<Picture src={require('../images/illustration.png?sizes=480,860')} alt='Illustration' />)}
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/illustration.png?sizes=480,860')} />
+              <Picture src={require('../images/illustration.png?sizes=480,860')} alt='Illustration' />
             </div>
           </div>
         </div>
@@ -311,10 +320,8 @@ export default function Index() {
           <aside>Example 8</aside>
           <h2>Other query params and component props</h2>
           <p>
-            You can control image quality and densities in addition to specifying the sizes when importing an image. See{' '}
-            <a href='https://github.com/humaans/next-img/'>README</a> for full details. You can pass extra props to the{' '}
-            <code>Picture</code> component, these will be forwarded to the underlying image element. This is useful for
-            adding lazy loading, class names, and so on.
+            Query parameters control image processing. Other <code>Picture</code> props are forwarded to the underlying{' '}
+            <code>img</code>. See the <a href='https://github.com/humaans/next-img/'>README</a> for the full API.
           </p>
 
           <Code language='html' style={syntax}>

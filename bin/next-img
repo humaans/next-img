@@ -1,3 +1,7 @@
 #!/usr/bin/env node
 
-require('../lib/cli')
+const { main } = require('../lib/cli')
+
+main().then(code => {
+  process.exitCode = code
+})
