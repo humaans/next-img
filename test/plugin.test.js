@@ -99,12 +99,6 @@ test('supports explicit cache modes and legacy cache configuration', t => {
   })
 })
 
-test('forwards global exact widths to the loader', t => {
-  const config = withImg({ nextImg: { widths: [320, 640] } })
-  const options = config.turbopack.rules['*.jpg'][1].loaders[0].options
-  t.deepEqual(options.widths, [320, 640])
-})
-
 test('validates the oversized bare-import limit', t => {
   t.throws(() => withImg({ nextImg: { maxBareImportSize: 0 } }), {
     message: /must be a positive integer or false/,

@@ -8,12 +8,12 @@ Existing `?sizes` imports, `src={[...]}` art direction, `persistentCache`, and `
 - Turbopack owns emitted filenames; custom image output paths and names remain Webpack-only.
 - `npx next-img` now rebuilds every referenced derivative before deleting unused files.
 - Production builds now generate missing cache entries. Use `cache.mode: 'read-only'` to fail on a miss.
-- Malformed or conflicting import options now fail; unknown options warn. `strict: true` turns warnings into errors.
+- Malformed import options now fail; unknown options warn. `strict: true` turns warnings into errors.
 
 ### New
 
 - Supports current Next.js 16 builds with Turbopack or Webpack, including static export and cold builds.
-- Adds exact `widths`, AVIF input and output, configurable formats and fallbacks, format metadata, and EXIF auto-orientation.
+- Adds AVIF input and output, configurable formats and fallbacks, format metadata, and EXIF auto-orientation.
 - Adds explicit art-direction `sources`, `pictureProps`, responsive document-head preloads, lazy `autoSizes`, and per-source dimensions.
 - Warns when an import over 2048px has no responsive size. Set `maxBareImportSize` to change the limit or `false` to disable it.
 - Adds `read-write`, `read-only`, and `off` cache modes while preserving released cache filenames.

@@ -1,4 +1,4 @@
-const image = require('../../../../docs/src/images/coffee1.jpg?widths=100&formats=avif,webp')
+const image = require('../../../../docs/src/images/coffee1.jpg?sizes=100&densities=1x&formats=avif,webp')
 const { Picture } = require('../../../..')
 
 export default function Home() {

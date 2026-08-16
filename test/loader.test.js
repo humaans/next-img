@@ -110,7 +110,7 @@ test('emits one candidate per format when sizes are omitted', async t => {
   t.false(source.includes('emitFile'))
 })
 
-test('deduplicates widths produced by different size and density combinations', async t => {
+test('deduplicates files produced by overlapping size and density combinations', async t => {
   const { data, imported } = await runLoader(t, '?sizes=400,800')
 
   t.deepEqual(
@@ -129,7 +129,7 @@ test('deduplicates widths produced by different size and density combinations', 
 })
 
 test('uses stable proxy imports for Turbopack assets', async t => {
-  const { dependencies, imported } = await runLoader(t, '?widths=320', {
+  const { dependencies, imported } = await runLoader(t, '?sizes=320&densities=1x', {
     bundler: 'turbopack',
     assetProxyDir: path.join(os.tmpdir(), 'next-img-proxies'),
   })
@@ -174,8 +174,8 @@ test('uses one derivative key for persistent and temporary caches', async t => {
   t.deepEqual(getCacheKeys(temporary), getCacheKeys(persistent))
 })
 
-test('supports exact widths and AVIF metadata', async t => {
-  const { data, imported } = await runLoader(t, '?widths=320,640&formats=avif,webp')
+test('supports explicit sizes, densities, and AVIF metadata', async t => {
+  const { data, imported } = await runLoader(t, '?sizes=320,640&densities=1x&formats=avif,webp')
 
   t.deepEqual(data.formats, ['avif', 'webp', 'jpeg'])
   t.deepEqual(data.sizes, [320, 640])
@@ -201,7 +201,7 @@ test('auto-orients images before calculating and generating dimensions', async t
     .jpeg()
     .withMetadata({ orientation: 6 })
     .toBuffer()
-  const { data } = await runLoader(t, '?widths=20&formats=webp', {}, input)
+  const { data } = await runLoader(t, '?sizes=20&formats=webp', {}, input)
 
   t.is(data.width, 20)
   t.is(data.height, 40)
@@ -214,16 +214,21 @@ test('auto-orients images before calculating and generating dimensions', async t
   )
 })
 
-test('rejects unknown options in strict mode and always rejects conflicting options', async t => {
+test('warns for unknown options and rejects them in strict mode', async t => {
   const warned = await runLoader(t, '?size=120')
   t.is(warned.warnings.length, 1)
-  t.regex(warned.warnings[0].message, /Did you mean "sizes" or "widths"/)
+  t.regex(warned.warnings[0].message, /Did you mean "sizes"/)
 
   const unknown = await t.throwsAsync(runLoader(t, '?size=120', { strict: true }))
-  t.regex(unknown.message, /Did you mean "sizes" or "widths"/)
+  t.regex(unknown.message, /Did you mean "sizes"/)
+})
 
-  const conflicting = await t.throwsAsync(runLoader(t, '?widths=320&densities=2x'))
-  t.regex(conflicting.message, /cannot be used together/)
+test('rejects malformed sizes and densities', async t => {
+  const size = await t.throwsAsync(runLoader(t, '?sizes=320.5'))
+  t.regex(size.message, /Invalid next-img sizes value/)
+
+  const density = await t.throwsAsync(runLoader(t, '?sizes=320&densities=retina'))
+  t.regex(density.message, /Invalid next-img densities value/)
 })
 
 test('warns for oversized bare imports and accepts explicit sizing', async t => {
@@ -233,11 +238,11 @@ test('warns for oversized bare imports and accepts explicit sizing', async t => 
     .jpeg()
     .toBuffer()
   const bare = await runLoader(t, '', {}, input)
-  const sized = await runLoader(t, '?widths=800', {}, input)
+  const sized = await runLoader(t, '?sizes=800', {}, input)
 
   t.is(bare.warnings.length, 1)
   t.regex(bare.warnings[0].message, /intrinsic 2050×100 size/)
-  t.regex(bare.warnings[0].message, /\?widths=\.\.\./)
+  t.regex(bare.warnings[0].message, /\?sizes=\.\.\./)
   t.is(sized.warnings.length, 0)
 })
 

@@ -53,7 +53,7 @@ export default function Index() {
                 <a href='#example-2'>Override breakpoints</a>
               </li>
               <li>
-                <a href='#example-3'>Override sizes attribute</a>
+                <a href='#example-3'>Override HTML sizes attribute</a>
               </li>
               <li>
                 <a href='#example-4'>Single image</a>
@@ -62,7 +62,7 @@ export default function Index() {
                 <a href='#example-5'>Art direction</a>
               </li>
               <li>
-                <a href='#example-6'>Exact image sizes</a>
+                <a href='#example-6'>One file per size</a>
               </li>
               <li>
                 <a href='#example-7'>PNG images</a>
@@ -80,8 +80,8 @@ export default function Index() {
           <aside>Example 1</aside>
           <h2>One size per breakpoint</h2>
           <p>
-            The legacy <code>sizes</code> query creates one logical image size per configured breakpoint. Each size is
-            combined with the configured pixel densities, which default to 1x and 2x.
+            The <code>sizes</code> query describes the image's CSS width at each configured breakpoint. Next-img
+            generates each size at the configured pixel densities, which default to 1x and 2x.
           </p>
 
           <Code language='html' style={syntax}>
@@ -106,7 +106,7 @@ export default function Index() {
           <aside>Example 2</aside>
           <h2>Override breakpoints</h2>
           <p>
-            Override the configured breakpoints for one image. This example maps three logical sizes to breakpoints at{' '}
+            Override the configured breakpoints for one image. This example maps three CSS sizes to breakpoints at{' '}
             <code>768px</code> and <code>1080px</code>.
           </p>
 
@@ -142,7 +142,7 @@ export default function Index() {
       <div className='example example-3' id='example-3'>
         <div className='example-inner'>
           <aside>Example 3</aside>
-          <h2>Override sizes attribute</h2>
+          <h2>Override HTML sizes attribute</h2>
           <p>
             Use the{' '}
             <a
@@ -188,8 +188,8 @@ export default function Index() {
           <aside>Example 4</aside>
           <h2>Single image</h2>
           <p>
-            Without <code>sizes</code> or <code>widths</code>, next-img keeps the source dimensions and emits one
-            candidate per format. Large bare imports warn by default; use responsive widths for content images.
+            Without <code>sizes</code>, next-img keeps the source dimensions and emits one candidate per format. Large
+            bare imports warn by default; provide CSS sizes for content images.
           </p>
 
           <Code language='html' style={syntax}>
@@ -263,20 +263,20 @@ export default function Index() {
       <div className='example example-6' id='example-6'>
         <div className='example-inner'>
           <aside>Example 6</aside>
-          <h2>Exact image sizes</h2>
+          <h2>One file per size</h2>
           <p>
-            Use <code>widths</code> to generate exact candidates, then use the HTML <code>sizes</code> prop to describe
-            their rendered width.
+            Next-img normally generates every CSS size at 1x and 2x. Set <code>densities=1x</code> when you need only
+            one output file for each size.
           </p>
 
           <Code language='html' style={syntax}>
-            {`<Picture src={require('../images/coffee6.jpg?widths=300,600,900,1200,1500')} sizes='100vw' alt='Coffee' />`}
+            {`<Picture src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')} sizes='100vw' alt='Coffee' />`}
           </Code>
           <h3>Output</h3>
           <Code language='html' style={syntax}>
             {toString(
               <Picture
-                src={require('../images/coffee6.jpg?widths=300,600,900,1200,1500')}
+                src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')}
                 sizes='100vw'
                 alt='Coffee'
               />,
@@ -284,7 +284,11 @@ export default function Index() {
           </Code>
           <div className='photo'>
             <div className='photo-inner'>
-              <Picture src={require('../images/coffee6.jpg?widths=300,600,900,1200,1500')} sizes='100vw' alt='Coffee' />
+              <Picture
+                src={require('../images/coffee6.jpg?sizes=300,600,900,1200,1500&densities=1x')}
+                sizes='100vw'
+                alt='Coffee'
+              />
             </div>
           </div>
         </div>

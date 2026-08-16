@@ -12,7 +12,6 @@ declare namespace withImg {
   interface Config {
     breakpoints?: Array<number | string>
     densities?: Array<number | `${number}x`>
-    widths?: number[]
     formats?: OutputFormat[]
     fallbackFormat?: OutputFormat | 'original'
     /** Promote next-img warnings to build errors. */

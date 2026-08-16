@@ -31,26 +31,26 @@ Import an image and render it:
 
 ```jsx
 import { Picture } from 'next-img'
-import hero from './hero.jpg?widths=480,960,1440&formats=avif,webp'
+import hero from './hero.jpg?sizes=375,800&formats=avif,webp'
 
 export default function Hero() {
-  return <Picture src={hero} sizes='100vw' alt='Our team at work' />
+  return <Picture src={hero} alt='Our team at work' />
 }
 ```
 
-The import generates AVIF, WebP, and JPEG candidates at the requested widths. The browser downloads the best candidate for its viewport and supported formats.
+The image is displayed at 375px on small screens and 800px on larger screens. Next-img generates each size at 1x and 2x pixel density, in AVIF, WebP, and JPEG. The browser downloads the best candidate.
 
 ## Image imports
 
 Use query parameters to control each image:
 
-- `widths=480,960,1440` generates those exact widths, capped at the source width.
-- `sizes=375,800` uses the legacy logical-size API. Each size is combined with the configured `densities`, which default to `1x,2x`.
+- `sizes=375,800` describes the image's CSS width at each breakpoint.
+- `densities=1x,2x` controls which pixel densities to generate for every size. These are the defaults.
 - `formats=avif,webp` sets preferred formats. The original format remains the default fallback.
 - `fallbackFormat=jpeg` selects a different fallback.
 - `jpeg`, `png`, `webp`, and `avif` accept Sharp output options, for example `?jpeg[quality]=70`.
 
-`widths` cannot be combined with `densities`. Unknown options warn; malformed or incompatible options fail the build. Set `nextImg.strict: true` to turn warnings into errors.
+Unknown options warn; malformed options fail the build. Set `nextImg.strict: true` to turn warnings into errors.
 
 A bare import keeps its intrinsic dimensions:
 
@@ -62,12 +62,12 @@ By default, next-img warns when a bare import is wider or taller than 2048px. Ch
 
 ## Picture
 
-`Picture` forwards standard image props and its ref to the underlying `<img>`. It adds `width` and `height`, generates `srcset` and `sizes`, and emits `<source>` elements for preferred formats.
+`Picture` forwards standard image props and its ref to the underlying `<img>`. It adds `width` and `height`, generates `srcset` and the HTML `sizes` attribute, and emits `<source>` elements for preferred formats.
 
 Preload an above-the-fold image with responsive metadata:
 
 ```jsx
-<Picture src={hero} sizes='100vw' alt='Our team at work' preload />
+<Picture src={hero} alt='Our team at work' preload />
 ```
 
 `preload` defaults to eager loading and `fetchPriority="high"`; decoding remains asynchronous. It preloads only the first preferred format to avoid duplicate downloads.
@@ -88,7 +88,7 @@ Automatic art-direction preloading supports one conditional source plus its fall
 
 Useful component props:
 
-- `sizes`: an HTML sizes string, or one string per art-direction source
+- `sizes`: overrides the generated HTML `sizes` attribute
 - `breakpoints`: overrides the configured breakpoints
 - `preload`: emits a responsive image preload
 - `autoSizes`: prefixes lazy images with `sizes="auto"`
@@ -141,9 +141,8 @@ Common plugin options:
 
 | Option              | Default                                    | Purpose                                                        |
 | ------------------- | ------------------------------------------ | -------------------------------------------------------------- |
-| `breakpoints`       | `[768]`                                    | Breakpoints used to generate `sizes` and legacy art direction  |
-| `densities`         | `['1x', '2x']`                             | Pixel densities for the legacy `sizes` import option           |
-| `widths`            | —                                          | Default exact widths for all image imports                     |
+| `breakpoints`       | `[768]`                                    | Breakpoints that map imported sizes to the layout              |
+| `densities`         | `['1x', '2x']`                             | Pixel densities generated for each imported size               |
 | `formats`           | `['webp']`                                 | Preferred output formats                                       |
 | `fallbackFormat`    | `'original'`                               | Fallback output format                                         |
 | `strict`            | `false`                                    | Turn warnings into build errors                                |
