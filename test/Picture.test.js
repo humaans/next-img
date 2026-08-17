@@ -258,10 +258,11 @@ test.serial('preload falls back to the Pages Router head manager on React 18', t
   }
   const originalPreload = ReactDOM.preload
   const head = []
+  let html
 
   try {
     ReactDOM.preload = undefined
-    renderToStaticMarkup(
+    html = renderToStaticMarkup(
       <HeadManagerContext.Provider
         value={{ mountedInstances: new Set(), updateHead: elements => head.push(...elements) }}
       >
@@ -273,9 +274,13 @@ test.serial('preload falls back to the Pages Router head manager on React 18', t
   }
 
   const link = head.find(element => element.type === 'link' && element.props.rel === 'preload')
+  t.true(html.includes('fetchpriority="high"'))
+  t.false(html.includes('fetchPriority='))
   t.is(link.props.type, 'image/webp')
   t.is(link.props.imageSrcSet, 'hero.webp 800w')
   t.is(link.props.imageSizes, '800px')
+  t.is(link.props.fetchpriority, 'high')
+  t.false('fetchPriority' in link.props)
 })
 
 test('explicit art direction has one canonical source contract', t => {
