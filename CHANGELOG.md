@@ -1,3 +1,7 @@
+## 0.6.2
+
+- Render fetch priority with the correct property casing for React 18 and React 19, including Pages Router preload links.
+
 ## 0.6.1
 
 - `npx next-img` now reuses healthy cached derivatives, repairs missing or invalid files, and removes unused files without re-encoding cache hits.
