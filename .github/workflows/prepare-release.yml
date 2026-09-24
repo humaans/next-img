@@ -1,0 +1,59 @@
+name: Prepare npm release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version change
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: prepare-npm-release
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: master
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+      - name: Check published version
+        run: |
+          published=$(npm view next-img version)
+          current=$(node -p "require('./package.json').version")
+          if [ "$published" != "$current" ]; then
+            echo "The repository is at $current, but npm latest is $published. Resolve the pending or missing release first."
+            exit 1
+          fi
+      - name: Open version pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUMP: ${{ inputs.bump }}
+        run: |
+          npm version "$BUMP" --no-git-tag-version --ignore-scripts
+          version=$(node -p "require('./package.json').version")
+          branch="release/v$version"
+          git switch -c "$branch"
+          git add package.json package-lock.json
+          git diff --cached --check
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "Release v$version"
+          gh auth setup-git
+          git push origin "HEAD:refs/heads/$branch"
+          gh pr create --base master --head "$branch" --title "Release v$version" --body "Bump next-img to $version ($BUMP). After this merges, the publishing workflow stages the package on npm. An npm maintainer must review and approve the staged package with 2FA before it goes live."
