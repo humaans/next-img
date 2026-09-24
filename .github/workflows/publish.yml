@@ -70,7 +70,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24.20.0'
-          registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false
       - name: Stage for maintainer approval
         run: npm stage publish --ignore-scripts
