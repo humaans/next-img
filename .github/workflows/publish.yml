@@ -1,0 +1,75 @@
+name: Stage npm release
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - package.json
+      - package-lock.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: stage-npm-release
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      release: ${{ steps.version.outputs.release }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Check for a version change
+        id: version
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          previous=$(git show "$BEFORE:package.json" | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version")
+          current=$(node -p "require('./package.json').version")
+          if [ "$previous" = "$current" ]; then
+            echo 'No package version change; skipping npm staging.'
+            exit 0
+          fi
+          lock_version=$(node -p "require('./package-lock.json').version")
+          if [ "$current" != "$lock_version" ]; then
+            echo "package.json is $current but package-lock.json is $lock_version"
+            exit 1
+          fi
+          echo "release=true" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v6
+        if: steps.version.outputs.release == 'true'
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Test package
+        if: steps.version.outputs.release == 'true'
+        run: |
+          npm ci
+          npm test
+          npm run test:integration
+          npm pack --dry-run --ignore-scripts
+
+  stage:
+    needs: verify
+    if: needs.verify.outputs.release == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24.20.0'
+          package-manager-cache: false
+      - name: Stage for maintainer approval
+        run: npm stage publish --ignore-scripts

@@ -165,3 +165,16 @@ npm run test:integration
 ```
 
 The example site is available at [humaans.github.io/next-img](https://humaans.github.io/next-img/).
+
+## Publishing
+
+Run **Prepare npm release** in GitHub Actions on `master` and choose `patch`, `minor`, or `major`. The workflow opens a PR that updates `package.json` and `package-lock.json`. Review it and merge it. The merge runs the tests, then stages that version on npm. The package is not public yet.
+
+An npm maintainer, such as Karolis, reviews the tarball in the [Staged Packages tab on npmjs.com](https://www.npmjs.com/) and approves it with 2FA. The maintainer can also use `npm stage list next-img`, `npm stage view <stage-id>`, and `npm stage approve <stage-id>`. Approval makes the staged version public.
+
+Before the first release through this workflow, configure `next-img` on npmjs.com:
+
+1. In package settings, add a [trusted publisher](https://docs.npmjs.com/trusted-publishers/) for GitHub Actions with organization `humaans`, repository `next-img`, and workflow filename `publish.yml`. Allow **only** `npm stage publish`, not direct `npm publish`.
+2. Set Publishing access to **Require two-factor authentication and disallow tokens**. Ensure the person who will approve staged releases has npm publish access and 2FA enabled.
+
+The workflow uses short-lived OIDC credentials and needs no npm write token. npm adds provenance for this public package. Keep GitHub Actions' **Allow GitHub Actions to create and approve pull requests** setting enabled so the preparation workflow can open its PR.

@@ -4,6 +4,10 @@
   "description": "",
   "license": "ISC",
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/humaans/next-img"
+  },
   "bin": {
     "next-img": "bin/next-img"
   },
@@ -27,8 +31,7 @@
     "test:types": "tsc -p tsconfig.types.json",
     "test:integration": "npm run test:integration:turbopack && npm run test:integration:webpack",
     "test:integration:turbopack": "next build test/fixtures/next-app",
-    "test:integration:webpack": "next build test/fixtures/next-app --webpack",
-    "release": "np --no-publish && npm publish"
+    "test:integration:webpack": "next build test/fixtures/next-app --webpack"
   },
   "dependencies": {
     "debug": "^4.4.3",
